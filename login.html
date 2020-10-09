@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style2.css">
+    <link href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="trasparente mt-5">
+        <div class="principal">
+            <h2>Iniciar Sesión </h2>
+            <form form-group>
+                <div class="imputBox">
+                    <input type="text" id="usuario" name="" required=" ">
+                    <label>Usuario</label>
+                </div>
+                <div class="imputBox">
+                    <input type="password" id="contra" name="" required=" ">
+                    <label>Contraseña</label>
+                </div>
+                <input type="button" value="Iniciar Sesión" class="btn btn-success" style="background: #11F0A0;" onclick="validar();" />
+            </form>
+            <br>
+            <a href="recuperacion.html" style="color:white;">¿Has olvidado Tu contraseña?</a>
+            <br>
+            <br>
+            <span id="repuesta" style="color:black;"></span>
+        </div>
+    </div>
+    <script type="js/jquery.min.js"></script>
+    <script type="js/bootstrap.min.js"></script>
+    <script>
+        function validar() {
+            document.getElementById('repuesta').innerHTML = ''
+            var usuario = document.getElementById('usuario').value
+            var contra = document.getElementById('contra').value
+            if ((usuario == '') || (contra == ' ')) {
+                document.getElementById('repuesta').innerHTML = ` <strong >Por Favor Ingresa Los Datos</strong >`
+            } else {
+                document.getElementById('repuesta').innerHTML = "Enviar datos"
+                console.log(usuario + contra)
+            }
+            document.getElementById('usuario').value = "";
+            document.getElementById('contra').value = "";
+        }
+    </script>
+</body>
+
+</html>
+
+</html>

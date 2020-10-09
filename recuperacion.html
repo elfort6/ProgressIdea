@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Recupera tu cuenta</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style2.css">
+    <link href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="trasparente mt-5">
+        <div class="principal">
+            <h2>Recupera tu cuenta </h2>
+            <form form-group>
+                <div class="imputBox">
+                    <input type="email" id="correo" name="" required=" ">
+                    <label>Correo</label>
+                </div>
+                <input type="button" value="Siguiente" class="btn btn-success" style="background: #11F0A0;" onclick="validar();" />
+            </form>
+            <br>
+            <span id="repuesta" style="color:rgb(223, 35, 35)"> <span>
+        </div>
+    </div>
+    <script type="js/jquery.min.js"></script>
+    <script type="js/bootstrap.min.js"></script>
+    <script>
+        function validar() {
+            document.getElementById('repuesta').innerHTML = ''
+            var correo = document.getElementById('correo').value
+            if (correo == '') {
+                document.getElementById('repuesta').innerHTML = ` <strong >Por Favor Ingresa Los Datos</strong >`
+            } else{
+                    window.location="login.html"
+            }
+            document.getElementById('correo').value = "";
+        }
+    </script>
+</body>
+
+</html>
+
+</html>
