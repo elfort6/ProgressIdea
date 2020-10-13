@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2020 a las 18:26:25
--- Versión del servidor: 10.4.13-MariaDB
--- Versión de PHP: 7.4.8
+-- Tiempo de generaciÃ³n: 14-10-2020 a las 00:25:29
+-- VersiÃ³n del servidor: 10.4.13-MariaDB
+-- VersiÃ³n de PHP: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,6 +56,13 @@ CREATE TABLE `correo` (
   `correo` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `correo`
+--
+
+INSERT INTO `correo` (`idCorreo`, `correo`) VALUES
+(71176, 'yeffcode@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -87,8 +94,15 @@ CREATE TABLE `persona` (
   `imagen` varchar(45) NOT NULL,
   `direccion` varchar(45) NOT NULL,
   `codigoPostal` varchar(45) NOT NULL,
-  `fechaNacimiento` date NOT NULL
+  `fechaNacimiento` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`idRegistro`, `primerNombrel`, `segundoNombre`, `primerApellido`, `segundoApellido`, `Correo_idCorreo`, `Telefono_idTelefono`, `numId`, `imagen`, `direccion`, `codigoPostal`, `fechaNacimiento`) VALUES
+(71176, 'Yefry', 'Aryani', 'Lainez', 'Jobs', 71176, 71176, '0801199615145', 'img', 'Col. Humuya, Casa 1025, Tegucigalpa, Honduras', '0101', '2020-10-13');
 
 -- --------------------------------------------------------
 
@@ -141,6 +155,13 @@ CREATE TABLE `telefono` (
   `numeroTelefono` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `telefono`
+--
+
+INSERT INTO `telefono` (`idTelefono`, `numeroTelefono`) VALUES
+(71176, '+50497894224');
+
 -- --------------------------------------------------------
 
 --
@@ -151,6 +172,13 @@ CREATE TABLE `tipodeusuario` (
   `idTipoDeUsuario` int(11) NOT NULL,
   `tipoUsuario` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tipodeusuario`
+--
+
+INSERT INTO `tipodeusuario` (`idTipoDeUsuario`, `tipoUsuario`) VALUES
+(71176, '1');
 
 -- --------------------------------------------------------
 
@@ -168,7 +196,14 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Índices para tablas volcadas
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idUsuario`, `usuario`, `contrasenia`, `TipoDeUsuario_idTipoDeUsuario`, `Proyecto_idProyecto`, `Persona_idRegistro`) VALUES
+(71176, 'yeffcode', '$2y$10$XxphaCQoZwmg7jLVZNvFNOa.AuBQUcyYMXI374', 71176, NULL, 71176);
+
+--
+-- Ãndices para tablas volcadas
 --
 
 --
@@ -253,40 +288,10 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de la tabla `correo`
---
-ALTER TABLE `correo`
-  MODIFY `idCorreo` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `multimediaproyecto`
 --
 ALTER TABLE `multimediaproyecto`
   MODIFY `idImagenesProyecto` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `persona`
---
-ALTER TABLE `persona`
-  MODIFY `idRegistro` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `telefono`
---
-ALTER TABLE `telefono`
-  MODIFY `idTelefono` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tipodeusuario`
---
-ALTER TABLE `tipodeusuario`
-  MODIFY `idTipoDeUsuario` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
