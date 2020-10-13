@@ -6,59 +6,38 @@ include 'conexion.php';
 //se validarán los campos si la sesion aún no está abierta
 if (empty($_SESSION) and isset($_POST['datos_introducidos_usuario'])){
     //se escaparán caracteres peligrosos
-    $nombre_de_usuario=mysqli_real_escape_string($conexion,$_POST['datos_introducidos_usuario']);
-    $contraseña_introducida=$_POST['datos_introducidos_contraseña'];
+    $nombre_de_usuario=mysqli_real_escape_string($conexion,$_POST['usuario']);
+    $contraseña_introducida=$_POST['clave'];
     //se hará la consulta a la base de datos
-    $consulta='select * from usuarios where cuenta="'.$nombre_de_usuario.'"';
+    $consulta='select * from usuario where usuario="'.$nombre_de_usuario.'"';
     //si hubo un resultado
     if ($ejecución_de_la_consulta=$conexion->query($consulta)){
         //se obtiene la contraseña registrada
-        $contraseña_guardada=$ejecución_de_la_consulta->fetch_assoc();
+        $consulta_1=$ejecución_de_la_consulta->fetch_assoc();
         //se compara la contraseña
-        $verificar_contraseña=password_verify($contraseña_introducida,$contraseña_guardada['clave']);
+        $verificar_contraseña=password_verify($contraseña_introducida,$consulta_1['Contrasenia']);
         //si el resultado de la comparación ha sido verdadero
         if ($verificar_contraseña){
             //se asigna la sesión y redirecciona
-            
-            //print('nombre: '.$datos['primer_nombre'].' '.$datos['segundo_nombre'].' '.$datos['primer_apellido'].' '.$datos['segundo_apellido']);
-           if($contraseña_guardada['nivel']==1){
-            $consultaest='select * from estudiantes where cuenta="'.$nombre_de_usuario.'"';
-            $ejecución_de_la_consultaest=$conexion->query($consultaest);
-            $datos=$ejecución_de_la_consultaest->fetch_assoc();
-            $info = $datos['primer_nombre'].' '.$datos['segundo_nombre'].' '.$datos['primer_apellido'].' '.$datos['segundo_apellido'];
-            $_SESSION['name']=$info;
-            $_SESSION['cuenta']=$nombre_de_usuario;
-            $_SESSION['carrera']=$datos['carrera'];
+            $consulTipo='select * from TipoDeUsuario where IdTipoDeUsuario="'.$consulta_1['TipoDeUsuario_idTipoDeUsuario'].'"';
+            $ejecución_de_la_consultaest=$conexion->query($consulTipo);
+            $Tipo=$ejecución_de_la_consultaest->fetch_assoc();
+           if($Tipo['tipoUsuario']==1){
+
+           $_SESSION['lvl']=1;
             header ('location: ../estudiantes/');
-            $_SESSION['lvl']=1;
            }else{
-            if($contraseña_guardada['nivel']==2){
-
-                $consultaest='select * from docentes where n_empleado="'.$nombre_de_usuario.'"';
-            $ejecución_de_la_consultadoce=$conexion->query($consultaest);
-            $datosdoce=$ejecución_de_la_consultadoce->fetch_assoc();
-            $info = $datosdoce['primer-nombre'].' '.$datosdoce['segundo-nombre'].' '.$datosdoce['primer-apellido'].' '.$datosdoce['segundo-apellido'];
-            $_SESSION['name']=$info;
-            $_SESSION['cuenta']=$nombre_de_usuario;
-            $_SESSION['carrera']=$datosdoce['facultad'];
-                header ('location: ../docentes/');
+            if($Tipo['tipoUsuario']==2){
                 $_SESSION['lvl']=2;
-            }else{
-                if($contraseña_guardada['nivel']==3){
-
-                    $consultaest='select * from docentes where n_empleado="'.$nombre_de_usuario.'"';
-                $ejecución_de_la_consultadoce=$conexion->query($consultaest);
-                $datosdoce=$ejecución_de_la_consultadoce->fetch_assoc();
-                $info = $datosdoce['primer-nombre'].' '.$datosdoce['segundo-nombre'].' '.$datosdoce['primer-apellido'].' '.$datosdoce['segundo-apellido'];
-                $_SESSION['name']=$info;
-                $_SESSION['cuenta']=$nombre_de_usuario;
-                $_SESSION['carrera']=$datosdoce['facultad'];
                 header ('location: ../docentes/');
+            }else{
+                if($Tipo['tipoUsuario']==3){
                     $_SESSION['lvl']=3;
+                header ('location: ../docentes/');
                 }else{
-                    if($contraseña_guardada['nivel']==4){
-                        header ('location: ../registro/');
+                    if($Tipo['tipoUsuario']==4){
                         $_SESSION['lvl']=4;
+                        header ('location: ../registro/');
                     }else{
                         
                     }
