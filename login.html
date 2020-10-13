@@ -14,7 +14,7 @@
     <div class="trasparente mt-5">
         <div class="principal">
             <h2>Iniciar Sesión </h2>
-            <form form-group id="formLogin" action="Ajax/php/IniciarSesion.php" method="POST">
+            <form form-group id="formLogin">
                 <div class="imputBox">
                     <input type="text" id="usuario" name="usuario" required=" ">
                     <label>Usuario</label>
@@ -45,8 +45,17 @@
             } else {
                 document.getElementById('repuesta').innerHTML = "Enviar datos";
                 console.log(usuario + contra);
-    
-                $( "#formLogin" ).submit(function( event ) {
+                var formData = new FormData($("#formLogin")[0]);
+                var ruta = "Ajax/php/IniciarSesion.php";
+                $.ajax({
+                    url: ruta,
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (datos) {
+                        $("#respuesta").html(datos);
+                    }
                 });
             }
             document.getElementById('usuario').value = "";
