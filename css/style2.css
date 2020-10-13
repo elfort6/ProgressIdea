@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: url(../img/idea3.jpg);
+    background-color: #fff;
     background-repeat: repeat-x;
     background-size: cover;
 }
