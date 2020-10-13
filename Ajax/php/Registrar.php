@@ -11,14 +11,14 @@ include 'conexion.php';
     $insertTipoDeUsuario=mysqli_query($conexion, 'insert into tipodeusuario(idTipoDeUsuario, tipoUsuario) values('.$idRandom.','.$_POST['userType'].')')
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
-    //$insertCorreo=mysqli_query($conexion, 'insert into correo(idCorreo, correo) values('.$idRandom.',yo@gmail.com)')
-   // or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
+    $insertCorreo=mysqli_query($conexion, 'insert into correo(idCorreo, correo) values('.$idRandom.',"yo@gmail.com")')
+   or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
-    $insertTelefono=mysqli_query($conexion, 'insert into telefono(idTelefono, numeroTelefono) values('.$idRandom.','.$_POST['telefono'].')')
+    $insertTelefono=mysqli_query($conexion, 'insert into telefono(idTelefono, numeroTelefono) values('.$idRandom.',"'.$_POST['telefono'].'")')
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
-    $insertTelefono=mysqli_query($conexion, 'insert into usuario(idTelefono, numeroTelefono) values('.$idRandom.','.$_POST['telefono'].')')
-    or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
+    //$insertTelefono=mysqli_query($conexion, 'insert into usuario(idTelefono, numeroTelefono) values('.$idRandom.','.$_POST['telefono'].')')
+    //or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
     //$insertTelefono=mysqli_query($conexion, 'insert into telefono(idTelefono, numeroTelefono) values('.$idRandom.','.$_POST['telefono'].')')
     //or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
