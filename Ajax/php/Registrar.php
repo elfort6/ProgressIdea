@@ -17,7 +17,7 @@ include 'conexion.php';
     $insertTelefono=mysqli_query($conexion, 'insert into telefono(idTelefono, numeroTelefono) values('.$idRandom.',"'.$_POST['telefono'].'")')
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
-    $insertPersona=mysqli_query($conexion, 'INSERT INTO persona(idRegistro, primerNombrel, segundoNombre, primerApellido, segundoApellido, Correo_idCorreo, Telefono_idTelefono, numId, imagen, direccion, codigoPostal, fechaNacimiento) VALUES ("'.$idRandom.'", "'.$_POST['pNombre'].'", "'.$_POST['sNombre'].'", "'.$_POST['pApellido'].'", "'.$_POST['sApellido'].'", "'.$_POST['correo'].'", "'.$_POST['telefono'].'", "'.$_POST['identidad'].'", "img", "'.$_POST['direccion'].'", "'.$_POST['codPostal'].'", "oct-22-2020")')
+    $insertPersona=mysqli_query($conexion, 'INSERT INTO persona(idRegistro, primerNombrel, segundoNombre, primerApellido, segundoApellido, Correo_idCorreo, Telefono_idTelefono, numId, imagen, direccion, codigoPostal, fechaNacimiento) VALUES ("'.$idRandom.'", "'.$_POST['nombre'].'", "'.$_POST['snombre'].'", "'.$_POST['apellido'].'", "'.$_POST['sapellido'].'", "'.$idRandom.'", "'.$idRandom.'", "'.$_POST['identidad'].'", "img", "'.$_POST['direccion'].'", "'.$_POST['codPostal'].'", "2020-10-13")')
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
     //$insertTelefono=mysqli_query($conexion, 'insert into telefono(idTelefono, numeroTelefono) values('.$idRandom.','.$_POST['telefono'].')')
