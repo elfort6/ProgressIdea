@@ -23,7 +23,7 @@
                     <input type="password" id="clave" name="clave" required=" ">
                     <label>Contraseña</label>
                 </div>
-                <input type="button" value="Iniciar Sesión" class="btn btn-success" style="background: #11F0A0;" onclick="validar();" />
+                <input type="button" value="Iniciar Sesión" class="btn btn-success" style="background: #11F0A0;" id="boton"/>
             </form>
             <br>
             <a href="recuperacion.html" style="color:white;">¿Has olvidado Tu contraseña?</a>
@@ -36,7 +36,7 @@
     <script type="js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script>
-        function validar() {
+        $("boton").click(function(){
             document.getElementById('repuesta').innerHTML = '';
             var usuario = document.getElementById('usuario').value;
             var contra = document.getElementById('clave').value;
@@ -57,10 +57,9 @@
                         $("#respuesta").html(datos);
                     }
                 });
-            }
-            document.getElementById('usuario').value = "";
-            document.getElementById('clave').value = "";
-        }
+                
+            }    
+        });
     </script>
 </body>
 
