@@ -35,12 +35,7 @@ if (empty($_SESSION) and isset($_POST['datos_introducidos_usuario'])){
                     $_SESSION['lvl']=3;
                 header ('location: ../docentes/');
                 }else{
-                    if($Tipo['tipoUsuario']==4){
-                        $_SESSION['lvl']=4;
-                        header ('location: ../registro/');
-                    }else{
-                        
-                    }
+                    
                 }
             }
            }
@@ -59,6 +54,6 @@ if (empty($_SESSION) and isset($_POST['datos_introducidos_usuario'])){
 }//si hay una sesion abierta o no se enviaron datos
 else{
     #header ('location: ./');
-    print('abierta mal');
+    print('Sesion abierta');
 }
 ?>
