@@ -14,7 +14,7 @@
     <div class="trasparente mt-5">
         <div class="principal">
             <h2>Iniciar Sesión </h2>
-            <form form-group>
+            <form form-group id="formLogin" action="Ajax/php/IniciarSesion.php" method="POST">
                 <div class="imputBox">
                     <input type="text" id="usuario" name="usuario" required=" ">
                     <label>Usuario</label>
@@ -32,21 +32,25 @@
             <span id="repuesta" style="color:black;"></span>
         </div>
     </div>
-    <script type="js/jquery.min.js"></script>
+    
     <script type="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script>
         function validar() {
-            document.getElementById('repuesta').innerHTML = ''
-            var usuario = document.getElementById('usuario').value
-            var contra = document.getElementById('contra').value
+            document.getElementById('repuesta').innerHTML = '';
+            var usuario = document.getElementById('usuario').value;
+            var contra = document.getElementById('clave').value;
             if ((usuario == '') || (contra == ' ')) {
-                document.getElementById('repuesta').innerHTML = ` <strong >Por Favor Ingresa Los Datos</strong >`
+                document.getElementById('repuesta').innerHTML = ` <strong >Por Favor Ingresa Los Datos</strong >`;
             } else {
-                document.getElementById('repuesta').innerHTML = "Enviar datos"
-                console.log(usuario + contra)
+                document.getElementById('repuesta').innerHTML = "Enviar datos";
+                console.log(usuario + contra);
+    
+                $( "#formLogin" ).submit(function( event ) {
+                });
             }
             document.getElementById('usuario').value = "";
-            document.getElementById('contra').value = "";
+            document.getElementById('clave').value = "";
         }
     </script>
 </body>
