@@ -3,42 +3,72 @@
 <html>
 
 <head>
-    <title>Recupera tu cuenta</title>
+    <title>Recupracion de contraseña</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style2.css">
-    <link href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
-    <div class="trasparente mt-5">
-        <div class="principal">
-            <h2>Recupera tu cuenta </h2>
-            <form form-group>
-                <div class="imputBox">
-                    <input type="email" id="correo" name="" required=" ">
-                    <label>Correo</label>
+
+    <div class="enable">
+        <header class="blog-header">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-lg-4 offset-lg-4 col-sm-4 col-8 logo">
+                    <a class="blog-header-logo text-dark" href="Index.html"><b>Progress Idea</b></a>
                 </div>
-                <input type="button" value="Siguiente" class="btn btn-success" style="background: #11F0A0;" onclick="validar();" />
-            </form>
-            <br>
-            <span id="repuesta" style="color:rgb(223, 35, 35)"> <span>
-        </div>
+            </div>
+        </header>
     </div>
+
+    <div class="container col-lg-4 col-md-8 mt-lg-5 mt-md-5">
+
+        <div class="panel-heading panel-primary">
+            <h2 class="header panel-primary">Recupera tu contraseña</h2>
+        </div>
+        
+        <!-- /.panel-body -->
+        <div class="panel-body col-lg-12 pt-4 pb-5">
+
+            <div class="col-lg-12">
+                <form role="form" action="Ajax/php/recuperar.php" method="POST" class="needs-validation" novalidate>
+                    <div>
+                        <label>Ingresa tu correo</label>
+                        <div class="form-group col-lg-12 col-md-6">
+                            <label>Correo</label>
+                            <input class="form-control" type="email" id="correo" name="correo" placeholder="email@example.com" required=" ">
+                            <div class="valid-feedback">¡Ok válido!</div>
+                            <div class="invalid-feedback">Complete el campo.</div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-lg-5 col-md-5 mt-lg-5">
+                                <button type="buttom" class="btn-lg btn-block col-lg-12 btn-danger" id="btnAcpetar">Regresar</button>
+                            </div>
+
+                            <div class="form-group col-lg-5 col-md-5 offset-lg-2 offset-md-2 mt-lg-5">
+                                <button type="submit" class="btn-lg btn-block col-lg-12 btn-success" id="btnAcpetar">Aceptar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.row -->
+
+                </form>
+
+            </div>
+            <!-- /.col-lg-12 -->
+            <!-- /.col-lg-12 -->
+<!-- /.col-lg-12 -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.container-->
     <script type="js/jquery.min.js"></script>
     <script type="js/bootstrap.min.js"></script>
-    <script>
-        function validar() {
-            document.getElementById('repuesta').innerHTML = ''
-            var correo = document.getElementById('correo').value
-            if (correo == '') {
-                document.getElementById('repuesta').innerHTML = ` <strong >Por Favor Ingresa Los Datos</strong >`
-            } else{
-                    window.location="login.html"
-            }
-            document.getElementById('correo').value = "";
-        }
-    </script>
+    <!-- JavaScript -->
+    <script src="Sources/codigo2.js"></script>
 </body>
 
 </html>

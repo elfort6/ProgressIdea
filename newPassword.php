@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Cambio de contraseña</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -25,7 +26,7 @@
     <div class="container col-lg-4 col-md-8 mt-lg-5 mt-md-5">
 
         <div class="panel-heading panel-primary">
-            <h2 class="header panel-primary">Login</h2>
+            <h2 class="header panel-primary">Cambio de contraseña</h2>
         </div>
         
         <!-- /.panel-body -->
@@ -35,30 +36,31 @@
                 <form role="form" action="Ajax/php/IniciarSesion.php" method="POST" class="needs-validation" novalidate>
                     <div>
                         <div class="form-group col-lg-12 col-md-6">
-                            <label>Nombre</label>
-                            <input class="form-control" type="text" id="usuario" name="usuario" required=" ">
+                            <label>Nueva Contraseña</label>
+                            <input class="form-control" type="password" id="pswd1" name="pswd1" required=" ">
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">Complete el campo.</div>
                         </div>
                         <div class="form-group col-lg-12 col-md-6">
-                            <label>Contraseña</label>
-                            <input class="form-control" type="password" id="clave" name="clave" required=" ">
+                            <label>Ingrese la Contraseña nuevamente</label>
+                            <input class="form-control" type="password" id="pswd2" name="pswd2" required=" ">
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">Complete el campo.</div>
                         </div>
                         <div class="form-group">
-                            <a href="recuperacion.html" style="color:grey;">¿Has olvidado Tu contraseña?</a>
+                            <a href="recuperacion.html" style="color:white;">¿Has olvidado Tu contraseña?</a>
                         </div>
                         
-                        <div class="form-group col-lg-8 col-md-6 offset-lg-2 offset-md-3">
-                            <button type="submit" class="btn-lg btn-block col-lg-12 btn-success" id="btnAcpetar">Ingresar</button>
+                        <div class="row">
+	                        <div class="form-group col-lg-5 col-md-5 mt-lg-5">
+	                            <button type="buttom" class="btn-lg btn-block col-lg-12 btn-danger" id="btnAcpetar">Cancelar</button>
+	                        </div>
+
+	                        <div class="form-group col-lg-5 col-md-5 offset-lg-2 offset-md-2 mt-lg-5">
+	                            <button type="submit" class="btn-lg btn-block col-lg-12 btn-success" id="btnAcpetar">Aceptar</button>
+	                        </div>
                         </div>
 
-
-                        <div class="form-group">
-                            ¿No tienes una cuenta?
-                            <a href="registrar.html" style="color:grey;">Registrate aqui</a>
-                        </div>
 
                     </div>
                     <!-- /.row -->
@@ -86,3 +88,5 @@
 </html>
 
 </html>
+
+
