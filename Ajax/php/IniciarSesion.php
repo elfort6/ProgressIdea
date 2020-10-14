@@ -4,7 +4,7 @@ session_start();
 //se establece una conexión a la base de datos
 include 'conexion.php';
 //se validarán los campos si la sesion aún no está abierta
-if (empty($_SESSION) and isset($_POST['datos_introducidos_usuario'])){
+if (isset($_POST['usuario'])){
     //se escaparán caracteres peligrosos
     $nombre_de_usuario=mysqli_real_escape_string($conexion,$_POST['usuario']);
     $contraseña_introducida=$_POST['clave'];
@@ -15,7 +15,7 @@ if (empty($_SESSION) and isset($_POST['datos_introducidos_usuario'])){
         //se obtiene la contraseña registrada
         $consulta_1=$ejecución_de_la_consulta->fetch_assoc();
         //se compara la contraseña
-        $verificar_contraseña=password_verify($contraseña_introducida,$consulta_1['Contrasenia']);
+        $verificar_contraseña=password_verify($contraseña_introducida,$consulta_1['contrasenia']);
         //si el resultado de la comparación ha sido verdadero
         if ($verificar_contraseña){
             //se asigna la sesión y redirecciona
@@ -25,15 +25,15 @@ if (empty($_SESSION) and isset($_POST['datos_introducidos_usuario'])){
            if($Tipo['tipoUsuario']==1){
 
            $_SESSION['lvl']=1;
-            header ('location: ../estudiantes/');
+            echo ('Emprendedor.html');
            }else{
             if($Tipo['tipoUsuario']==2){
                 $_SESSION['lvl']=2;
-                header ('location: ../docentes/');
+                echo ('Patrocinador.html');
             }else{
                 if($Tipo['tipoUsuario']==3){
                     $_SESSION['lvl']=3;
-                header ('location: ../docentes/');
+                echo ('Administrador.html');
                 }else{
                     
                 }
@@ -44,7 +44,9 @@ if (empty($_SESSION) and isset($_POST['datos_introducidos_usuario'])){
         }//si la contraseña es incorrecta
         else{
            # header ('location: ./');
-           print('contraseña mal');
+           echo json_encode($consulta_1);
+           echo $verificar_contraseña;
+           //print('contraseña mal');
         }
     }//si el usuario no está registrado
     else{

@@ -27,7 +27,9 @@ include 'conexion.php';
     //or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
     // ("'.$usuario.'","'.$contraseña.'","'.$contraseña.'")') or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
     //redirección
-  //  header('location: ./');
+    echo ('<script>alert("Se registró exitosamente."); </script>');
+    header('location: ../../');
 
-echo implode("<br>", $_POST);
+    
+
 ?>

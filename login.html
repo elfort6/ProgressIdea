@@ -34,9 +34,9 @@
     </div>
     
     <script type="js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="js/jquery.min.js"></script>
     <script>
-        $("boton").click(function(){
+        $("#boton").click(function(){
             document.getElementById('repuesta').innerHTML = '';
             var usuario = document.getElementById('usuario').value;
             var contra = document.getElementById('clave').value;
@@ -54,10 +54,9 @@
                     contentType: false,
                     processData: false,
                     success: function (datos) {
-                        $("#respuesta").html(datos);
+                        $(location).attr('href',datos);
                     }
                 });
-                
             }    
         });
     </script>
