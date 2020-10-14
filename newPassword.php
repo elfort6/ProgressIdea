@@ -47,9 +47,6 @@
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">Complete el campo.</div>
                         </div>
-                        <div class="form-group">
-                            <a href="recuperacion.html" style="color:white;">¿Has olvidado Tu contraseña?</a>
-                        </div>
                         
                         <div class="row">
 	                        <div class="form-group col-lg-5 col-md-5 mt-lg-5">
