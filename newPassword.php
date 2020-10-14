@@ -53,8 +53,8 @@
                         
                         <div class="row">
 	                        <div class="form-group col-lg-5 col-md-5 mt-lg-5">
-	                            <button type="buttom" class="btn-lg btn-block col-lg-12 btn-danger" id="btnAcpetar">Cancelar</button>
-	                        </div>
+                                <a class="btn-lg btn-block col-lg-12 btn-danger text-center text-white" style="border-bottom: solid #69121A 2px; border-right: solid #69121A 2px; text-decoration: none;" id="btnCancelar" href="login.html">Cancelar</a>
+                            </div>
 
 	                        <div class="form-group col-lg-5 col-md-5 offset-lg-2 offset-md-2 mt-lg-5">
 	                            <button type="submit" class="btn-lg btn-block col-lg-12 btn-success" id="btnAcpetar">Aceptar</button>
