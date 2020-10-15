@@ -25,15 +25,15 @@ if (isset($_POST['usuario'])){
            if($Tipo['tipoUsuario']==1){
 
            $_SESSION['lvl']=1;
-            echo ('Emprendedor.html');
+           header('location: ../../Emprendedor.html');
            }else{
             if($Tipo['tipoUsuario']==2){
                 $_SESSION['lvl']=2;
-                echo ('Patrocinador.html');
+                header ('location: ../../Patrocinador.html');
             }else{
                 if($Tipo['tipoUsuario']==3){
                     $_SESSION['lvl']=3;
-                echo ('Administrador.html');
+                header ('location: ../../Administrador.html');
                 }else{
                     
                 }
