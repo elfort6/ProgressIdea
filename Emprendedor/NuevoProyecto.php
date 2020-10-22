@@ -78,7 +78,7 @@
                             <label>Agregar Imagen</label>
                             <input class="form-control-file" type="file" id="imagen" name="imagen" multiple>
                         </div>
-                        <button class="btn btn-primary bt-n_proyect" type="submit" name="Guardar" >Guardar Cambios</button>
+                        <button class="btn btn-primary bt-n_proyect" type="submit" name="Guardar" onclick="enviar();">Guardar Cambios</button>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -106,10 +106,13 @@
                     var nombre = $("#nombre").val(),
                         descripcion = $("#descripcion").val(),
                         categoria = $("#categoria option:selected").text();
-                        $.post('../Ajax/php/proceso.php', {"nombre":nombre,"descripcion":descripcion, "categoria":categoria}, 
-                            function(data) {
-                            alert(data);
-                        });
+                        $.ajax({
+		                  method: "POST",
+		                  url: "../Ajax/php/proceso.php", 
+		                  data: {"nombre":nombre,"descripcion":descripcion, "categoria":categoria}
+		                }).done(function( msg ) {
+		                    alert( msg );
+		                  });
                 }
                 //enviarImg();
 
