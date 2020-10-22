@@ -31,35 +31,26 @@
         <!-- /.panel-body -->
         <div class="panel-body col-lg-12 pt-4 pb-5">
 
-            <div class="col-lg-12">
-                <form role="form" action="../Ajax/php/recuperar.php" method="POST" class="needs-validation" novalidate>
-                    <div>
-                        <label>Ingresa tu correo</label>
-                        <div class="form-group">
-                            <input class="form-control" type="email" id="correoRecu" name="correoRecu" placeholder="email@example.com" required=" ">
-                            <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="form-group col-lg-6 col-md-6 mt-lg-5">
-                                <a class="btn-lg btn-block col-lg-12 btn-danger text-center text-white" style="border-bottom: solid #69121A 2px; border-right: solid #69121A 2px; text-decoration: none;" id="btnRegresar" href="login.html">Regresar</a>
-                            </div>
-
-                            <div class="form-group col-lg-6 col-md-6 mt-lg-5">
-                                <button type="submit" class="btn-lg btn-block col-lg-12 btn-success" id="btnAcpetar" onclick="enviar()">Aceptar</button>
-                            </div>
-                        </div>
-
+            <div class="col-lg-12" id="form">
+                <label>Ingresa tu correo</label>
+                <div class="form-group">
+                    <input class="form-control" type="email" id="correo" name="correo" placeholder="email@example.com" required=" ">
+                    <div class="valid-feedback">¡Ok válido!</div>
+                    <div class="invalid-feedback">No Valido.</div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group col-lg-6 col-md-6 mt-lg-5">
+                        <a class="btn-lg btn-block col-lg-12 btn-danger text-center text-white" style="border-bottom: solid #69121A 2px; border-right: solid #69121A 2px; text-decoration: none;" id="btnRegresar" href="login.html">Regresar</a>
                     </div>
-                    <!-- /.row -->
 
-                </form>
+                    <div class="form-group col-lg-6 col-md-6 mt-lg-5">
+                        <button type="submit" class="btn-lg btn-block col-lg-12 btn-success" id="btnAcpetar" onclick="enviar()">Aceptar</button>
+                    </div>
+                </div>
 
             </div>
             <!-- /.col-lg-12 -->
-            <!-- /.col-lg-12 -->
-<!-- /.col-lg-12 -->
         </div>
         <!-- /.panel-body -->
     </div>
@@ -76,7 +67,18 @@
     <script type="text/javascript">
         
         function enviar(){
-            validar();
+            var valor = validar();
+            if (valor){
+                var usuario = $("#usuario").val(), clave = $("#clave").val();
+                $.ajax({
+                  method: "POST",
+                  url: "../Ajax/php/recuperar.php",
+                  data: {"correo":correo}
+                }).done(function(data){
+                    
+                    
+                  });
+            }
         }
     </script>
 </body>

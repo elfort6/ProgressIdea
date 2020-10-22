@@ -1,19 +1,15 @@
-function validar(){
-  var forms = document.getElementsByClassName('needs-validation');
-  // Loop over them and prevent submission
-  var validation = Array.prototype.filter.call(forms, function(form) {
-    form.addEventListener('submit', function(event) {
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      form.classList.add('was-validated');
-    }, false);
-  });
-}
-
 function codeTel(){
         prefijo = $("#pais option:selected").val();
         $("#telefono").val("+"+prefijo+" - ");
     }
 
+function validar(){
+    $("#form").addClass("was-validated");
+    var inputs = document.getElementsByClassName("form-control");
+    for(i=0;i<inputs.length;i++){
+      if(inputs[i].checkValidity()===false){
+        return false;
+      }
+    }
+    return true;
+}

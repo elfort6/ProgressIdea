@@ -47,40 +47,38 @@
                 </div>
                 <div class="card-body">
 
-                    <div class="col-lg-12 col-12">
-                        <form role="form" class="needs-validation" novalidate>
-                            <div class="form-group">
-                                <label>* Nombre del Proyecto</label>
-                                <input class="form-control" placeholder="Nombre del proyecto" id="nombre" name="nombre" required>
-                                 <!--<p class="help-block">Example block-level help text here.</p>-->
-                                <div class="valid-feedback">¡Ok válido!</div>
-                                <div class="invalid-feedback">Complete el campo.</div>
-                            </div>
-                            <div class="form-group">
-                                <label>* Categoria</label>
-                                <select class="form-control" name="categoria" id="categoria" required>
-                                    <option>TECNOLOGIA</option>
-                                    <option>ARTE</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                                <div class="valid-feedback">¡Ok válido!</div>
-                                <div class="invalid-feedback">Complete el campo.</div>
-                            </div>
-                            <div class="form-group">
-                                <label>* Breve Descripcion</label>
-                                <textarea type="text" name="descripcion" id="descripcion" class="form-control" rows="5" required></textarea>
-                                <div class="valid-feedback">¡Ok válido!</div>
-                                <div class="invalid-feedback">Complete el campo.</div>
-                            </div>
-                            
-                            <div class="form-group col-lg-12 col-12">
-                                <label>Agregar Imagen</label>
-                                <input class="" type="file" id="imagen" name="imagen" multiple>
-                            </div>
-                            <button class="btn btn-primary bt-n_proyect" type="submit" name="Guardar" onclick="enviar();">Guardar Cambios</button>
-                        </form>
+                    <div class="col-lg-12 col-12 needs-validation" id="form" novalidate>
+                        <div class="form-group">
+                            <label>* Nombre del Proyecto</label>
+                            <input class="form-control" placeholder="Nombre del proyecto" id="nombre" name="nombre" required>
+                             <!--<p class="help-block">Example block-level help text here.</p>-->
+                            <div class="valid-feedback">¡Ok válido!</div>
+                            <div class="invalid-feedback">No Valido.</div>
+                        </div>
+                        <div class="form-group">
+                            <label>* Categoria</label>
+                            <select class="form-control" name="categoria" id="categoria" required>
+                                <option>TECNOLOGIA</option>
+                                <option>ARTE</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <div class="valid-feedback">¡Ok válido!</div>
+                            <div class="invalid-feedback">No Valido.</div>
+                        </div>
+                        <div class="form-group">
+                            <label>* Breve Descripcion</label>
+                            <textarea type="text" name="descripcion" id="descripcion" class="form-control" rows="5" required></textarea>
+                            <div class="valid-feedback">¡Ok válido!</div>
+                            <div class="invalid-feedback">No Valido.</div>
+                        </div>
+                        
+                        <div class="form-group col-lg-12 col-12">
+                            <label>Agregar Imagen</label>
+                            <input class="form-control-file" type="file" id="imagen" name="imagen" multiple>
+                        </div>
+                        <button class="btn btn-primary bt-n_proyect" type="submit" name="Guardar" >Guardar Cambios</button>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -103,15 +101,15 @@
 
 
             function enviar(){
-                nombre = $("#nombre").val();
-                descripcion = $("#descripcion").val();
-                categoria = $("#categoria option:selected").text();
-                if(nombre=="" || descripcion=="" || categoria==""){
-                    validar();
-                }else{
-                    $.post('../Ajax/php/proceso.php', {"nombre":nombre,"descripcion":descripcion, "categoria":categoria}, function(data) {
-                        alert(data);
-                    });
+                var valor = validar();
+                if(valor){
+                    var nombre = $("#nombre").val(),
+                        descripcion = $("#descripcion").val(),
+                        categoria = $("#categoria option:selected").text();
+                        $.post('../Ajax/php/proceso.php', {"nombre":nombre,"descripcion":descripcion, "categoria":categoria}, 
+                            function(data) {
+                            alert(data);
+                        });
                 }
                 //enviarImg();
 

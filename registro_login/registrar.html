@@ -41,32 +41,31 @@
         <div class="panel-body col-lg-12 pt-4 pb-5">
 
             <div class="col-lg-12">
-                <form role="form" class="needs-validation" novalidate>
-                    <div class="row">
+                    <div class="row" id="form">
                         <div class="form-group col-lg-6 col-md-6">
                             <label>Nombre</label>
                             <input id="nombre" class="form-control input" name="nombre" placeholder="" required>
                             <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
+                            <div class="invalid-feedback">No Valido.</div>
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
                             <label>S. Nombre</label>
                             <input id="snombre" class="form-control input" name="snombre" placeholder="" required>
                             <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
+                            <div class="invalid-feedback">No Valido.</div>
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6">
                             <label>Apellido</label>
                             <input id="apellido" class="form-control input" name="apellido" placeholder="" required>
                             <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
+                            <div class="invalid-feedback">No Valido.</div>
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
                             <label>S. Apellido</label>
                             <input id="sapellido" class="form-control input" name="sapellido" placeholder="" required>
                             <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
+                            <div class="invalid-feedback">No Valido.</div>
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6">
@@ -77,7 +76,7 @@
                                 </div>
                                 <input class="form-control input" id="usuario" name="usuario" placeholder="" required>
                                 <div class="valid-feedback">¡Ok válido!</div>
-                                <div class="invalid-feedback">Complete el campo.</div>
+                                <div class="invalid-feedback">No Valido.</div>
                             </div>
                         </div>
 
@@ -86,7 +85,7 @@
                             <label>Contraseña</label>
                             <input class="form-control input" id="pswd" name="pswd" placeholder="" type="password" required>
                             <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
+                            <div class="invalid-feedback">No Valido.</div>
                         </div>
 
                         <div class="col-lg-8 col-md-7">
@@ -94,7 +93,7 @@
                                 <label>Correo</label>
                                 <input class="form-control input" type="email" id="correo" name="correo" placeholder="email@example.com" required>
                                 <div class="valid-feedback">¡Ok válido!</div>
-                                <div class="invalid-feedback">Complete el campo.</div>
+                                <div class="invalid-feedback">No Valido.</div>
                             </div>
                         </div>
 
@@ -102,7 +101,7 @@
                             <label>No. Identidad</label>
                             <input class="form-control input" name="identidad" id="identidad" placeholder="" type="text" required>
                             <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
+                            <div class="invalid-feedback">No Valido.</div>
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6">
@@ -111,21 +110,21 @@
 
                                     </select>
                             <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
+                            <div class="invalid-feedback">No Valido.</div>
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6">
                             <label for="disabledSelect">Codigo Postal</label>
                             <input class="form-control input" id="codPostal" name="codPostal" type="text" placeholder="" required>
                             <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
+                            <div class="invalid-feedback">No Valido.</div>
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6">
                             <label>Telefono</label>
                             <input class="form-control input" id="telefono" name="telefono" placeholder="" required>
                             <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
+                            <div class="invalid-feedback">No Valido.</div>
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6">
@@ -140,7 +139,7 @@
                             <label for="disabledSelect">Direccion</label>
                             <input class="form-control input" id="direccion" name="direccion" type="text" placeholder="Ciudad, Colonia o Barrio..." required>
                             <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">Complete el campo.</div>
+                            <div class="invalid-feedback">No Valido.</div>
                         </div>
                         <div class="form-group col-lg-4 col-md-4 offset-lg-4 offset-md-4 mt-lg-5">
                             <button class="btn-lg btn-block col-lg-12 btn-success" id="btnAcpetar" onclick="enviar();">Aceptar</button>
@@ -149,8 +148,6 @@
 
                     </div>
                     <!-- /.row -->
-
-                </form>
 
             </div>
             <!-- /.col-lg-12 -->
@@ -180,15 +177,24 @@
         })();
 
         function enviar(){
-            var nombre=$("#nombre").val(), snombre=$("#snombre").val(), apellido=$("#apellido").val(), sapellido=$("#sapellido").val(), usuario=$("#usuario").val(), pswd=$("#pswd").val(), correo=$("#correo").val(), identidad=$("#identidad").val(), pais=$("#pais option:selected").text(), codPostal=$("#codPostal").val(), telefono=$("#telefono").val(), direccion=$("#direccion").val(), userType=$("#userType").val();
-
-            if(nombre!="" && snombre!="" && apellido!="" && sapellido!="" && usuario!="" && pswd!="" && correo!="" && identidad!="" && pais!="" && codPostal!="" && telefono!="" && direccion!="" && userType!=""){
-                $.post("../Ajax/php/Registrar.php", {"nombre":nombre ,"snombre":snombre ,"apellido":apellido ,"sapellido":sapellido ,"usuario":usuario ,"pswd":pswd ,"correo":correo ,"identidad":identidad ,"pais":pais ,"codPostal":codPostal ,"telefono":telefono ,"direccion":direccion ,"userType":userType},function(data){
-                    alert("Se registró exitosamente.");
-                    window.location = "../../";
+            var valor = validar();
+            if(valor){
+                var nombre=$("#nombre").val(),      snombre=$("#snombre").val(), 
+                    apellido=$("#apellido").val(),  sapellido=$("#sapellido").val(), 
+                    usuario=$("#usuario").val(),    pswd=$("#pswd").val(), 
+                    correo=$("#correo").val(),      identidad=$("#identidad").val(), 
+                    pais=$("#pais option:selected").text(), codPostal=$("#codPostal").val(), 
+                    telefono=$("#telefono").val(),  direccion=$("#direccion").val(), 
+                    userType=$("#userType").val();
+                $.ajax({
+                  method: "POST",
+                  url: "../Ajax/php/Registrar.php",
+                  data: {"nombre":nombre ,"snombre":snombre ,"apellido":apellido ,"sapellido":sapellido,
+                        "usuario":usuario ,"pswd":pswd ,"correo":correo ,"identidad":identidad ,"pais":pais,
+                        "codPostal":codPostal ,"telefono":telefono ,"direccion":direccion ,"userType":userType}
+                }).done(function( msg ) {
+                    alert( msg );
                   });
-            }else{
-                validar();
             }
 
         }
