@@ -1,0 +1,34 @@
+a, a:hover{
+	text-decoration: none;
+	color: black;
+}
+
+.dropdown{
+	margin-right: 30px;
+}
+
+.dropdown-menu{
+	background: white;
+	border-radius: 4px;
+    margin-right: 10px;
+}
+
+.titulo{
+	font: initial;
+}
+
+.btn-primary{
+	background-color: #1967B1;
+}
+
+.bt-n_proyect{
+	float:right;
+	margin-right: 20px;
+}
+
+.tarjeta, .bt-n_proyect:hover, .dropdown-menu, nav{
+	-webkit-box-shadow: 0px 0px 30px -6px rgba(150, 150, 150, 0.8);
+    -moz-box-shadow: 0px 0px 30px -6px rgba(150, 150, 150, 0.8);
+    box-shadow: 0px 0px 30px -6px rgba(150, 150, 150, 0.8);
+}
+
