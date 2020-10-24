@@ -71,11 +71,16 @@ if (!isset($_SESSION["sesion"])) {
                         <div class="form-group">
                             <label>* Categoria</label>
                             <select class="form-control" name="categoria" id="categoria" required>
-                                <option>TECNOLOGIA</option>
-                                <option>ARTE</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option value="1">Arte</option>
+                                <option value="2">Deporte</option>
+                                <option value="3">Tecnologia</option>
+                                <option value="4">Videojuegos</option>
+                                <option value="5">Comic y libros</option>
+                                <option value="6">Animaciones</option>
+                                <option value="7">Cine</option>
+                                <option value="8">Ciencia</option>
+                                <option value="9">Musica</option>
+                                <option value="10">Documetales</option>
                             </select>
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
@@ -112,13 +117,12 @@ if (!isset($_SESSION["sesion"])) {
         <script type="text/javascript">
             
 
-
             function enviar(){
                 var valor = validar();
                 if(valor){
                     var nombre = $("#nombre").val(),
                         descripcion = $("#descripcion").val(),
-                        categoria = $("#categoria option:selected").text();
+                        categoria = $("#categoria option:selected").val();
                         $.ajax({
 		                  method: "POST",
 		                  url: "../Ajax/php/proceso.php", 
@@ -126,6 +130,7 @@ if (!isset($_SESSION["sesion"])) {
 		                }).done(function( msg ) {
 		                    alert( msg );
 		                  });
+
                 }
                 //enviarImg();
 
@@ -137,7 +142,7 @@ if (!isset($_SESSION["sesion"])) {
                 if (longitud > 0) {
                     for(i=0;i<longitud;i++){
                         let formData = new FormData();
-                        formData.append("archivo", imagen.files[i]); // En la posición 0; es decir, el primer elemento
+                        formData.append("archivo", imagen.files[i]); // En la posic 0; es decir, el primer elemento
                         fetch("../Ajax/php/guardar.php", {
                             method: 'POST',
                             body: formData,
