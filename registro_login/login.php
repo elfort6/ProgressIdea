@@ -85,7 +85,7 @@ if (isset($_SESSION["sesion"])) {
     <!-- /.container-->
     
     <!-- jQuery -->
-    <script src="../librerias/jQuery/js/jQuery1.js"></script>
+    <script src="../librerias/jQuery/js/jQuery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../librerias/bootstrap/js/bootstrap.min.js"></script>

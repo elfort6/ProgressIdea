@@ -1,3 +1,16 @@
+<?php 
+    session_start();
+if (isset($_SESSION["sesion"])) {
+    $nivel = $_SESSION["sesion"]["nivel"];
+    if($nivel==1){
+        header("location: ../Emprendedor/index.php");
+    }else if($nivel == 2){
+        header("location: ../index.html");
+    }else if($nivel == 3){
+        header("location: ../index.html");
+    }
+}
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -25,7 +38,7 @@
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <a class="text-muted" href="#" aria-label="Search">
                     </a>
-                    <a class="btn btn-sm btn-outline-secondary text-white" href="login.html">Iniciar Sesión</a>
+                    <a class="btn btn-sm btn-outline-secondary text-white" href="login.php">Iniciar Sesión</a>
                 </div>
             </div>
         </header>

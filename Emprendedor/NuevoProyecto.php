@@ -1,3 +1,15 @@
+<?php 
+    session_start();
+if (!isset($_SESSION["sesion"])) {
+    header("location: ../index.html");
+}else if(($nivel = $_SESSION["sesion"]["nivel"])!=1){
+    if($nivel == 2){
+        header("location: ../index.html");
+    }else if($nivel == 3){
+        header("location: ../index.html");
+    }
+}
+ ?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -27,8 +39,9 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Perfil</a>
+                    <a class="dropdown-item" href="#">Estadisticas</a>
                     <a class="dropdown-item" href="#">Configuracion</a>
-                    <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                    <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
                 </div>
             </div>
 
