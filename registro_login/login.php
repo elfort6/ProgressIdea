@@ -1,3 +1,17 @@
+<?php 
+    session_start();
+if (isset($_SESSION["sesion"])) {
+    $nivel = $_SESSION["sesion"]["nivel"];
+    if($nivel==1){
+        header("location: ../Emprendedor/index.php");
+    }else if($nivel == 2){
+        header("location: ../index.html");
+    }else if($nivel == 3){
+        header("location: ../index.html");
+    }
+}
+ ?>
+
 <!DOCTYPE html>
 
 <html>
@@ -31,9 +45,9 @@
         </div>
         
         <!-- /.panel-body -->
-        <div class="panel-body col-lg-12 pt-4 pb-5">
+        <div class="panel-body col-lg-12 pt-4 pb-5" id="form">
 
-            <div class="col-lg-12" id="form">
+            <div class="col-lg-12">
                 <div class="form-group col-lg-12">
                     <label>Nombre</label>
                     <input class="form-control" type="text" id="usuario" name="usuario" required=" ">
@@ -59,6 +73,9 @@
                     ¿No tienes una cuenta?
                     <a href="registrar.html" style="color:grey;">Registrate aqui</a>
                 </div>
+                <span id="msg">
+                    
+                </span>
 
             </div>
             <!-- /.col-lg-12 -->
@@ -68,7 +85,7 @@
     <!-- /.container-->
     
     <!-- jQuery -->
-    <script src="../librerias/jQuery/js/jQuery.js"></script>
+    <script src="../librerias/jQuery/js/jQuery1.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../librerias/bootstrap/js/bootstrap.min.js"></script>
@@ -86,7 +103,14 @@
                   url: "../Ajax/php/IniciarSesion.php",
                   data: {"usuario":usuario,"clave":clave}
                 }).done(function( msg ) {
-                    alert( "Data Saved: " + msg );
+                    console.log(msg);
+                    json = JSON.parse(msg);
+                    if(json.status){
+                        window.location = json.url;
+                    }else{
+                        document.getElementById("msg").innerHTML = `<div class="alert alert-danger">${json.mensaje}</div>`;
+
+                    }
                   });
 
             }
