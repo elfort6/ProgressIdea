@@ -35,7 +35,7 @@ if (!isset($_SESSION["sesion"])) {
             
             <div class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user"></i><span class="pl-5"><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
+                    <i class="fa fa-user"></i> Emprendedor <b class="caret"></b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Perfil</a>
