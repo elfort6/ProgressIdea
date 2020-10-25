@@ -13,3 +13,12 @@ function validar(){
     }
     return true;
 }
+
+function serializar(){
+    var array = $("form").serializeArray();
+    var object = {};
+    $.each(array, function(indice, llave){
+        object[llave.name]=llave.value;
+    });
+    return object;
+}
