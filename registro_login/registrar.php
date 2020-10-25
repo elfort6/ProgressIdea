@@ -54,7 +54,7 @@ if (isset($_SESSION["sesion"])) {
         <div class="panel-body col-lg-12 pt-4 pb-5">
 
             <div class="col-lg-12">
-                    <div class="row" id="form">
+                    <form class="row" id="form">
                         <div class="form-group col-lg-6 col-md-6">
                             <label>Nombre</label>
                             <input id="nombre" class="form-control input" name="nombre" placeholder="" required>
@@ -143,9 +143,9 @@ if (isset($_SESSION["sesion"])) {
                         <div class="form-group col-lg-6 col-md-6">
                             <label for="userType">Tipo de Usuario</label>
                             <select id="userType" name="userType" class="form-control">
-                                        <option value="1">Emprendedor</option>
-                                        <option value="2">Patrocinador</option>
-                                    </select>
+                                <option value="1">Emprendedor</option>
+                                <option value="2">Patrocinador</option>
+                            </select>
                         </div>
 
                         <div class="form-group col-lg-12 col-md-12">
@@ -154,18 +154,15 @@ if (isset($_SESSION["sesion"])) {
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
                         </div>
+
+                    </form>
+                    <!-- /.row -->
                         <div class="form-group col-lg-4 col-md-4 offset-lg-4 offset-md-4 mt-lg-5">
                             <button class="btn-lg btn-block col-lg-12 btn-success" id="btnAcpetar" onclick="enviar();">Aceptar</button>
                         </div>
 
-
-                    </div>
-                    <!-- /.row -->
-
             </div>
             <!-- /.col-lg-12 -->
-            <!-- /.col-lg-12 -->
-<!-- /.col-lg-12 -->
         </div>
         <!-- /.panel-body -->
     </div>
@@ -191,22 +188,19 @@ if (isset($_SESSION["sesion"])) {
 
         function enviar(){
             var valor = validar();
+            var objeto = serializar();
+            console.log(objeto);
             if(valor){
-                var nombre=$("#nombre").val(),      snombre=$("#snombre").val(), 
-                    apellido=$("#apellido").val(),  sapellido=$("#sapellido").val(), 
-                    usuario=$("#usuario").val(),    pswd=$("#pswd").val(), 
-                    correo=$("#correo").val(),      identidad=$("#identidad").val(), 
-                    pais=$("#pais option:selected").text(), codPostal=$("#codPostal").val(), 
-                    telefono=$("#telefono").val(),  direccion=$("#direccion").val(), 
-                    userType=$("#userType").val();
                 $.ajax({
                   method: "POST",
                   url: "../Ajax/php/Registrar.php",
-                  data: {"nombre":nombre ,"snombre":snombre ,"apellido":apellido ,"sapellido":sapellido,
-                        "usuario":usuario ,"pswd":pswd ,"correo":correo ,"identidad":identidad ,"pais":pais,
-                        "codPostal":codPostal ,"telefono":telefono ,"direccion":direccion ,"userType":userType}
+                  data: objeto
                 }).done(function( msg ) {
-                    alert( msg );
+                    console.log(msg);
+                    json = JSON.parse(msg);
+                    if(json.status){
+                        window.location = json.ruta;
+                    }
                   });
             }
 

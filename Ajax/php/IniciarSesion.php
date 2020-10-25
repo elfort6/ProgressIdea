@@ -31,20 +31,20 @@ if (!isset($_SESSION['sesion'])){
               $ejecución_de_la_consultaest=$conexion->query($consulTipo);
               $Tipo=$ejecución_de_la_consultaest->fetch_assoc();
 
-             if($Tipo['tipoUsuario']==1){
+             if($Tipo['idTipoDeUsuario']==1){
               $usr= array("nivel"=>1, "usuario"=>$nombre_de_usuario);
               $_SESSION['sesion']=$usr;
               $json = array("status"=>true, "url"=>"../Emprendedor/index.php");
               echo json_encode($json);
 
              }else{
-              if($Tipo['tipoUsuario']==2){
+              if($Tipo['idTipoDeUsuario']==2){
                   $usr= array("nivel"=>2, "usuario"=>$nombre_de_usuario);
                 $_SESSION['sesion']=$usr;
                 $json = array("status"=>true, "url"=>"../Patrocinador/index.php");
                 echo json_encode($json);
               }else{
-                  if($Tipo['tipoUsuario']==3){
+                  if($Tipo['idTipoDeUsuario']==3){
                       $usr= array("nivel"=>3, "usuario"=>$nombre_de_usuario);
                   $_SESSION['sesion']=$usr;
                   $json = array("status"=>true, "url"=>"../Administrador/index.php");

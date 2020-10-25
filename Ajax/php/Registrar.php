@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 //se establece una conexion a la base de datos
 include 'conexion.php';
 //si se han enviado datos
@@ -7,9 +9,6 @@ include 'conexion.php';
     $contrasenia=password_hash($_POST['pswd'], PASSWORD_DEFAULT);
     $idRandom = rand(0,100000);
     //$correo=mysqli_real_escape_string($conexion, $_POST['correo']);
-    
-    $insertTipoDeUsuario=mysqli_query($conexion, 'insert into tipodeusuario(idTipoDeUsuario, tipoUsuario) values('.$idRandom.','.$_POST['userType'].')')
-    or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
     $insertCorreo=mysqli_query($conexion, 'insert into correo(idCorreo, correo) values('.$idRandom.',"'.$_POST['correo'].'")')
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
@@ -17,19 +16,22 @@ include 'conexion.php';
     $insertTelefono=mysqli_query($conexion, 'insert into telefono(idTelefono, numeroTelefono) values('.$idRandom.',"'.$_POST['telefono'].'")')
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
-    $insertPersona=mysqli_query($conexion, 'INSERT INTO persona(idRegistro, primerNombrel, segundoNombre, primerApellido, segundoApellido, Correo_idCorreo, Telefono_idTelefono, numId, imagen, direccion, codigoPostal, fechaNacimiento) VALUES ("'.$idRandom.'", "'.$_POST['nombre'].'", "'.$_POST['snombre'].'", "'.$_POST['apellido'].'", "'.$_POST['sapellido'].'", "'.$idRandom.'", "'.$idRandom.'", "'.$_POST['identidad'].'", "img", "'.$_POST['direccion'].'", "'.$_POST['codPostal'].'", "2020-10-13")')
+    $insertPersona=mysqli_query($conexion, 'INSERT INTO persona(idRegistro, primerNombrel, segundoNombre, primerApellido, segundoApellido, Correo_idCorreo, Telefono_idTelefono, numId, imagen, direccion, codigoPostal, fechaNacimiento, pais) VALUES ("'.$idRandom.'", "'.$_POST['nombre'].'", "'.$_POST['snombre'].'", "'.$_POST['apellido'].'", "'.$_POST['sapellido'].'", "'.$idRandom.'", "'.$idRandom.'", "'.$_POST['identidad'].'", "img", "'.$_POST['direccion'].'", "'.$_POST['codPostal'].'", "2020-10-13","'.$_POST['pais'].'")')
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
-    $insertUsuario=mysqli_query($conexion, 'INSERT INTO `usuario` (`idUsuario`, `usuario`, `contrasenia`, `TipoDeUsuario_idTipoDeUsuario`, `Proyecto_idProyecto`, `Persona_idRegistro`) VALUES ("'.$idRandom.'", "'.$usuario.'", "'.$contrasenia.'", "'.$idRandom.'", NULL, "'.$idRandom.'")')
+    $insertUsuario=mysqli_query($conexion, 'INSERT INTO `usuario` (`idUsuario`, `usuario`, `contrasenia`, `TipoDeUsuario_idTipoDeUsuario`, `Persona_idRegistro`) VALUES ("'.$idRandom.'", "'.$usuario.'", "'.$contrasenia.'", "'.$_POST['userType'].'", "'.$idRandom.'")')
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
-    //$insertTelefono=mysqli_query($conexion, 'insert into telefono(idTelefono, numeroTelefono) values('.$idRandom.','.$_POST['telefono'].')')
-    //or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
-    // ("'.$usuario.'","'.$contrasenia.'","'.$contrasenia.'")') or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
-    //redirección
-    //echo ('<script>alert("Se registró exitosamente."); </script>');
-    //header('location: ../../');
-    echo "exitossamente";
+    if($_POST['userType']==1){
+        $usr= array("nivel"=>1, "usuario"=>$nombre_de_usuario);
+        $_SESSION['sesion']=$usr;
+        $ruta = '../Emprendedor/index.php';
+    }else{
+        $ruta = '../../Index.html';
+    }
+
+    $resultado = array('status' => true, 'ruta' => $ruta);
+    echo json_encode($resultado);
 
     
 
