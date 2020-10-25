@@ -35,7 +35,7 @@ if (!isset($_SESSION["sesion"])) {
             
             <div class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user"></i> Emprendedor <b class="caret"></b>
+                    <i class="fa fa-user"></i><span class="pl-5"><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Perfil</a>
@@ -60,7 +60,7 @@ if (!isset($_SESSION["sesion"])) {
                 </div>
                 <div class="card-body">
 
-                    <div class="col-lg-12 col-12 needs-validation" id="form" novalidate>
+                    <form class="col-lg-12 col-12 needs-validation" id="form" novalidate>
                         <div class="form-group">
                             <label>* Nombre del Proyecto</label>
                             <input class="form-control" placeholder="Nombre del proyecto" id="nombre" name="nombre" required>
@@ -71,11 +71,7 @@ if (!isset($_SESSION["sesion"])) {
                         <div class="form-group">
                             <label>* Categoria</label>
                             <select class="form-control" name="categoria" id="categoria" required>
-                                <option>TECNOLOGIA</option>
-                                <option>ARTE</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                
                             </select>
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
@@ -91,8 +87,9 @@ if (!isset($_SESSION["sesion"])) {
                             <label>Agregar Imagen</label>
                             <input class="form-control-file" type="file" id="imagen" name="imagen" multiple>
                         </div>
+                    </form>
+                        <span id="msg"></span>
                         <button class="btn btn-primary bt-n_proyect" type="submit" name="Guardar" onclick="enviar();">Guardar Cambios</button>
-                    </div>
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.panel-body -->
@@ -110,24 +107,32 @@ if (!isset($_SESSION["sesion"])) {
 
         <script type="text/javascript" src="../js/validar.js"></script>
         <script type="text/javascript">
-            
+            (function(){
+                $.post('../Ajax/php/obtenerCategoria.php',{},function(data){
+                    $("#categoria").html(data);
+                });
+            })();
 
 
             function enviar(){
                 var valor = validar();
+                var objeto = serializar();
                 if(valor){
-                    var nombre = $("#nombre").val(),
-                        descripcion = $("#descripcion").val(),
-                        categoria = $("#categoria option:selected").text();
                         $.ajax({
-		                  method: "POST",
-		                  url: "../Ajax/php/proceso.php", 
-		                  data: {"nombre":nombre,"descripcion":descripcion, "categoria":categoria}
-		                }).done(function( msg ) {
-		                    alert( msg );
-		                  });
+                          method: "POST",
+                          url: "../Ajax/php/RegistrarProyecto.php", 
+                          data: objeto
+                        }).done(function( data ) {
+                            console.log(data);
+                            json = JSON.parse(data);
+                            if(json.status){
+                                document.getElementById("msg").innerHTML = `<div class="alert alert-primary" id="div-msg">Proyecto registrado con exito</div>`;
+                                enviarImg();
+                            }else{
+                                document.getElementById("msg").innerHTML = `<div class="alert alert-danger" id="div-msg">Error al registrar su proyecto</div>`;
+                            }
+                          });
                 }
-                //enviarImg();
 
             }
 
@@ -138,14 +143,19 @@ if (!isset($_SESSION["sesion"])) {
                     for(i=0;i<longitud;i++){
                         let formData = new FormData();
                         formData.append("archivo", imagen.files[i]); // En la posición 0; es decir, el primer elemento
-                        fetch("../Ajax/php/guardar.php", {
+                        fetch("../Ajax/php/guardarMultimedia.php", {
                             method: 'POST',
                             body: formData,
                         })
                             .then(respuesta => respuesta.text())
                             .then(decodificado => {
-                                //console.log(decodificado);
-                                //$("#label").html(decodificado+i);
+                                console.log(decodificado);
+                                json = JSON.parse(decodificado);
+                                if(json.status){
+                                    document.getElementById("div-msg").innerHTML += "-multimedia agregada";
+                                }else{
+                                    document.getElementById("div-msg").innerHTML += `<div class="alert alert-danger" id="div-msg">Error al subir imagen</div>`;
+                                }
                             });    
                     }
                     
@@ -153,7 +163,7 @@ if (!isset($_SESSION["sesion"])) {
                     
                 } else {
                     // El usuario no ha seleccionado archivos
-                    alert("Selecciona un archivo");
+                    document.getElementById("div-msg").innerHTML = `<div class="alert alert-danger">Puede editar su proyecto despues para agregar una imagen</div>`;
                 }
                 
             }
