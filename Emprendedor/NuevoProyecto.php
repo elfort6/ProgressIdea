@@ -38,7 +38,7 @@ if (!isset($_SESSION["sesion"])) {
                     <i class="fa fa-user"></i><span class="pl-5"><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Perfil</a>
+                    <a class="dropdown-item" href="index.php">Perfil</a>
                     <a class="dropdown-item" href="#">Estadisticas</a>
                     <a class="dropdown-item" href="#">Configuracion</a>
                     <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
