@@ -50,8 +50,11 @@ if (!isset($_SESSION["sesion"])) {
 
         <a class="btn btn-lg btn-success mt-3 ml-4" href="NuevoProyecto.php">Crear Proyecto</a>
 
-        
-        <div class="container mt-3 col-lg-9 col-md-12">
+        <section class="container pt-5" id="info">
+            <div class="row justify-content-center align-items-center minh-100" id="proyectos">
+            </div>
+        </section>
+        <!-- <div class="container mt-3 col-lg-9 col-md-12">
             <div class="card tarjeta">
                 <div class="card-body row">
                     <div class="col">
@@ -103,7 +106,7 @@ if (!isset($_SESSION["sesion"])) {
 
         
 
-        <!-- jQuery -->
+        jQuery -->
         <script src="../librerias/jQuery/js/jQuery.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
@@ -111,6 +114,16 @@ if (!isset($_SESSION["sesion"])) {
 
         <!-- Custom Fonts -->
         <script src="../librerias/FontAwesome/js/fontawesome.min.js"></script>
+
+        <script type="text/javascript">
+            (function(){
+                $.post('../Ajax/php/obtenerProyectos.php',{},function(data){
+                    document.getElementById("proyectos").innerHTML = "";
+                    document.getElementById("proyectos").innerHTML = data;
+                    console.log(data);
+                });
+            })();
+        </script>
 
     </body>
 </html>
