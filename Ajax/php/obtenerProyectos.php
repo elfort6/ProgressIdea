@@ -19,7 +19,7 @@ include 'conexion.php';
                    '.$fila["descripcion"].' 
                 </h4>
                 <div class="card-footer bg-transparent border-success">
-                    <a id="'.$fila["idProyecto"].'" class="btn btn-lg btn-info" href="../Emprendedor/editarProyecto.php">Editar</a>
+                    <a id="'.$fila["idProyecto"].'" onclick="myId()" class="btn btn-lg btn-info" href="../Emprendedor/editarProyecto.php">Editar</a>
                 </div>
             </div>
         </div>

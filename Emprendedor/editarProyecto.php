@@ -107,29 +107,19 @@
             })();
             
            
+            
+
+
 
             function actualizar(){
                 var valor = validar();
                 var objeto = serializar();
-                var datos = {nombre: document.getElementById("nombrePro").value, categoria: document.getElementById};
+                var idProyecto = '';
+                    
+                var datos = {idProyecto: myId(), nombre: document.getElementById("nombrePro").value};
+                
+                
                 console.log(datos);
-
-                function cambiarUsuario() {
-                    document.getElementById('bienvenida').innerHTML = '';
-                    document.getElementById('titulo').innerHTML = '';
-                    for (let i = 0; i < usuarios.length; i++) {
-                        var valor = document.getElementById("usuarioActual").value;
-                        if (i == valor) {
-                            document.getElementById('bienvenida').innerHTML =
-                                ` <b><h2>¡Hola, ${usuarios[i].nombre}!</h2></b>
-                        <h2>¿Qué necesitas?</h2>`
-
-                            document.getElementById('titulo').innerHTML =
-                                `<h5 class="modal-title" style = "color: white">${usuarios[i].nombre}, Estas son tus ordenes</h5>`
-                        }
-                    }
-                }
-
 
 
                 if(valor){
@@ -140,7 +130,14 @@
 		                }).done(function( data ) {
                             //console.log(objeto);
 		                  });
-                }   
+                    }   
+                }
+
+                function myId(){
+                console.log('alo');
+                //alert($(this).attr('id'));
+    
+                    //puedes almacenarla en una varible y hacer uso de ese valor en diferentes formas 
                 }
 
                 function serializar(){
