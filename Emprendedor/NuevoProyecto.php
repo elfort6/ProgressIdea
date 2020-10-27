@@ -128,6 +128,7 @@ if (!isset($_SESSION["sesion"])) {
                             if(json.status){
                                 document.getElementById("msg").innerHTML = `<div class="alert alert-primary" id="div-msg">Proyecto registrado con exito</div>`;
                                 enviarImg();
+                                setTimeout("redireccionar()", 2500);
                             }else{
                                 document.getElementById("msg").innerHTML = `<div class="alert alert-danger" id="div-msg">Error al registrar su proyecto</div>`;
                             }
@@ -166,6 +167,10 @@ if (!isset($_SESSION["sesion"])) {
                     document.getElementById("div-msg").innerHTML = `<div class="alert alert-danger">Puede editar su proyecto despues para agregar una imagen</div>`;
                 }
                 
+            }
+
+            function redireccionar(){
+                location.href= "index.php";
             }
         </script>
 

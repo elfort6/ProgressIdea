@@ -80,10 +80,6 @@
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
                         </div>
-                        <div class="form-group col-lg-12 col-12">
-                            <label>Agregar Imagen</label>
-                            <input class="form-control-file" type="file" id="imagen" name="imagen" multiple>
-                        </div>
                         <a class="btn btn-danger bt-n_proyect" href="index.php">CANCELAR</a>
                     </div>
                     <input style="display:none;" id="id" value="<?php echo $id?>">
@@ -128,7 +124,7 @@
 		                  data: datos
 		                }).done(function( data ) {
                             document.getElementById("mensaje").innerHTML = `${data}`;
-                             setTimeout("redireccionar()", 3000);
+                             setTimeout("redireccionar()", 2000);
                             //console.log(objeto);
 		                  });
                 }   

@@ -46,7 +46,7 @@ if (!isset($_SESSION["sesion"])) {
     
 
     <div class="container col-lg-4 col-md-5 mt-lg-5 mt-md-5">
-        <div class="card">
+        <div class="card tarjeta">
 
             <div class="card-heading bg-info">
                 <h2 class="text-center text-white">Cambiar Contraseña</h2>
@@ -123,7 +123,7 @@ if (!isset($_SESSION["sesion"])) {
                     console.log(json)
                     if(json.status){
                         document.getElementById("msg").innerHTML = `<div class="alert alert-info">${json.mensaje}</div>`;
-                        setTimeout("redireccionar()", 3000);
+                        setTimeout("redireccionar()", 2000);
                     }else{
                         document.getElementById("msg").innerHTML = `<div class="alert alert-danger">${json.mensaje}</div>`;
 
