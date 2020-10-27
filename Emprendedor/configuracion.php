@@ -36,7 +36,7 @@ include '../Ajax/php/ConsultasParaEditarUsuario.php';
                 </div>
             </div>
         </nav>
-        <a class="btn btn-lg btn-info mt-3 ml-4 " href="NuevoProyecto.php">Cambiar Contraseña</a>
+        <a class="btn btn-lg btn-info mt-3 ml-4 " href="cambiarcontra.php">Cambiar Contraseña</a>
 
         <div class="container col-lg-6 col-md-8 mt-lg-5 mt-md-5">
         <!-- /.header -->
