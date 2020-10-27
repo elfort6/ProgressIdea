@@ -119,7 +119,7 @@
             function actualizar(){
                 var valor = validar();
                 var objeto = serializar();      
-                var datos = {idProyecto:document.getElementById("id").value , nombre: document.getElementById("nombrePro").value, descripcion:document.getElementById("descripcion").value};
+                var datos = {idProyecto:document.getElementById("id").value ,categoria: document.getElementById("categoria").value, nombre: document.getElementById("nombrePro").value, descripcion:document.getElementById("descripcion").value};
                 console.log(datos);
                 if(valor){
                         $.ajax({
