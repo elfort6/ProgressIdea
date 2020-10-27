@@ -19,7 +19,8 @@ include 'conexion.php';
                    '.$fila["descripcion"].' 
                 </h4>
                 <div class="card-footer bg-transparent border-success">
-                    <a id="'.$fila["idProyecto"].'" onclick="myId()" class="btn btn-lg btn-info" href="../Emprendedor/editarProyecto.php">Editar</a>
+                <a href="editarProyecto.php?id='.$fila["idProyecto"].'"">Mi enlace</a>
+                <button type=button id="'.$fila["idProyecto"].'" onClick="idBoton(this.id)" class="btn btn-lg btn-info">Editar</button>
                 </div>
             </div>
         </div>

@@ -123,6 +123,17 @@ if (!isset($_SESSION["sesion"])) {
                     console.log(data);
                 });
             })();
+            function idBoton(idB) { 
+            console.log(idB);
+            var Idproyecto=idB;
+            $.ajax({
+                    method: "POST",
+                     url: "../Ajax/php/backendEditProyecto.php",
+                    data: {"Idproyecto":idB}
+                     }).done(function( msg ) {
+                         console.log(msg);
+             });
+            }
         </script>
 
     </body>

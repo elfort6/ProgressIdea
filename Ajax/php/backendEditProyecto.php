@@ -12,21 +12,9 @@ if (!isset($_SESSION["sesion"])) {
     }
 }
 
-
-
-$usu=$_SESSION["sesion"]["usuario"];
-
-
 $consulta='SELECT * FROM `proyecto` INNER JOIN usuario ON Usuario_idUsuario = idUsuario WHERE usuario.usuario ="'.$_SESSION["sesion"]["usuario"].'"';
 $result = $conexion->query($consulta);
 $proyectoActual = $result->fetch_assoc();
-
-
-//$_POST['nombre'];
-//$_POST['categoria'];
-//$_POST['descripcion'];
-//$_POST['imagen'];
-
 
 
 

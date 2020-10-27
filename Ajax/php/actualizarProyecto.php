@@ -19,9 +19,10 @@ $nombre = $_POST["nombre"];
 
 //$uoa = 'UPDATE proyecto INNER JOIN usuario ON Usuario_idUsuario = idUsuario SET proyecto.nombreproyecto = "'.$_POST['nombre'].'" WHERE usuario.usuario ="'.$_SESSION["sesion"]["usuario"].'"';
 
-$upa = "UPDATE proyecto INNER JOIN usuario ON Usuario_idUsuario = idUsuario SET  proyecto.nombreproyecto ='".$nombre."' WHERE usuario.usuario ='". $_SESSION['sesion']['usuario']."'";
-
+$upa = "UPDATE proyecto  SET  nombreproyecto ='".$_POST["nombre"]."', descripcion='".$_POST["descripcion"]."' WHERE idProyecto ='".$_POST["idProyecto"]."'";
 $result = $conexion->query($upa);
+echo('<div class="alert alert-primary" role="alert">
+Actualizacion De Proyecto</div>');
 
 
 

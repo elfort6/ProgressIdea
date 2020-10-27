@@ -1,5 +1,10 @@
 <?php
-    require "../Ajax/php/backendEditProyecto.php";
+    require "../Ajax/php/conexion.php";
+    session_start();
+    $id= $_GET["id"];
+    $consulta='select* from proyecto where idProyecto="'.$id.'"';
+    $result = $conexion->query($consulta);
+    $proyecto = $result->fetch_assoc();
 ?>
 
 
@@ -41,12 +46,10 @@
             </div>
 
         </nav>
+        <h1></h1>
 
         <div class="titulo p-3 col-12">
         </div>
-        <!-- /.col-lg-12 -->
-  
-        
         <div class="container col-lg-6 col-md-7">
             <div class="card tarjeta">
                 <div class="card-header bg-info text-center" >
@@ -57,7 +60,7 @@
                     <div class="col-lg-12 col-12 needs-validation" id="form" novalidate>
                         <div class="form-group">
                             <label>* Nombre del Proyecto</label>
-                            <input class="form-control" placeholder="Nombre del proyecto" id="nombrePro" name="nombrePro" required value="<?php echo $proyectoActual['nombreproyecto']?>">
+                            <input class="form-control" placeholder="Nombre del proyecto" id="nombrePro" name="nombrePro" required value="<?php echo $proyecto ['nombreproyecto']?>">
                              <!--<p class="help-block">Example block-level help text here.</p>-->
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
@@ -65,14 +68,14 @@
                         <div class="form-group">
                         <label>* Categoria</label>
                             <select class="form-control" name="categoria" id="categoria" required>
-                                
+    
                             </select>
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
                         </div>
                         <div class="form-group">
                             <label>* Breve Descripcion</label>
-                            <textarea type="text" name="descripcion" id="descripcion" class="form-control" rows="5" required ><?php echo $proyectoActual['descripcion']?></textarea>
+                            <textarea type="text" name="descripcion" id="descripcion" class="form-control" rows="5" required ><?php echo $proyecto ['descripcion']?></textarea>
 
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
@@ -83,6 +86,8 @@
                         </div>
                         <a class="btn btn-danger bt-n_proyect" href="index.php">CANCELAR</a>
                     </div>
+                    <input style="display:none;" id="id" value="<?php echo $id?>">
+                    <span id="mensaje"></span>
                     <button class="btn btn-primary bt-n_proyect" type="submit" name="Guardar" onclick="actualizar()">Actualizar</button>
 
                     <!-- /.col-lg-12 -->
@@ -113,32 +118,25 @@
 
             function actualizar(){
                 var valor = validar();
-                var objeto = serializar();
-                var idProyecto = '';
-                    
-                var datos = {idProyecto: myId(), nombre: document.getElementById("nombrePro").value};
-                
-                
+                var objeto = serializar();      
+                var datos = {idProyecto:document.getElementById("id").value , nombre: document.getElementById("nombrePro").value, descripcion:document.getElementById("descripcion").value};
                 console.log(datos);
-
-
                 if(valor){
                         $.ajax({
 		                  method: "POST",
 		                  url: "../Ajax/php/actualizarProyecto.php", 
 		                  data: datos
 		                }).done(function( data ) {
+                            document.getElementById("mensaje").innerHTML = `${data}`;
+                             setTimeout("redireccionar()", 3000);
                             //console.log(objeto);
 		                  });
-                    }   
-                }
-
-                function myId(){
-                console.log('alo');
-                //alert($(this).attr('id'));
+                }   
+            }
+            function redireccionar(){
+            location.href= "Index.php";
+            }
     
-                    //puedes almacenarla en una varible y hacer uso de ese valor en diferentes formas 
-                }
 
                 function serializar(){
                         var array = $("form").serializeArray();
