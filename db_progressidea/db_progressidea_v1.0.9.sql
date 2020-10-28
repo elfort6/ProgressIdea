@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2020 a las 05:59:54
+-- Tiempo de generación: 29-10-2020 a las 00:32:30
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.8
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `actualizacionesproyecto` (
   `idActualizacion` int(255) NOT NULL,
   `titulo` varchar(45) NOT NULL,
-  `descripcion` int(250) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
   `Proyecto_idProyecto` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -93,6 +93,7 @@ INSERT INTO `correo` (`idCorreo`, `correo`) VALUES
 (26884, 'yefryyo@gmail.com'),
 (38576, 'yu@yu.com'),
 (80102, 'yu@yu.com'),
+(90373, 'yeffcode@gmail.com'),
 (91567, 'yunio@yunior.yu');
 
 -- --------------------------------------------------------
@@ -115,7 +116,8 @@ CREATE TABLE `multimediaproyecto` (
 INSERT INTO `multimediaproyecto` (`idImagenesProyecto`, `rutaImagen`, `Proyecto_idProyecto`, `rutaVideo`) VALUES
 (1, '../../MultimediaProyectos/yuniorcd/wp6248410.jpg', 51427, NULL),
 (2, '../../MultimediaProyectos/yuniorcd/wp5191917.jpg', 89194, NULL),
-(3, '../MultimediaProyectos/yeff/compu.jpg', 49531, NULL);
+(3, '../MultimediaProyectos/yeff/compu.jpg', 49531, NULL),
+(4, '../MultimediaProyectos/yeff/concepto-del-desarrollo-de-la-programación-web-73959563.jpg', 66325, NULL);
 
 -- --------------------------------------------------------
 
@@ -145,7 +147,8 @@ CREATE TABLE `persona` (
 
 INSERT INTO `persona` (`idRegistro`, `primerNombrel`, `segundoNombre`, `primerApellido`, `segundoApellido`, `Correo_idCorreo`, `Telefono_idTelefono`, `numId`, `imagen`, `direccion`, `codigoPostal`, `fechaNacimiento`, `pais`) VALUES
 (26884, 'Yefry', 'Rolando', 'Ortiz', 'Orellana', 26884, 26884, '0801-1996-15145', 'img', 'Col. San Miguel, calle tocoa casa 5502, Teguc', '504', '2020-10-13', '504'),
-(38576, 'Yunior', 'Marel', 'Cerrato', 'Dominguez', 38576, 38576, '12345', 'img', 'yuiyiu, uasyufias', '1234', '2020-10-13', '504');
+(38576, 'Yunior', 'Marel', 'Cerrato', 'Dominguez', 38576, 38576, '12345', 'img', 'yuiyiu, uasyufias', '1234', '2020-10-13', '504'),
+(90373, 'Yefry', 'Rolando', 'Ortiz', 'Zero', 90373, 90373, '0801199615145', 'img', 'Col. San Miguel, calle tocoa casa 5502, Teguc', '504', '2020-10-13', '504');
 
 -- --------------------------------------------------------
 
@@ -167,8 +170,9 @@ CREATE TABLE `proyecto` (
 
 INSERT INTO `proyecto` (`idProyecto`, `nombreproyecto`, `Categoria_idCategoria`, `descripcion`, `Usuario_idUsuario`) VALUES
 (16180, 'Nuevo proeycto', 1, 'dhfgkjsgdj jksdhkfj jkdfs', 38576),
-(49531, 'Tamales Mi Aniwis', 2, 'Mejores que los de circle K y Pronto.', 26884),
+(49531, 'Pulpe Barata App', 2, 'Mejores cerveceria Hondureña.', 26884),
 (51427, 'Nuevo proyecto', 3, 'hadf jkdsfhkjdafh sagha', 38576),
+(66325, 'PulpeCerca', 1, 'Mas cerca de tu casa', 90373),
 (89194, 'Ultima prueba', 9, 'Esta es la ultima prueba antes de dormir', 38576);
 
 -- --------------------------------------------------------
@@ -231,6 +235,7 @@ INSERT INTO `telefono` (`idTelefono`, `numeroTelefono`) VALUES
 (26884, '31958353'),
 (38576, '+504 - 621546751'),
 (80102, '+504 - 6752125'),
+(90373, '31958353'),
 (91567, '+504 - 512437');
 
 -- --------------------------------------------------------
@@ -274,7 +279,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idUsuario`, `usuario`, `contrasenia`, `TipoDeUsuario_idTipoDeUsuario`, `Persona_idRegistro`) VALUES
 (26884, 'yeff', '$2y$10$8d3ZdymaekYsbFBosyHvp.OibbePK/WpKxMX/N8nxr7DXW/I2mOTG', 1, 26884),
-(38576, 'yuniorcd', '$2y$10$gXPzKiaP5Ay2hLPVafvQneIbXARPIWXOmxD2BcThznHrrMd11zuiO', 1, 38576);
+(38576, 'yuniorcd', '$2y$10$gXPzKiaP5Ay2hLPVafvQneIbXARPIWXOmxD2BcThznHrrMd11zuiO', 1, 38576),
+(90373, 'yeff', '$2y$10$cQFYcnZXRWaxI1mL.N9cfucX0F9l.aoxLWfJdUgZIeqFrz4wu8Knu', 1, 90373);
 
 --
 -- Índices para tablas volcadas
@@ -379,13 +385,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `actualizacionesproyecto`
 --
 ALTER TABLE `actualizacionesproyecto`
-  MODIFY `idActualizacion` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `idActualizacion` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `multimediaproyecto`
 --
 ALTER TABLE `multimediaproyecto`
-  MODIFY `idImagenesProyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idImagenesProyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
