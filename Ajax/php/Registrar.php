@@ -23,7 +23,7 @@ include 'conexion.php';
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
     if($_POST['userType']==1){
-        $usr= array("nivel"=>1, "usuario"=>$nombre_de_usuario);
+        $usr= array("nivel"=>1, "usuario"=>$usuario);
         $_SESSION['sesion']=$usr;
         $ruta = '../Emprendedor/index.php';
     }else{
