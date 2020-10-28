@@ -1,3 +1,12 @@
+<?php
+    require "../Ajax/php/conexion.php";
+    session_start();
+    $id= $_GET["id"];
+    $consulta='select* from proyecto where idProyecto="'.$id.'"';
+    $result = $conexion->query($consulta);
+    $proyecto = $result->fetch_assoc();
+?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -50,7 +59,7 @@
                     <div class="col-lg-12 col-12 needs-validation" id="form" novalidate>
                         <div class="form-group">
                             <label>* Titulo</label>
-                            <input class="form-control" placeholder="Titulo de la Actualizacion" id="Titulo" name="Titulo" required value="">
+                            <input class="form-control" placeholder="Titulo de actualizacion" id="Titulo" name="Titulo" required value="">
                              <!--<p class="help-block">Example block-level help text here.</p>-->
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
