@@ -20,6 +20,7 @@ include 'conexion.php';
                 </h4>
                 <div class="card-footer bg-transparent border-success">
                 <button type=button id="'.$fila["idProyecto"].'" onClick="idBoton(this.id)" class="btn btn-lg btn-info"><a href="editarProyecto.php?id='.$fila["idProyecto"].'"">Editar</a></button>
+                <button type=button  onClick="" class="btn btn-lg btn-info"><a href="actualizaciones.php?id='.$fila["idProyecto"].'"">agregar Actualizacion</a></button>
                 </div>
             </div>
         </div>

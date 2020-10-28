@@ -1,15 +1,4 @@
-<?php 
-    session_start();
-if (!isset($_SESSION["sesion"])) {
-    header("location: ../index.html");
-}else if(($nivel = $_SESSION["sesion"]["nivel"])!=1){
-    if($nivel == 2){
-        header("location: ../index.html");
-    }else if($nivel == 3){
-        header("location: ../index.html");
-    }
-}
- ?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -19,7 +8,7 @@ if (!isset($_SESSION["sesion"])) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Nueva Actulizacion</title>
+        <title>Crear Actualizacion</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../librerias/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,8 +20,9 @@ if (!isset($_SESSION["sesion"])) {
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
                 <a class="navbar-brand" href="../Index.html">Progress Idea</a>
+                <a class="blog-header-logo text-dark" > <b>Actualizar Mi Proyecto</b> </a>
+
             </div>
-            
             <div class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user"></i><span class="pl-5"><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
@@ -40,44 +30,44 @@ if (!isset($_SESSION["sesion"])) {
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="index.php">Perfil</a>
                     <a class="dropdown-item" href="#">Estadisticas</a>
-                    <a class="dropdown-item" href="#">Configuracion</a>
+                    <a class="dropdown-item" href="configuracion.php">Configuracion</a>
                     <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
                 </div>
             </div>
 
         </nav>
+        <h1></h1>
 
         <div class="titulo p-3 col-12">
-            <p class=""><B>Actualizaciones</B> <a class="btn btn-danger bt-n_proyect" href="index.php">CANCELAR</a></p>
         </div>
-        <!-- /.col-lg-12 -->
-  
-        
         <div class="container col-lg-6 col-md-7">
             <div class="card tarjeta">
                 <div class="card-header bg-info text-center" >
-                    <b>Agrega una actualizacion</b>
+                    <b>ACTUALIZAR</b>
                 </div>
                 <div class="card-body">
 
-                    <form class="col-lg-12 col-12 needs-validation" id="form" novalidate>
+                    <div class="col-lg-12 col-12 needs-validation" id="form" novalidate>
                         <div class="form-group">
                             <label>* Titulo</label>
-                            <input class="form-control" placeholder="Titulo de la actualizacion" id="nombre" name="nombre" required>
+                            <input class="form-control" placeholder="Titulo de la Actualizacion" id="Titulo" name="Titulo" required value="">
                              <!--<p class="help-block">Example block-level help text here.</p>-->
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
                         </div>
-                       
                         <div class="form-group">
-                            <label>*  Descripcion</label>
-                            <textarea type="text" name="descripcion" id="descripcion" class="form-control" rows="5" required></textarea>
+                            <label>* Descripcion</label>
+                            <textarea type="text" name="descripcion" id="descripcion" class="form-control" rows="5" required ></textarea>
+
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
+                        </div>
+                        <a class="btn btn-danger bt-n_proyect" href="index.php">CANCELAR</a>
+                    </div>
+                    <input style="display:none;" id="id" value="<?php echo $id?>">
+                    <span id="mensaje"></span>
+                    <button class="btn btn-primary bt-n_proyect" type="submit" name="Guardar" onclick="publicar()">Publicar</button>
 
-                    </form>
-                        <span id="msg"></span>
-                        <button class="btn btn-primary bt-n_proyect" type="submit" name="Guardar" onclick="enviar();">Guardar Cambios</button>
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.panel-body -->
@@ -85,51 +75,57 @@ if (!isset($_SESSION["sesion"])) {
             <!-- /.panel -->
         </div>
         <!-- /.col-lg-12 -->
-
-
         <!-- jQuery -->
         <script src="../librerias/jQuery/js/jQuery.js"></script>
-
         <!-- Bootstrap Core JavaScript -->
         <script src="../librerias/bootstrap/js/bootstrap.min.js"></script>
-
         <script type="text/javascript" src="../js/validar.js"></script>
-        <script type="text/javascript">
-            (function(){
-                $.post('../Ajax/php/obtenerCategoria.php',{},function(data){
-                    $("#categoria").html(data);
-                });
-            })();
+        <script type="text/javascript"></script>
+    </body>
+    <script type="text/javascript">
+        
+            
 
 
-            function enviar(){
+
+            function publicar(){
                 var valor = validar();
-                var objeto = serializar();
+                var datos = {idProyecto:document.getElementById("id").value , Titulo: document.getElementById("Titulo").value, descripcion:document.getElementById("descripcion").value};
+                
                 if(valor){
                         $.ajax({
 		                  method: "POST",
 		                  url: "../Ajax/php/CrearActualizacion.php", 
-		                  data: objeto
+		                  data: datos
 		                }).done(function( data ) {
                             console.log(data);
-		                    json = JSON.parse(data);
-                            if(json.status){
-                                document.getElementById("msg").innerHTML = `<div class="alert alert-primary" id="div-msg">Actulizacion Realizada con exito</div>`;
-                                setTimeout("redireccionar()", 2500);
-                            }else{
-                                document.getElementById("msg").innerHTML = `<div class="alert alert-danger" id="div-msg">Se produjo un error al enviar la actulizacion</div>`;
-                            }
+                             setTimeout("redireccionar()", 2000);
+                            //console.log(objeto);
 		                  });
+                }   
+            }
+            function redireccionar(){
+            location.href= "Index.php";
+            }
+    
+
+                
+
+
+                function validar(){
+                    $("#form").addClass("was-validated");
+                    var inputs = document.getElementsByClassName("form-control");
+                    for(i=0;i<inputs.length;i++){
+                        if(inputs[i].checkValidity()===false){
+                            return false;
+                        }
+                    }
+                    return true;
                 }
 
-            }
+     
 
-           
-
-            function redireccionar(){
-                location.href= "index.php";
-            }
-        </script>
-
-    </body>
+                
+            
+            </script>
 </html>
