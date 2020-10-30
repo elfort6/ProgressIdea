@@ -8,9 +8,10 @@ include 'conexion.php';
     
 
 
-    $insertCorreo=mysqli_query($conexion, "INSERT INTO actualizacionesproyecto( `titulo`, `descripcion`, `Proyecto_idProyecto`)  VALUES ('{$Titulo}','{$descripcion}', '{$idProyecto}')")
+    $insertActualizacion=mysqli_query($conexion, "INSERT INTO actualizacionesproyecto( `titulo`, `descripcion`, `Proyecto_idProyecto`)  VALUES ('{$Titulo}','{$descripcion}', '{$idProyecto}')")
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
-echo json_encode($_POST)
+$respuesta = array('status' => true);
+echo json_encode($_POST);
 
 ?>

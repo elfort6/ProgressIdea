@@ -1,5 +1,8 @@
 <?php 
+include '../Ajax/php/SesionEmprendedor.php';
+
 include '../Ajax/php/ConsultasParaEditarUsuario.php';
+
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,7 +41,7 @@ include '../Ajax/php/ConsultasParaEditarUsuario.php';
         </nav>
         <a class="btn btn-lg btn-info mt-3 ml-4 " href="cambiarcontra.php">Cambiar Contraseña</a>
 
-        <div class="container col-lg-6 col-md-8 mt-lg-5 mt-md-5">
+        <div class="container col-lg-6 col-md-8 mt-lg-3 mt-md-3 mb-lg-5 mb-md-5">
         <!-- /.header -->
             <div class="card tarjeta">
                 <div class="card-header bg-info">
@@ -49,72 +52,76 @@ include '../Ajax/php/ConsultasParaEditarUsuario.php';
                 <div class="card-body col-lg-12 pt-4 pb-5">
 
                     <div class="col-lg-12">
-                            <form role="form"  id="formulario" class="needs-validation" novalidate>
-                                <div class="row">
-                                    <div class="form-group col-lg-6 col-md-6">
-                                        <label>Nombre</label>
-                                        <input id="pNombre" class="form-control input" name="nombre" value='<?php echo $persona['primerNombrel']?>' placeholder="" required>
-                                        <div class="valid-feedback">¡Ok válido!</div>
-                                        <div class="invalid-feedback">Complete el campo.</div>
-                                    </div>
-                                    <div class="form-group col-lg-6 col-md-6">
-                                        <label>S. Nombre</label>
-                                        <input id="sNombre" class="form-control input" name="snombre" value='<?php echo $persona['segundoNombre']?>' placeholder="" required>
-                                        <div class="valid-feedback">¡Ok válido!</div>
-                                        <div class="invalid-feedback">Complete el campo.</div>
-                                    </div>
+                            <form role="form"  id="form" class="row needs-validation" novalidate>
+                                <div class="form-group col-lg-6 col-md-6">
+                                    <label>Nombre</label>
+                                    <input id="pNombre" class="form-control input" name="nombre" value='<?php echo $usu['primerNombrel']?>' placeholder="" required>
+                                    <div class="valid-feedback">¡Ok válido!</div>
+                                    <div class="invalid-feedback">Complete el campo.</div>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6">
+                                    <label>S. Nombre</label>
+                                    <input id="sNombre" class="form-control input" name="snombre" value='<?php echo $usu['segundoNombre']?>' placeholder="" required>
+                                    <div class="valid-feedback">¡Ok válido!</div>
+                                    <div class="invalid-feedback">Complete el campo.</div>
+                                </div>
 
-                                    <div class="form-group col-lg-6 col-md-6">
-                                        <label>Apellido</label>
-                                        <input id="pApellido" class="form-control input" name="apellido" value='<?php echo $persona['primerApellido']?>' placeholder="" required>
-                                        <div class="valid-feedback">¡Ok válido!</div>
-                                        <div class="invalid-feedback">Complete el campo.</div>
-                                    </div>
-                                    <div class="form-group col-lg-6 col-md-6">
-                                        <label>S. Apellido</label>
-                                        <input id="sApellido" class="form-control input" name="sapellido"  value='<?php echo $persona['segundoApellido']?>' placeholder="" required>
-                                        <div class="valid-feedback">¡Ok válido!</div>
-                                        <div class="invalid-feedback">Complete el campo.</div>
-                                    </div>
+                                <div class="form-group col-lg-6 col-md-6">
+                                    <label>Apellido</label>
+                                    <input id="pApellido" class="form-control input" name="apellido" value='<?php echo $usu['primerApellido']?>' placeholder="" required>
+                                    <div class="valid-feedback">¡Ok válido!</div>
+                                    <div class="invalid-feedback">Complete el campo.</div>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6">
+                                    <label>S. Apellido</label>
+                                    <input id="sApellido" class="form-control input" name="sapellido"  value='<?php echo $usu['segundoApellido']?>' placeholder="" required>
+                                    <div class="valid-feedback">¡Ok válido!</div>
+                                    <div class="invalid-feedback">Complete el campo.</div>
+                                </div>
 
-                                    <div class="form-group col-lg-6 col-md-6">
-                                        <label>Usuario</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text input" id="inputGroupPrepend">@</span>
-                                            </div>
-                                            <input class="form-control input" id="usuario" name="usuario" value='<?php echo $usu['usuario']?>' placeholder="" required>
-                                            <div class="valid-feedback">¡Ok válido!</div>
-                                            <div class="invalid-feedback">Complete el campo.</div>
+                                <div class="form-group col-lg-6 col-md-6">
+                                    <label>Usuario</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text input" id="inputGroupPrepend">@</span>
                                         </div>
-                                    </div>
-                                   <div class="form-group col-lg-4 col-md-5">
-                                        <label>No. Identidad</label>
-                                        <input class="form-control input" name="identidad" id="identidad" placeholder="" value='<?php echo $persona['numId']?>' type="text" required>
-                                        <div class="valid-feedback">¡Ok válido!</div>
-                                        <div class="invalid-feedback">Complete el campo.</div>
-                                    </div> 
-                                    <div class="col-lg-8 col-md-7">
-                                        <div class="form-group col-lg-12">
-                                            <label>Correo</label>
-                                            <input class="form-control input" id="correo" name="correo" value='<?php echo $correos['correo']?>' placeholder="email@example.com" required>
-                                            <div class="valid-feedback">¡Ok válido!</div>
-                                            <div class="invalid-feedback">Complete el campo.</div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-4 col-md-5">
-                                        <label for="disabledSelect">Codigo Postal</label>
-                                        <input class="form-control input" id="codPostal" name="codPostal" type="text" placeholder="" value='<?php echo $persona['codigoPostal']?>' required>
+                                        <input class="form-control input" id="usuario" name="usuario" value='<?php echo $usu['usuario'];?>' placeholder="" required>
                                         <div class="valid-feedback">¡Ok válido!</div>
                                         <div class="invalid-feedback">Complete el campo.</div>
                                     </div>
+                                </div>
+                               <div class="form-group col-lg-5 col-md-5">
+                                    <label>No. Identidad</label>
+                                    <input class="form-control input" name="identidad" id="identidad" placeholder="" value='<?php echo $usu['numId']?>' type="text" required>
+                                    <div class="valid-feedback">¡Ok válido!</div>
+                                    <div class="invalid-feedback">Complete el campo.</div>
+                                </div> 
+                                <div class="form-group col-lg-10 col-md-10 offset-lg-1 offset-md-1">
+                                    <label>Correo</label>
+                                    <input class="form-control input" id="correo" name="correo" value='<?php echo $usu['correo']?>' placeholder="email@example.com" required>
+                                    <div class="valid-feedback">¡Ok válido!</div>
+                                    <div class="invalid-feedback">Complete el campo.</div>
+                                </div>
 
-                                    <div class="form-group col-lg-12 col-md-12">
-                                        <label for="disabledSelect">Direccion</label>
-                                        <input class="form-control input" id="direccion" name="direccion" type="text" placeholder="Ciudad, Colonia o Barrio..." value='<?php echo $persona['direccion']?>' required>
-                                        <div class="valid-feedback">¡Ok válido!</div>
-                                        <div class="invalid-feedback">Complete el campo.</div>
-                                    </div>
+                                <div class="form-group col-lg-5 col-md-5">
+                                    <label for="disabledSelect">Telefono</label>
+                                    <input class="form-control input" id="telefono" name="telefono" type="text" placeholder="" value='<?php echo $usu['numeroTelefono']?>' required>
+                                    <div class="valid-feedback">¡Ok válido!</div>
+                                    <div class="invalid-feedback">Complete el campo.</div>
+                                </div>
+
+                                <div class="form-group col-lg-5 col-md-5 offset-lg-2 offset-md-2">
+                                    <label for="disabledSelect">Codigo Postal</label>
+                                    <input class="form-control input" id="codPostal" name="codPostal" type="text" placeholder="" value='<?php echo $usu['codigoPostal']?>' required>
+                                    <div class="valid-feedback">¡Ok válido!</div>
+                                    <div class="invalid-feedback">Complete el campo.</div>
+                                </div>
+
+                                <div class="form-group col-lg-12 col-md-12">
+                                    <label for="disabledSelect">Direccion</label>
+                                    <input class="form-control input" id="direccion" name="direccion" type="text" placeholder="Ciudad, Colonia o Barrio..." value='<?php echo $usu['direccion']?>' required>
+                                    <div class="valid-feedback">¡Ok válido!</div>
+                                    <div class="invalid-feedback">Complete el campo.</div>
                                 </div>
                             </form>
                         <span id="msg"></span>
@@ -130,40 +137,22 @@ include '../Ajax/php/ConsultasParaEditarUsuario.php';
         <script src="../librerias/FontAwesome/js/fontawesome.min.js"></script>
         <script type="text/javascript" src="../js/validar.js"></script>
         <script type="text/javascript">       
-             function enviar(){
+            function enviar(){
                 var objeto = serializar();
-                var valor=validar()
-                 if(valor){
-                            $.ajax({
-                            method: "POST",
-                            url: "../Ajax/php/configurarE.php", 
-                            data: objeto
-                            }).done(function( data ) {
-                                console.log(data);
-                                location.href ="index.php";
-                            });
+                var valor=validar();
+                if(valor){
+                    $.ajax({
+                    method: "POST",
+                    url: "../Ajax/php/configurarUsuario.php", 
+                    data: objeto
+                    }).done(function( data ) {
+                        console.log(data);
+                        location.href ="index.php";
+                    });
 
                  }
                     
-                }     
-                function validar(){
-    $("#formulario").addClass("was-validated");
-    var inputs = document.getElementsByClassName("form-control");
-    for(i=0;i<inputs.length;i++){
-      if(inputs[i].checkValidity()===false){
-        return false;
-      }
-    }
-    return true;
-}
-                function serializar(){
-                        var array = $("form").serializeArray();
-                        var object = {};
-                        $.each(array, function(indice, llave){
-                            object[llave.name]=llave.value;
-                        });
-                    return object;
-                }       
+            }      
         </script>
 </body>
 </html> 

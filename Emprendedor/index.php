@@ -1,14 +1,5 @@
-<?php 
-    session_start();
-if (!isset($_SESSION["sesion"])) {
-    header("location: ../index.html");
-}else if(($nivel = $_SESSION["sesion"]["nivel"])!=1){
-    if($nivel == 2){
-        header("location: ../index.html");
-    }else if($nivel == 3){
-        header("location: ../index.html");
-    }
-}
+<?php
+include '../Ajax/php/SesionEmprendedor.php';
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -48,65 +39,14 @@ if (!isset($_SESSION["sesion"])) {
         </nav>
         
 
-        <a class="btn btn-lg btn-success mt-3 ml-4" href="NuevoProyecto.php">Crear Proyecto</a>
+        <a class="btn btn-lg btn-success mt-3 ml-4 mb-0" href="NuevoProyecto.php">Crear Proyecto</a>
 
-        <section class="container pt-5" id="info">
+        <section class="container mt-3" id="info">
             <div class="row justify-content-center align-items-center minh-100" id="proyectos">
             </div>
         </section>
-        <!-- <div class="container mt-3 col-lg-9 col-md-12">
-            <div class="card tarjeta">
-                <div class="card-body row">
-                    <div class="col">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
 
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                    </div>
-                </div>
-                <div class="card-header bg-info text-right">
-                        <h3 class="float-left text-white">Some Proyect</h3>
-                        <a href="#" class="btn btn-sm btn-secondary">Editar</a>
-                        <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container mt-3 col-lg-9 col-md-12">
-            <div class="card tarjeta">
-                <div class="card-body row">
-                    <div class="col">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                    </div>
-                </div>
-                <div class="card-header bg-info text-right">
-                        <h3 class="float-left text-white">Some Proyect</h3>
-                        <a href="#" class="btn btn-sm btn-secondary">Editar</a>
-                        <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
-                </div>
-            </div>
-        </div>
-
-
-
-        
-
-        jQuery -->
+        <!-- jQuery -->
         <script src="../librerias/jQuery/js/jQuery.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
@@ -120,20 +60,10 @@ if (!isset($_SESSION["sesion"])) {
                 $.post('../Ajax/php/obtenerProyectos.php',{},function(data){
                     document.getElementById("proyectos").innerHTML = "";
                     document.getElementById("proyectos").innerHTML = data;
-                    console.log(data);
+                    //console.log(data);
                 });
             })();
-            function idBoton(idB) { 
-            console.log(idB);
-            var Idproyecto=idB;
-            $.ajax({
-                    method: "POST",
-                     url: "../Ajax/php/backendEditProyecto.php",
-                    data: {"Idproyecto":idB}
-                     }).done(function( msg ) {
-                         console.log(msg);
-             });
-            }
+
         </script>
 
     </body>

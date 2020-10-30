@@ -48,6 +48,7 @@ if (isset($_SESSION["sesion"])) {
         <div class="panel-body col-lg-12 pt-4 pb-5" id="form">
 
             <div class="col-lg-12">
+                <span id="msg"></span>
                 <div class="form-group col-lg-12">
                     <label>Nombre</label>
                     <input class="form-control" type="text" id="usuario" name="usuario" required=" ">
@@ -71,11 +72,8 @@ if (isset($_SESSION["sesion"])) {
 
                 <div class="form-group">
                     ¿No tienes una cuenta?
-                    <a href="registrar.html" style="color:grey;">Registrate aqui</a>
+                    <a href="registrar.php" style="color:grey;">Registrate aqui</a>
                 </div>
-                <span id="msg">
-                    
-                </span>
 
             </div>
             <!-- /.col-lg-12 -->

@@ -82,6 +82,13 @@ if (isset($_SESSION["sesion"])) {
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6">
+                            <label>No. Identidad</label>
+                            <input class="form-control input" name="identidad" id="identidad" placeholder="" type="text" required>
+                            <div class="valid-feedback">¡Ok válido!</div>
+                            <div class="invalid-feedback" id="mensaje1">No Valido.</div>
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6">
                             <label>Usuario</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -89,19 +96,26 @@ if (isset($_SESSION["sesion"])) {
                                 </div>
                                 <input class="form-control input" id="usuario" name="usuario" placeholder="" required>
                                 <div class="valid-feedback">¡Ok válido!</div>
-                                <div class="invalid-feedback">No Valido.</div>
+                                <div class="invalid-feedback" id="mensaje2">No Valido.</div>
                             </div>
                         </div>
 
-
                         <div class="form-group col-lg-6 col-md-6">
                             <label>Contraseña</label>
-                            <input class="form-control input" id="pswd" name="pswd" placeholder="" type="password" required>
+                            <input class="form-control input" id="pswd" name="pswd" placeholder="" type="password" onkeydown="validarNuevaContra();" required>
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
                         </div>
 
-                        <div class="col-lg-8 col-md-7">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <label>Verifique su contraseña</label>
+                            <input class="form-control input" id="pswd2" name="pswd2" placeholder="" type="password" onkeydown="validarNuevaContra();" required>
+                            <div class="valid-feedback">¡Ok válido!</div>
+                            <div class="invalid-feedback">No Valido.</div>
+                            <span id="msg"></span>
+                        </div>
+
+                        <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
                             <div class="form-group col-lg-12">
                                 <label>Correo</label>
                                 <input class="form-control input" type="email" id="correo" name="correo" placeholder="email@example.com" required>
@@ -110,12 +124,6 @@ if (isset($_SESSION["sesion"])) {
                             </div>
                         </div>
 
-                        <div class="form-group col-lg-4 col-md-5">
-                            <label>No. Identidad</label>
-                            <input class="form-control input" name="identidad" id="identidad" placeholder="" type="text" required>
-                            <div class="valid-feedback">¡Ok válido!</div>
-                            <div class="invalid-feedback">No Valido.</div>
-                        </div>
 
                         <div class="form-group col-lg-6 col-md-6">
                             <label for="disabledSelect">País</label>
@@ -186,20 +194,48 @@ if (isset($_SESSION["sesion"])) {
               });
         })();
 
+        function validarNuevaContra(){
+            clearTimeout();
+            setTimeout("verifica()", 200);
+        }
+
+        function verifica(){
+            var contra1 = $("#pswd").val(),
+            contra2 = $("#pswd2").val();
+            if(contra1 == contra2){
+                document.getElementById("msg").innerHTML = `<p class="help-block text-success">* Las contraseñas coinciden.</p>`;
+                return true;
+            }else{
+                document.getElementById("msg").innerHTML = `<p class="help-block text-danger">* Las contraseñas no coinciden.</p>`;
+                return false;
+            }
+        }
+
         function enviar(){
             var valor = validar();
             var objeto = serializar();
+            var valor2 = verifica();
             console.log(objeto);
-            if(valor){
+            if(valor && valor2){
                 $.ajax({
                   method: "POST",
                   url: "../Ajax/php/Registrar.php",
                   data: objeto
-                }).done(function( msg ) {
-                    console.log(msg);
-                    json = JSON.parse(msg);
+                }).done(function( datos ) {
+                    console.log(datos);
+                    json = JSON.parse(datos);
                     if(json.status){
                         window.location = json.ruta;
+                    }else{
+                        if(json.error==1){
+                            document.getElementById("usuario").value = "";
+                            document.getElementById("mensaje1").innerHTML = "";
+                            document.getElementById("mensaje2").innerHTML = json.mensaje;
+                        }else{
+                            document.getElementById("identidad").value = "";
+                            document.getElementById("mensaje2").innerHTML = "";
+                            document.getElementById("mensaje1").innerHTML = json.mensaje;
+                        }
                     }
                   });
             }

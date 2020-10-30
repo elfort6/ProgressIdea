@@ -1,7 +1,5 @@
-<?php
-require "conexion.php";
+<?php 
 session_start();
-
 if (!isset($_SESSION["sesion"])) {
     header("location: ../index.html");
 }else if(($nivel = $_SESSION["sesion"]["nivel"])!=1){
@@ -11,12 +9,4 @@ if (!isset($_SESSION["sesion"])) {
         header("location: ../index.html");
     }
 }
-
-$consulta='SELECT * FROM `proyecto` INNER JOIN usuario ON Usuario_idUsuario = idUsuario WHERE usuario.usuario ="'.$_SESSION["sesion"]["usuario"].'"';
-$result = $conexion->query($consulta);
-$proyectoActual = $result->fetch_assoc();
-
-
-
-
-?>
+ ?>

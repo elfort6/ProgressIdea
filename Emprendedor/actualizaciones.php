@@ -56,7 +56,7 @@
                 </div>
                 <div class="card-body">
 
-                    <div class="col-lg-12 col-12 needs-validation" id="form" novalidate>
+                    <form class="col-lg-12 col-12 needs-validation" id="form" novalidate>
                         <div class="form-group">
                             <label>* Titulo</label>
                             <input class="form-control" placeholder="Titulo de actualizacion" id="Titulo" name="Titulo" required value="">
@@ -71,10 +71,10 @@
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
                         </div>
-                        <a class="btn btn-danger bt-n_proyect" href="index.php">CANCELAR</a>
-                    </div>
-                    <input style="display:none;" id="id" value="<?php echo $id?>">
+                        <input style="display:none;" id="idProyecto" name="idProyecto" value="<?php echo $id?>">
+                    </form>
                     <span id="mensaje"></span>
+                    <a class="btn btn-danger bt-n_proyect" href="index.php">CANCELAR</a>
                     <button class="btn btn-primary bt-n_proyect" type="submit" name="Guardar" onclick="publicar()">Publicar</button>
 
                     <!-- /.col-lg-12 -->
@@ -92,49 +92,24 @@
         <script type="text/javascript"></script>
     </body>
     <script type="text/javascript">
-        
-            
 
+        function publicar(){
+            var valor = validar();
+            var objeto = serializar();
+            if(valor){
+                    $.ajax({
+	                  method: "POST",
+	                  url: "../Ajax/php/CrearActualizacion.php", 
+	                  data: objeto
+	                }).done(function( data ) {
+                        console.log(data);
+                         setTimeout("redireccionar()", 2000);
+	                  });
+            }  
+        }
 
-
-            function publicar(){
-                var valor = validar();
-                var datos = {idProyecto:document.getElementById("id").value , Titulo: document.getElementById("Titulo").value, descripcion:document.getElementById("descripcion").value};
-                
-                if(valor){
-                        $.ajax({
-		                  method: "POST",
-		                  url: "../Ajax/php/CrearActualizacion.php", 
-		                  data: datos
-		                }).done(function( data ) {
-                            console.log(data);
-                             setTimeout("redireccionar()", 2000);
-                            //console.log(objeto);
-		                  });
-                }   
-            }
-            function redireccionar(){
+        function redireccionar(){
             location.href= "Index.php";
-            }
-    
-
-                
-
-
-                function validar(){
-                    $("#form").addClass("was-validated");
-                    var inputs = document.getElementsByClassName("form-control");
-                    for(i=0;i<inputs.length;i++){
-                        if(inputs[i].checkValidity()===false){
-                            return false;
-                        }
-                    }
-                    return true;
-                }
-
-     
-
-                
-            
-            </script>
+        }   
+    </script>
 </html>

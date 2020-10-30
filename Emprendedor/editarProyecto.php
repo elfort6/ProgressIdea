@@ -1,8 +1,8 @@
 <?php
+    include '../Ajax/php/SesionEmprendedor.php';
     require "../Ajax/php/conexion.php";
-    session_start();
     $id= $_GET["id"];
-    $consulta='select* from proyecto where idProyecto="'.$id.'"';
+    $consulta='SELECT * FROM proyecto WHERE idProyecto="'.$id.'"';
     $result = $conexion->query($consulta);
     $proyecto = $result->fetch_assoc();
 ?>
@@ -105,13 +105,15 @@
                 $.post('../Ajax/php/obtenerCategoria.php',{},function(data){
                     $("#categoria").html(data);
                 });
+
+                setTimeout("select()", 200);
+                
             })();
+
+            function select(){
+                $("#categoria option[value="+<?php echo $proyecto["Categoria_idCategoria"]?>+"]").attr("selected",true); 
+            }
             
-           
-            
-
-
-
             function actualizar(){
                 var valor = validar();
                 var objeto = serializar();      
@@ -129,35 +131,12 @@
 		                  });
                 }   
             }
+
             function redireccionar(){
             location.href= "Index.php";
             }
-    
 
-                function serializar(){
-                        var array = $("form").serializeArray();
-                        var object = {};
-                        $.each(array, function(indice, llave){
-                            object[llave.name]=llave.value;
-                        });
-                    return object;
-                }
-
-
-                function validar(){
-                    $("#form").addClass("was-validated");
-                    var inputs = document.getElementsByClassName("form-control");
-                    for(i=0;i<inputs.length;i++){
-                        if(inputs[i].checkValidity()===false){
-                            return false;
-                        }
-                    }
-                    return true;
-                }
-
-     
-
-                function enviarImg(){
+            function enviarImg(){
                 const imagen = document.querySelector("#imagen");
                 longitud = imagen.files.length;
                 if (longitud > 0) {
