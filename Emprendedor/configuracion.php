@@ -21,7 +21,7 @@ include '../Ajax/php/ConsultasParaEditarUsuario.php';
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../Index.html">Progress Idea</a>
+                <a class="navbar-brand" href="../Index.php">Progress Idea</a>
             </div>
             
             <div class="dropdown">

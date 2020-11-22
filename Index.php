@@ -66,7 +66,9 @@
 
     <!-- MAIN -->
     <main class="container">
-
+       
+            <?php include 'Ajax/php/obtenerProyectosLanding.php'?>
+     
     </main>
     <!-- /.MAIN -->
     <!-- /.container -->

@@ -27,7 +27,7 @@ if(isset($consulta['idUsuario'])){
         <header class="blog-header">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-lg-4 offset-lg-4 col-sm-4 col-8 logo">
-                    <a class="blog-header-logo text-dark" href="../Index.html"><b>Progress Idea</b></a>
+                    <a class="blog-header-logo text-dark" href="../Index.php"><b>Progress Idea</b></a>
                 </div>
             </div>
         </header>
