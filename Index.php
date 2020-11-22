@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
     <!--Inicio del Nav-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,19 +48,15 @@
                 <a class="p-2 text-muted" href="#">Documentales</a>
             </nav>
         </div>
-
-        <div class="jumbotron p-4 p-md-5 text-white" style="background-image: url(img/l.jpg);background-size: cover;">
+    </div>
+    <div class="jumbotron p-4 p-md-5 text-white container" style="background-image: url(img/l.jpg);background-size: cover;">
             <div class="col-md-6 px-0">
-                <h1 class="display-4 font-italic">Coleccion de Libros de Harry Potter</h1>
-                <p class="lead my-3">El proyecto conciste basicamente en distribuir una coleccion de las saga de Harry
-                    Potter, esto para los potterhead de la region</p>
+                <h1 class="display-4 font-italic">ProgressIdea, tus proyectos en lo mas alto.</h1>
+                <p class="lead my-3">Registrate y promociona tus proyectos o servicios, un patrocinador te esta esperando.</p>
                 <p class="lead mb-0"><a href="proyecto.html" class="text-white font-weight-bold">Continuar leyendo..</a>
                 </p>
             </div>
         </div>
-
-
-    </div>
 
     <!-- MAIN -->
     <main class="container">
