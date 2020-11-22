@@ -53,16 +53,12 @@
             <div class="col-md-6 px-0">
                 <h1 class="display-4 font-italic">ProgressIdea, tus proyectos en lo mas alto.</h1>
                 <p class="lead my-3">Registrate y promociona tus proyectos o servicios, un patrocinador te esta esperando.</p>
-                <p class="lead mb-0"><a href="proyecto.html" class="text-white font-weight-bold">Continuar leyendo..</a>
-                </p>
             </div>
         </div>
 
-    <!-- MAIN -->
-    <main class="container">
-       
-            <?php include 'Ajax/php/obtenerProyectosLanding.php'?>
-     
+    <!-- MAIN ?php require 'Ajax/php/obtenerProyectosLanding.php'? -->
+    <main class="container" >
+        <section id="proyectosL" ></section>
     </main>
     <!-- /.MAIN -->
     <!-- /.container -->
@@ -70,9 +66,10 @@
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
             <div class="row">
                 <div class="col-12 col-md">
-                    <img class="mb-2" src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" alt=""
-                        width="24" height="24">
-                    <small class="d-block mb-3 text-muted">&copy; 2020</small>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-code-slash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
+</svg>
+                    <small class="d-block mb-3 text-muted">&copy; ProgressIdea 2020</small>
                 </div>
                 <div class="col-6 col-md">
                     <h5>Proyectos</h5>
@@ -109,5 +106,13 @@
 
 
 </body>
+<script type="text/javascript">
+    (function(){
+                $.post('Ajax/php/obtenerProyectosLanding.php',{},function(data){
+                    document.getElementById("proyectosL").innerHTML = "";
+                    document.getElementById("proyectosL").innerHTML = data;
+                });
+            })();
+</script>
 
 </html>
