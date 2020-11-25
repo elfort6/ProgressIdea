@@ -60,7 +60,14 @@ include 'Ajax/php/conexion.php';
                             <p>Se espera recolectar: Lps. 5,000.00</p>
                             <h5>Patrocinador: Anonimo</h5>
                             <div class="card-footer bg-transparent border-success">
-                            <h2>Calificar</h2>
+                            <div class="row">
+                            <div id="star1" class="star1 star"><i class="fas fa-star" ></i></div>
+                            <div class="star2 star"><i class="fas fa-star" ></i></div>
+                            <div class="star3 star"><i class="fas fa-star" ></i></div>
+                            <div class="star4 star"><i class="fas fa-star" ></i></div>
+                            <div class="star5 star"><i class="fas fa-star" ></i></div>
+
+                </div>
                             </div>
                         </div>
                     </div>

@@ -19,8 +19,25 @@ include 'conexion.php';
             <div class="card-block px-3">
                 <h2 class="card-title">'.$fila["nombreproyecto"].'</h2>
                 <div class="card-footer bg-transparent border-success">
+<<<<<<< HEAD
                 <button type=button   class="btn btn-lg btn-outline-info" style="width:absolute;">Ver perfil del Emprendedor</button>
+=======
+                <button type=button  onClick="" class="btn btn-lg btn-outline-info" style="width:absolute;">Ver perfil </button>
+                
+                
+
                 </div>
+
+                <div class="row">
+                <div id="star1" class="star1 star"><i class="fas fa-star" ></i></div>
+                <div class="star2 star"><i class="fas fa-star" ></i></div>
+                <div class="star3 star"><i class="fas fa-star" ></i></div>
+                <div class="star4 star"><i class="fas fa-star" ></i></div>
+                <div class="star5 star"><i class="fas fa-star" ></i></div>
+>>>>>>> 5c41494c0230c86cea227d03c0ffe2b8efa258d2
+                </div>
+
+
             </div>
         </div>
 
