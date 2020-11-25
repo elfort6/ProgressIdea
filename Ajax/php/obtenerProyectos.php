@@ -10,14 +10,15 @@ include 'conexion.php';
         $proyectos .= '<div class="card p-3 pt-4 mt-2 mb-2 tarjeta border border-info">
     <div class="row ">
         <div class="col-md-7">
-            <img src="../'.$fila["rutaImagen"].'" class="w-100">
+            <img src="../Ajax/'.$fila["rutaImagen"].'" class="w-100">
+            <br>
+            <h5 class="card-text text-justify mt-2">
+                   '.$fila["descripcion"].' 
+                </h5>
         </div>
         <div class="col-md-5 px-3">
             <div class="card-block px-3 pt-3">
                 <h3 class="card-title"><b>'.$fila["nombreproyecto"].'</b></h3>
-                <h5 class="card-text text-justify mt-2">
-                   '.$fila["descripcion"].' 
-                </h5>
                 <p class="text-right m-3"><i>Categoria - '.$fila["nombreCategoria"].'</i></p>
                 <div class="card-footer bg-transparent border-success text-right">
                 <button type=button class="btn btn-md btn-secondary m-1" title="Editar proyecto"><a class="text-white" href="editarProyecto.php?id='.$fila["idProyecto"].'">Editar</a></button>

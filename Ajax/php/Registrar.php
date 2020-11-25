@@ -48,37 +48,39 @@ if($fila['total']!=0){//si el usuario o el numID ya está registrado
             # code...
             $usr= array("nivel"=>1, "usuario"=>$usuario);
             $_SESSION['sesion']=$usr;
-            $ruta = '../Emprendedor/index.php';
+            $ruta = '../Emprendedor/';
             $status = true;
             $error = 0;
             $mensaje = "";
             break;
         case 2:
             # code...
-            $usr= array("nivel"=>1, "usuario"=>$usuario);
+            $usr= array("nivel"=>2, "usuario"=>$usuario);
             $_SESSION['sesion']=$usr;
-            $ruta = '../Patrocinador/index.php';
+            $ruta = '../Patrocinador/';
             $status = true;
             $error = 0;
             $mensaje = ""; 
             break;
         case 3:
             # code...
-            $usr= array("nivel"=>1, "usuario"=>$usuario);
+            $usr= array("nivel"=>3, "usuario"=>$usuario);
             $_SESSION['sesion']=$usr;
-            $ruta = '../Moderador/index.php';
-            $status = true;
-            $error = 0;
-            $mensaje = ""; 
-            break;
-        case 4:
-            # code...
-            $usr= array("nivel"=>1, "usuario"=>$usuario);
-            $_SESSION['sesion']=$usr;
-            $ruta = '../Administrador/index.php';
+            $ruta = '../Administrador/';
             $status = true;
             $error = 0;
             $mensaje = "";
+            
+            break;
+        case 4:
+            # code...
+            $usr= array("nivel"=>4, "usuario"=>$usuario);
+            $_SESSION['sesion']=$usr;
+            $ruta = '../Moderador/';
+            $status = true;
+            $error = 0;
+            $mensaje = ""; 
+            
             break;
         
         default:

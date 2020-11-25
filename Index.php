@@ -8,6 +8,7 @@
     <script src="librerias/jQuery/js/jQuery.js"></script>
     <script src="librerias/bootstrap/js/bootstrap.min.js"></script>
     <script src="librerias/popper/js/popper.js"></script>
+    <script src="js/funciones.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
