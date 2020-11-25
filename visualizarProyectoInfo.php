@@ -8,7 +8,8 @@
     <script src="librerias/jQuery/js/jQuery.js"></script>
     <script src="librerias/bootstrap/js/bootstrap.min.js"></script>
     <script src="librerias/popper/js/popper.js"></script>
-    <script src="js/funciones.js"></script>
+    <script src="librerias/FontAwesome/js/all.js"></script>
+   
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <title>Progressdea</title>
@@ -59,28 +60,27 @@ include 'Ajax/php/conexion.php';
                             <h1 style="color:green;">Lps. 0.00</h1>
                             <p>Se espera recolectar: Lps. 5,000.00</p>
                             <h5>Patrocinador: Anonimo</h5>
+                            <hr>
+                            <h3>Califica este proyecto!</h3>
                             <div class="card-footer bg-transparent border-success">
-                            <div class="row">
-                            <div id="star1" class="star1 star"><i class="fas fa-star" ></i></div>
-                            <div class="star2 star"><i class="fas fa-star" ></i></div>
-                            <div class="star3 star"><i class="fas fa-star" ></i></div>
-                            <div class="star4 star"><i class="fas fa-star" ></i></div>
-                            <div class="star5 star"><i class="fas fa-star" ></i></div>
-
-                </div>
-                            </div>
+                                    <span id="star1"><i class="fas fa-star" ></i></span>
+                                    <span id="star2"><i class="fas fa-star" ></i></span>
+                                    <span id="star3"><i class="fas fa-star" ></i></span>
+                                    <span id="star4"><i class="fas fa-star" ></i></span>
+                                    <span id="star5"><i class="fas fa-star" ></i></span>
                         </div>
                     </div>
 
                 </div>
-            </div>';
+            </div>
+            ';
                 }
                 echo $proyectos;
 
  ?>
         </section>
 </main>
-
+    <script src="js/funciones.js"></script>
 </body>
 </html>
 
