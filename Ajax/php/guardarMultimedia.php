@@ -6,7 +6,7 @@ include 'conexion.php';
 $idProyecto = $_SESSION["sesion"]["idProyecto"];
 $archivo = $_FILES["archivo"];
 
-$rutaCarpeta = '../MultimediaProyectos/'.$_SESSION["sesion"]["usuario"];
+$rutaCarpeta = 'MultimediaProyectos/'.$_SESSION["sesion"]["usuario"];
 $rutaCarpeta2 = '../'.$rutaCarpeta;
 
 if(!file_exists($rutaCarpeta2)){
