@@ -5,7 +5,7 @@ if (isset($_SESSION["sesion"])) {
     if($nivel==1){
         header("location: ../Emprendedor/index.php");
     }else if($nivel == 2){
-        header("location: ../index.php");
+        header("location: ../Patrocinador/index.php");
     }else if($nivel == 3){
         header("location: ../index.php");
     }

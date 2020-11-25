@@ -1,5 +1,5 @@
 <?php 
-    include '../Ajax/php/SesionEmprendedor.php';
+    include '../Ajax/php/SesionPatrocinador.php';
  ?>
 
 <!DOCTYPE html>
