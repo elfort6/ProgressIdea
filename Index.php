@@ -26,6 +26,7 @@
                 <li class="nav-item">
                     <a class="btn btn-sm btn-outline-info" href="registro_login/registrar.php">Registrarme</a>
                 </li>
+                
                 <li class="nav-item">
                     <a class="btn btn-sm btn-outline-info" href="registro_login/login.php">Iniciar Sesión</a>
                 </li>
