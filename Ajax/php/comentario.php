@@ -6,6 +6,7 @@ $descripcion = $_POST['descripcion'];
 $fecha = $_POST['fecha'];
 $idproyecto=$_POST['idProyecto'];
 $idRandom = rand(0,100000);
-$consulta5="INSERT INTO `comentario` (`id`, `descripcion`, `fecha`, `usuarioc`, `idproyecto_proyecto`) values  ('". $idRandom."', '". $descripcion."', '". $fecha ."', '". $usu."', '". $idproyecto."') ";
+$usuarioc=$_POST['usuarioc'];
+$consulta5="INSERT INTO `comentario` (`id`, `descripcion`, `fecha`, `usuarioc`,`usuarioactual` ,`idproyecto_proyecto`) values  ('". $idRandom."', '". $descripcion."', '". $fecha ."', '". $usu."','". $usuarioc."','". $idproyecto."') ";
 $result = $conexion->query($consulta5);
 echo("La consulta Ha sido Realiza");
