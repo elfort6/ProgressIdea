@@ -121,6 +121,14 @@
     font-size: 87px;
   }
 
+  .star{
+    color: #5cdce0;
+    display:inline-block;
+  }
+  .starmarc{
+    color: #eaf81f;
+    display:inline-block;
+  }
   /* ---------------------------------------------------------------------- */
 
   

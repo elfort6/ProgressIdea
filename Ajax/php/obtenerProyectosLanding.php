@@ -18,8 +18,21 @@ include 'conexion.php';
                    '.$fila["descripcion"].' 
                 </h6>
                 <div class="card-footer bg-transparent border-success">
-                <button type=button  onClick="" class="btn btn-lg btn-outline-info" style="width:absolute;">Ver perfil del Emprendedor</button>
+                <button type=button  onClick="" class="btn btn-lg btn-outline-info" style="width:absolute;">Ver perfil </button>
+                
+                
+
                 </div>
+
+                <div class="row">
+                <div id="star1" class="star1 star"><i class="fas fa-star" ></i></div>
+                <div class="star2 star"><i class="fas fa-star" ></i></div>
+                <div class="star3 star"><i class="fas fa-star" ></i></div>
+                <div class="star4 star"><i class="fas fa-star" ></i></div>
+                <div class="star5 star"><i class="fas fa-star" ></i></div>
+                </div>
+
+
             </div>
         </div>
 
