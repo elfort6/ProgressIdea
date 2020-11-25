@@ -58,6 +58,38 @@
                     document.getElementById("proyectosL").innerHTML = data;
                 });
             })();
+
+            function esconder(elemt) {
+        var comentario = document.getElementById(elemt);
+        if (comentario.style.display == 'block') {
+            comentario.style.display = 'none';
+        } else {
+            comentario.style.display = 'block';
+        }
+    }
+
+    function enviar(elemt) {
+        var comentario = document.getElementById(elemt);
+        var descripcion = document.getElementById(`Text${elemt}`).value;
+        var f = new Date();
+        var fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+        console.log(fecha);
+        comentario.style.display = 'none';
+        var datos = {
+            idProyecto: elemt,
+            descripcion: descripcion,
+            fecha: fecha
+        };
+        $.ajax({
+            method: "POST",
+            url: "Ajax/php/comentario.php",
+            data: datos
+        }).done(function(data) {
+            console.log(data);
+        });
+        document.getElementById(`Text${elemt}`).value='';
+
+    }
 </script>
 
 </html>

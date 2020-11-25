@@ -6,25 +6,39 @@ include 'conexion.php';
     $result = $conexion->query($consulta);
 
     while($fila = $result->fetch_assoc()){
-        $proyectos .= '<div class="card p-3 pt-4 mt-2 mb-2 tarjeta border border-info" onclick="verProyecto('.$fila["idProyecto"].')" style="cursor:pointer;">
-    <div class="row ">
-        <div class="col-md-7">
-            <img src="Ajax/'.$fila["rutaImagen"].'" class="w-100">
-        </div>
-        <div class="col-md-5 px-3">
-            <div class="card-block px-3">
-                <h2 class="card-title">'.$fila["nombreproyecto"].'</h2>
-                <div class="card-footer bg-transparent border-success">
-                <h6 class="card-text text-justify mt-2">
-                   '.$fila["descripcion"].' 
-            </h6>
+        $proyectos .= '<div class="card p-3 pt-4 mt-2 mb-2 tarjeta border border-info">
+        <div class="row ">
+            <div class="col-md-7">
+                <img src="Ajax/'.$fila["rutaImagen"].'" class="w-100">
+            </div>
+            <div class="col-md-5 px-3">
+                <div class="card-block px-3">
+                    <h2 class="card-title">'.$fila["nombreproyecto"].'</h2>
+                    <h6 class="card-text text-justify mt-2">
+                       '.$fila["descripcion"].' 
+                    </h6>
+                    <div class="card-footer bg-transparent border-success">
+                    <button type=button class="btn btn-lg btn-outline-info" style="width:absolute;">Ver perfil del Emprendedor</button>
+                    <?php session_start(); if (isset($_SESSION["sesion"])) { ?>
+                        <button type="button"  onclick="esconder('.$fila["idProyecto"].')" class="btn btn-primary btn-sm mt-2">
+                        Escribir Comentarios
+                    </button>
+                    <?php } else { ?>
+                    <?php } ?>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-12" value='.$fila["idProyecto"].' id='.$fila["idProyecto"].' style="display: none;">
+            <div class="form-group mt-5">
+                <textarea class="form-control  " id=Text'.$fila["idProyecto"].' rows="2"></textarea>
+                
+            </div>
+            <button type="button"  class="btn btn-outline-info bt-sm float-right"  onclick="enviar('.$fila["idProyecto"].')" >Enviar Comentario</button>
         </div>
-
-    </div>
-</div>';
-    }
+    
+        </div>
+    </div>';
+        }
     echo $proyectos;
 
  ?>
