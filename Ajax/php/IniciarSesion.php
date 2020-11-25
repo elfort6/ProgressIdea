@@ -17,7 +17,7 @@ if (!isset($_SESSION['sesion'])){
     echo json_encode($json);
   }else{
 
-      $consulta='select * from usuario where usuario="'.$nombre_de_usuario.'"';
+      $consulta='SELECT * FROM usuario u INNER JOIN tipodeusuario tu ON tu.idTipoDeUsuario=u.TipoDeUsuario_idTipoDeUsuario WHERE usuario="'.$nombre_de_usuario.'"';
       //si hubo un resultado
       if ($ejecución_de_la_consulta=$conexion->query($consulta)){
           //se obtiene la contraseña registrada
@@ -27,24 +27,21 @@ if (!isset($_SESSION['sesion'])){
           //si el resultado de la comparación ha sido verdadero
           if (password_verify($contraseña_introducida,$consulta_1['contrasenia'])){
               //se asigna la sesión y redirecciona
-              $consulTipo='select * from TipoDeUsuario where IdTipoDeUsuario="'.$consulta_1['TipoDeUsuario_idTipoDeUsuario'].'"';
-              $ejecución_de_la_consultaest=$conexion->query($consulTipo);
-              $Tipo=$ejecución_de_la_consultaest->fetch_assoc();
 
-             if($Tipo['idTipoDeUsuario']==1){
+             if($consulta_1['idTipoDeUsuario']==1){
               $usr= array("nivel"=>1, "usuario"=>$nombre_de_usuario);
               $_SESSION['sesion']=$usr;
               $json = array("status"=>true, "url"=>"../Emprendedor/index.php");
               echo json_encode($json);
 
              }else{
-              if($Tipo['idTipoDeUsuario']==2){
+              if($consulta_1['idTipoDeUsuario']==2){
                   $usr= array("nivel"=>2, "usuario"=>$nombre_de_usuario);
                 $_SESSION['sesion']=$usr;
                 $json = array("status"=>true, "url"=>"../Patrocinador/index.php");
                 echo json_encode($json);
               }else{
-                  if($Tipo['idTipoDeUsuario']==3){
+                  if($consulta_1['idTipoDeUsuario']==3){
                       $usr= array("nivel"=>3, "usuario"=>$nombre_de_usuario);
                   $_SESSION['sesion']=$usr;
                   $json = array("status"=>true, "url"=>"../Administrador/index.php");

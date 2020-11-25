@@ -5,9 +5,9 @@ if (isset($_SESSION["sesion"])) {
     if($nivel==1){
         header("location: ../Emprendedor/index.php");
     }else if($nivel == 2){
-        header("location: ../index.html");
+        header("location: ../index.php");
     }else if($nivel == 3){
-        header("location: ../index.html");
+        header("location: ../index.php");
     }
 }
  ?>
@@ -28,15 +28,21 @@ if (isset($_SESSION["sesion"])) {
 
 <body>
 
-    <div class="enable">
-        <header class="blog-header">
-            <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-lg-4 offset-lg-4 col-sm-4 col-8 logo">
-                    <a class="blog-header-logo text-dark" href="../Index.html"><b>Progress Idea</b></a>
-                </div>
-            </div>
-        </header>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="blog-header-logo text-dark" href="../Index.php">Progress Idea</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse mr-auto" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="btn btn-sm btn-outline-info" href="registrar.php">Registrarme</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container col-lg-4 col-md-6 mt-lg-5 mt-md-5">
 

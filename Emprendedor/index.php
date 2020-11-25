@@ -19,9 +19,9 @@ include '../Ajax/php/SesionEmprendedor.php';
 
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../Index.html">Progress Idea</a>
+                <a class="navbar-brand" href="../Index.php">Progress Idea</a>
             </div>
             
             <div class="dropdown">
@@ -39,7 +39,7 @@ include '../Ajax/php/SesionEmprendedor.php';
         </nav>
         
 
-        <a class="btn btn-lg btn-success mt-3 ml-4 mb-0" href="NuevoProyecto.php">Crear Proyecto</a>
+        <a class="btn btn-lg btn-success mt-3 ml-4" href="NuevoProyecto.php">Crear Proyecto</a>
 
         <section class="container mt-3" id="info">
             <div class="row justify-content-center align-items-center minh-100" id="proyectos">

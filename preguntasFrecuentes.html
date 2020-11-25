@@ -4,14 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/css.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,300&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&display=swap" rel="stylesheet">
   <title>ProgressIdea</title>
 </head>
@@ -19,32 +18,26 @@
 
 
 <body>
-  <div class="enable">
-    <header class="blog-header py-3 col-lg-10 offset-lg-1 col-md-12 col-sm-12">
-      <div class="row flex-nowrap justify-content-between align-items-center">
-        <div class="col-lg-4 col-2 pt-1">
-          <a class="text-muted" href="registro_login/registrar.html">Registrar</a>
-        </div>
-        <div class="col-lg-4 col-7 text-center">
-          <a class="blog-header-logo text-dark" href="Index.html">Progress Idea</a>
-        </div>
-        <div class="col-lg-4 col-2 d-flex justify-content-end align-items-center">
-          <a class="text-muted" href="#" aria-label="Search">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-              stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-              viewBox="0 0 24 24" focusable="false">
-              <title>Search</title>
-              <circle cx="10.5" cy="10.5" r="7.5" />
-              <path d="M21 21l-5.2-5.2" />
-            </svg>
-          </a>
-          <a class="btn btn-sm btn-outline-secondary" href="registro_login/login.html">Iniciar Sesión</a>
-        </div>
-      </div>
-    </header>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="blog-header-logo text-dark" href="Index.php">Progress Idea</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <header class="masthead" style="background-image: url('img/tes.jpg')">
+    <div class="collapse navbar-collapse mr-auto" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="btn btn-sm btn-outline-info" href="registro_login/registrar.php">Registrarme</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-sm btn-outline-info" href="registro_login/login.php">Iniciar Sesión</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+  <header class="masthead" style="background-image: url('img/1.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
