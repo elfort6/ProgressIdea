@@ -40,7 +40,7 @@
         <?php 
 include 'Ajax/php/conexion.php';
                 $proyectos = "";
-                $consulta = "SELECT * FROM `multimediaproyecto` m INNER JOIN proyecto p ON m.Proyecto_idProyecto=p.idProyecto WHERE p.idProyecto=".$_GET['id']."";
+                $consulta = "SELECT * FROM `multimediaproyecto` m INNER JOIN proyecto p ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria WHERE p.idProyecto=".$_GET['id']."";
                 $result = $conexion->query($consulta);
 
                 while($fila = $result->fetch_assoc()){
@@ -56,6 +56,7 @@ include 'Ajax/php/conexion.php';
                     <div class="col-md-5 px-3">
                         <div class="card-block px-3">
                             <h2 class="card-title">'.$fila["nombreproyecto"].'</h2>
+                            <p>Categoria: '.$fila["nombreCategoria"].'</p>
                             <hr>
                             <h1 style="color:green;">Lps. 0.00</h1>
                             <p>Se espera recolectar: Lps. 5,000.00</p>
@@ -80,7 +81,9 @@ include 'Ajax/php/conexion.php';
  ?>
         </section>
 </main>
+<?php include "includes/footer.html";?>
     <script src="js/funciones.js"></script>
+
 </body>
 </html>
 

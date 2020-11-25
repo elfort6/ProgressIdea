@@ -62,49 +62,9 @@
     </main>
     <!-- /.MAIN -->
     <!-- /.container -->
-    <div class="container">
-        <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            <div class="row">
-                <div class="col-12 col-md">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-code-slash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
-</svg>
-                    <small class="d-block mb-3 text-muted">&copy; ProgressIdea 2020</small>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Proyectos</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Cortometrajes</a></li>
-                        <li><a class="text-muted" href="#">Juegos</a></li>
-                        <li><a class="text-muted" href="#">Pintura</a></li>
-                        <li><a class="text-muted" href="#">teatro</a></li>
-                        <li><a class="text-muted" href="#">Musica</a></li>
-                        <li><a class="text-muted" href="#">Top proyectos</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Recursos</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Quienes somos</a></li>
-                        <li><a class="text-muted" href="preguntasFrecuentes.html">preguntas frecuentes</a></li>
-                        <li><a class="text-muted" href="#">Foro de dicucion</a></li>
-                        <li><a class="text-muted" href="#">Links de utilidad</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Sobre nosotros</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Equipo</a></li>
-                        <li><a class="text-muted" href="#">Localizacion</a></li>
-                        <li><a class="text-muted" href="#">Privacidad</a></li>
-                        <li><a class="text-muted" href="#">Terminos y condiciones</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    </div>
+    
 
-
+    <?php include "includes/footer.html";?>
 </body>
 <script type="text/javascript">
     (function(){
