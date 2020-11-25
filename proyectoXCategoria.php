@@ -33,7 +33,9 @@
                 </li>
             </ul>
         </div>
-    </nav><br><br>
+    </nav>
+    <?php include "includes/categorias.html";?>
+    <br><br>
     <!--Final del Nav-->
 <main class="container" >
         <section id="proyectosLi" >
