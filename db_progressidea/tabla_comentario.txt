@@ -1,0 +1,1 @@
+CREATE TABLE progressidea.comentario ( id INT NOT NULL , descripcion VARCHAR(200) NOT NULL , fecha VARCHAR(10) NOT NULL , usuarioc VARCHAR(50) NOT NULL , idproyecto_proyecto INT NOT NULL ) ENGINE = MyISAM;
