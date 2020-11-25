@@ -33,22 +33,7 @@
         </div>
     </nav>
     <!--Final del Nav-->
-    <div class="container">
-        <div class="nav-scroller py-1 mb-2 ">
-            <nav class="nav d-flex justify-content-between">
-                <a class="p-2 text-muted" href="#">Arte</a>
-                <a class="p-2 text-muted" href="#">Deporte</a>
-                <a class="p-2 text-muted" href="#">Tecnologia</a>
-                <a class="p-2 text-muted" href="#">Juegos de Video</a>
-                <a class="p-2 text-muted" href="#">Comics Y Libros</a>
-                <a class="p-2 text-muted" href="#">Animaciones</a>
-                <a class="p-2 text-muted" href="#">Cine</a>
-                <a class="p-2 text-muted" href="#">Ciencia</a>
-                <a class="p-2 text-muted" href="#">Musica</a>
-                <a class="p-2 text-muted" href="#">Documentales</a>
-            </nav>
-        </div>
-    </div>
+    <?php include "includes/categorias.html";?>
     <div class="jumbotron p-4 p-md-5 text-white container" style="background-image: url(img/l.jpg);background-size: cover;">
             <div class="col-md-6 px-0">
                 <h1 class="display-4 font-italic">ProgressIdea, tus proyectos en lo mas alto.</h1>
