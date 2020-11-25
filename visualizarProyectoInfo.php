@@ -95,6 +95,7 @@
                     <?php } ?>
                     </div>
                     <div class="col-md-12" value=' . $fila["idProyecto"] . ' id=' . $fila["idProyecto"] . ' style="display: none;">
+                    <input value=' . $fila["Usuario_idUsuario"].' id="UsuarioC" style="display:none">
                     <div class="form-group mt-5">
                         <textarea class="form-control  " id=Text' . $fila["idProyecto"] . ' rows="2"></textarea>
                         
@@ -127,15 +128,17 @@
 
         function enviar(elemt) {
             var comentario = document.getElementById(elemt);
+            UsuarioC= document.getElementById("UsuarioC").value;
             var descripcion = document.getElementById(`Text${elemt}`).value;
             var f = new Date();
             var fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
-            console.log(fecha);
+            console.log(UsuarioC);
             comentario.style.display = 'none';
             var datos = {
                 idProyecto: elemt,
                 descripcion: descripcion,
-                fecha: fecha
+                fecha: fecha,
+                usuarioc:UsuarioC
             };
             $.ajax({
                 method: "POST",
