@@ -55,8 +55,8 @@ $usu = $result->fetch_assoc();
                     </div>
                 </div>
                 <div class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <span class="pl-3"><i class="fa fa-user mr-2"> </i><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
+                    <a class="dropdown-toggle dropdown-item" data-toggle="dropdown" href="#">
+                        <span class=""><i class="fa fa-user mr-2"> </i><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="index.php">Perfil</a>
@@ -66,7 +66,7 @@ $usu = $result->fetch_assoc();
                     </div>
                 </div>
             </form>
-
+        </div>
     </nav>
     <a class="btn btn-lg btn-success mt-3 ml-4" href="NuevoProyecto.php">Crear Proyecto</a>
 

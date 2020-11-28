@@ -1,3 +1,7 @@
+<?php 
+session_start();
+$sesion  = isset($_SESSION["sesion"]); 
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +12,7 @@
     <script src="librerias/jQuery/js/jQuery.js"></script>
     <script src="librerias/bootstrap/js/bootstrap.min.js"></script>
     <script src="librerias/popper/js/popper.js"></script>
+    <script src="librerias/FontAwesome/js/all.js"></script>
     <script src="js/funciones.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
@@ -15,21 +20,32 @@
 <body>
     <!--Inicio del Nav-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="blog-header-logo text-dark" href="#">Progress Idea</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="blog-header-logo text-dark" href="Index.php">Progress Idea</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse mr-auto" id="navbarTogglerDemo02">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <?php if ($sesion){ ?>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle dropdown-item" data-toggle="dropdown" href="#">
+                            <span><i class="fa fa-user mr-2"> </i><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="registro_login/login.php">Perfil</a>
+                            <a class="dropdown-item" href="Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
+                        </div>
+                    </div>
+                <?php } else { ?>
                 <li class="nav-item">
                     <a class="btn btn-sm btn-outline-info" href="registro_login/registrar.php">Registrarme</a>
                 </li>
-                
                 <li class="nav-item">
                     <a class="btn btn-sm btn-outline-info" href="registro_login/login.php">Iniciar Sesión</a>
                 </li>
+                <?php } ?>
+                
             </ul>
         </div>
     </nav>

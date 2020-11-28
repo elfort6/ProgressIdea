@@ -20,24 +20,35 @@ include '../Ajax/php/ConsultasParaEditarUsuario.php';
         <link rel="stylesheet" href="../css/emp_index.css">
         <!--<link rel="stylesheet" href="../css/estilos.css">-->
 
+        <!-- JQuery -->
+        <script src="../librerias/jQuery/js/jQuery.js"></script>
+        <script src="../librerias/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../librerias/FontAwesome/js/all.js"></script>
+        <script type="text/javascript" src="../js/validar.js"></script>
+
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../Index.html">Progress Idea</a>
+                <a class="navbar-brand" href="../Index.php">Progress Idea</a>
+
             </div>
-            
-            <div class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user"></i><span class="pl-5"><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="index.php">Perfil</a>
-                    <a class="dropdown-item" href="#">Estadisticas</a>
-                    <a class="dropdown-item" href="configuracion.php">Configuracion</a>
-                    <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                </ul>
+                <div class="dropdown">
+                    <a class="dropdown-toggle dropdown-item" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user mr-2"></i><span><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="index.php">Perfil</a>
+                        <a class="dropdown-item" href="#">Estadisticas</a>
+                        <a class="dropdown-item" href="configuracion.php">Configuracion</a>
+                        <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
+                    </div>
                 </div>
             </div>
+
         </nav>
         <a class="btn btn-lg btn-info mt-3 ml-4 " href="cambiarcontra.php">Cambiar Contraseña</a>
 
@@ -132,10 +143,7 @@ include '../Ajax/php/ConsultasParaEditarUsuario.php';
             <!-- /.card-->
             </div>
         </div>
-        <script src="../librerias/jQuery/js/jQuery.js"></script>
-        <script src="../librerias/bootstrap/js/bootstrap.min.js"></script>
-        <script src="../librerias/FontAwesome/js/fontawesome.min.js"></script>
-        <script type="text/javascript" src="../js/validar.js"></script>
+        
         <script type="text/javascript">       
             function enviar(){
                 var objeto = serializar();
