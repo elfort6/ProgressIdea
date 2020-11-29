@@ -19,13 +19,17 @@ $sesion  = isset($_SESSION["sesion"]);
 </head>
 <body>
     <!--Inicio del Nav-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light bg-light">
         <a class="blog-header-logo text-dark" href="Index.php">Progress Idea</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse mr-auto" id="navbarTogglerDemo02">
+        <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+            <div class="form-inline mt-2 mt-lg-0 ml-auto " id="form">
+                <input class="form-control" type="search" id="busqueda" name="busqueda" placeholder="Busqueda" aria-label="Search" onkeypress="buscarEnter(event);" required=" ">
+                <button class="btn btn-outline-info my-2 my-sm-0 " onclick="buscar();"><i class="fas fa-search"></i></button>
+            </div>
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <?php if ($sesion){ ?>
                     <div class="dropdown">
@@ -41,7 +45,7 @@ $sesion  = isset($_SESSION["sesion"]);
                 <li class="nav-item">
                     <a class="btn btn-sm btn-outline-info" href="registro_login/registrar.php">Registrarme</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ml-md-2 mt-sm-2 mt-2 mt-lg-0 mt-md-0">
                     <a class="btn btn-sm btn-outline-info" href="registro_login/login.php">Iniciar Sesión</a>
                 </li>
                 <?php } ?>
@@ -68,13 +72,34 @@ $sesion  = isset($_SESSION["sesion"]);
 
     <?php include "includes/footer.html";?>
 </body>
+<script type="text/javascript" src="js/validar.js"></script>
 <script type="text/javascript">
     (function(){
-                $.post('Ajax/php/obtenerProyectosLanding.php',{},function(data){
-                    document.getElementById("proyectosL").innerHTML = "";
-                    document.getElementById("proyectosL").innerHTML = data;
-                });
-            })();
+        cargar();
+    })();
+
+    function cargar(){
+        $.post('Ajax/php/obtenerProyectosLanding.php',{},function(data){
+            document.getElementById("proyectosL").innerHTML = "";
+            document.getElementById("proyectosL").innerHTML = data;
+        });
+    }
+
+    function buscar(){
+        valor = validar();
+        texto = document.getElementById("busqueda").value;
+        if(texto != " " && valor){
+            $.post('Ajax/php/Busqueda.php', {"busqueda": texto}, function(data) {
+                document.getElementById("proyectosL").innerHTML = "";
+                document.getElementById("proyectosL").innerHTML = data;
+            });
+        }
+    }
+    function buscarEnter(e){
+        if (e.keyCode === 13 && !e.shiftKey) {
+            buscar();
+        }
+    }
 </script>
 
 </html>
