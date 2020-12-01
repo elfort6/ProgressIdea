@@ -1,6 +1,11 @@
 <?php
 session_start();
 $sesion  = isset($_SESSION["sesion"]); 
+if($sesion){
+	$usuario = $_SESSION["sesion"]["usuario"];
+}else{
+	$usuario = '';
+}
 include 'Ajax/php/conexion.php';
 $idProyecto = $_GET['id'];
 $proyectos = "";
@@ -58,7 +63,7 @@ while ($filas = $resulta->fetch_assoc()) {
                 <?php if ($sesion){ ?>
                     <div class="dropdown">
                         <a class="dropdown-toggle dropdown-item" data-toggle="dropdown" href="#">
-                            <span><i class="fa fa-user mr-2"> </i><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
+                            <span><i class="fa fa-user mr-2"> </i><?php echo $usuario ?></span><b class="caret"></b>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="registro_login/login.php">Perfil</a>
@@ -123,8 +128,10 @@ while ($filas = $resulta->fetch_assoc()) {
                         </div>
                         <button type="button"  class="btn btn-outline-info bt-sm float-right"  onclick="enviar(<?php echo $idProyecto ?>)" >Enviar Comentario</button>
                     </div>
-                    <?php echo $comentarios 
-                    ?>
+                    <div class="col-12" id="comentarios">
+	                    <?php echo $comentarios 
+	                    ?>
+                    </div>
                 </div>
 
             </div>
@@ -144,11 +151,10 @@ while ($filas = $resulta->fetch_assoc()) {
 
         function enviar(elemt) {
             var comentario = document.getElementById(elemt);
-            UsuarioC= document.getElementById("UsuarioC").value;
+            var UsuarioC= document.getElementById("UsuarioC").value;
             var descripcion = document.getElementById(`Text${elemt}`).value;
             var f = new Date();
             var fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
-            console.log(UsuarioC);
             comentario.style.display = 'none';
             var datos = {
                 idProyecto: elemt,
@@ -162,9 +168,23 @@ while ($filas = $resulta->fetch_assoc()) {
                 data: datos
             }).done(function(data) {
                 console.log(data);
+            	cargarComentarios(descripcion, UsuarioC);
             });
             document.getElementById(`Text${elemt}`).value = '';
 
+        }
+
+        function cargarComentarios(descripcion, UsuarioC){
+        	comentarios = document.getElementById("comentarios");
+
+        	comentarios.innerHTML += `<div class="card col-md-12 mt-3">
+	        <div class="card-body">
+	          <h6><?php echo $usuario ?></h6>
+	          <p class="card-text">${descripcion}</p>
+	          <a href="#" class="float-right ">Responder</a>
+	          <a href="#" class="float-right mr-2 ">Me gusta</a>
+	        </div>
+	      </div>`;
         }
     </script>
 
