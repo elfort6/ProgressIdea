@@ -179,7 +179,7 @@ while ($filas = $resulta->fetch_assoc()) {
 
         	comentarios.innerHTML += `<div class="card col-md-12 mt-3">
 	        <div class="card-body">
-	          <h6><?php echo $usuario ?></h6>
+	          <h6><?php echo $usuario?></h6>
 	          <p class="card-text">${descripcion}</p>
 	          <a href="#" class="float-right ">Responder</a>
 	          <a href="#" class="float-right mr-2 ">Me gusta</a>
