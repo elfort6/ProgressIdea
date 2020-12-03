@@ -1,7 +1,13 @@
 <?php 
 include 'conexion.php';
-    $proyectos = "";
-    $consulta = "SELECT p.idProyecto, p.nombreproyecto, p.descripcion, m.rutaImagen, u.usuario FROM `multimediaproyecto` m INNER JOIN proyecto p ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN usuario u ON u.idUsuario=p.Usuario_idUsuario";
+$proyectos = "";
+    
+if(!empty($_POST)){
+    $usuario = $_POST["usuario"];
+    $consulta = "SELECT p.idProyecto, p.nombreproyecto, p.descripcion, c.nombreCategoria, m.rutaImagen, u.usuario FROM `usuario` u INNER JOIN proyecto p ON p.Usuario_idUsuario=u.idUsuario INNER JOIN multimediaproyecto m ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria WHERE usuario='{$usuario}'";
+}else{
+    $consulta = "SELECT p.idProyecto, p.nombreproyecto, p.descripcion, c.nombreCategoria, m.rutaImagen, u.usuario FROM `usuario` u INNER JOIN proyecto p ON p.Usuario_idUsuario=u.idUsuario INNER JOIN multimediaproyecto m ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria";
+}
 
     $result = $conexion->query($consulta);
 
@@ -15,6 +21,7 @@ include 'conexion.php';
             <div class="card-block px-3">
                 <h2 class="card-title">'.$fila["nombreproyecto"].'</h2>
                 <p class="text-right m-1"><i class="fas fa-user mr-2"></i><i>'.$fila["usuario"].'</i></p>
+                <p class="m-2"><i>Categoria - '.$fila["nombreCategoria"].'</i></p>
                 <div class="card-footer bg-transparent border-success">
                 <h6 class="card-text text-justify mt-2">
                    '.$fila["descripcion"].' 

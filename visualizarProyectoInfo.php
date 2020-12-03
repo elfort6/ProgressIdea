@@ -9,7 +9,7 @@ if($sesion){
 include 'Ajax/php/conexion.php';
 $idProyecto = $_GET['id'];
 $proyectos = "";
-$consulta = "SELECT * FROM `multimediaproyecto` m INNER JOIN proyecto p ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria WHERE p.idProyecto=" . $idProyecto . "";
+$consulta = "SELECT m.rutaImagen, p.descripcion, p.nombreproyecto, c.nombreCategoria, p.Usuario_idUsuario, u.usuario FROM `multimediaproyecto` m INNER JOIN proyecto p ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria INNER JOIN usuario u ON u.idUsuario=p.Usuario_idUsuario WHERE p.idProyecto=".$idProyecto;
 $result = $conexion->query($consulta);
 $comentarios = "";
 $fila = $result->fetch_assoc();
@@ -18,6 +18,7 @@ $descripcion = $fila["descripcion"];
 $nombreproyecto = $fila["nombreproyecto"];
 $nombreCategoria = $fila["nombreCategoria"];
 $Usuario_idUsuario = $fila["Usuario_idUsuario"];
+$creador = $fila["usuario"];
 
 $consulta1 = "SELECT * FROM `comentario`  WHERE idproyecto_proyecto ='" . $idProyecto . "'";
 $resulta = $conexion->query($consulta1);
@@ -99,6 +100,7 @@ while ($filas = $resulta->fetch_assoc()) {
                     <div class="col-md-5 px-3">
                         <div class="card-block px-3">
                             <h2 class="card-title"> <?php echo $nombreproyecto  ?> </h2>
+                            <p class="text-right m-1"><i><a id="creador" href="PerfilEmprendedor.php?user=<?php echo $creador ?>"><i class="fas fa-user mr-2"></i><?php echo $creador ?></a></i></p>
                             <p>Categoria: <?php echo $nombreCategoria ?></p>
                             <hr>
                             <h1 style="color:green;">Lps. 0.00</h1>
@@ -121,7 +123,6 @@ while ($filas = $resulta->fetch_assoc()) {
                         <?php } ?>
                     </div>
                     <div class="col-md-12" value="<?php echo $idProyecto ?>"  id="<?php echo $idProyecto ?>" style="display: none;">
-                        <input value="<?php $Usuario_idUsuario ?>" id="UsuarioC" style="display:none">
                         <div class="form-group mt-5">
                             <textarea class="form-control  " id=Text<?php echo $idProyecto ?> rows="2"></textarea>
                             
@@ -167,13 +168,13 @@ while ($filas = $resulta->fetch_assoc()) {
                 data: datos
             }).done(function(data) {
                 console.log(data);
-            	cargarComentarios(descripcion, UsuarioC);
+            	cargarComentarios(descripcion);
             });
             document.getElementById(`Text${elemt}`).value = '';
 
         }
 
-        function cargarComentarios(descripcion, UsuarioC){
+        function cargarComentarios(descripcion){
         	comentarios = document.getElementById("comentarios");
 
         	comentarios.innerHTML += `<div class="card col-md-12 mt-3">
