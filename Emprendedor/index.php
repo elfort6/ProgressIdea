@@ -28,53 +28,48 @@ $usu = $result->fetch_assoc();
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-expand navbar-light bg-light" role="navigation">
         <div class="navbar-header">
             <a class="navbar-brand" href="../Index.php">Progress Idea</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             </ul>
-            <form class="form-inline my-1 my-lg-0">
+            
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" style="padding: 0;border: none;background: none;" data-toggle="dropdown"><a><i class="fas fa-bell fa-lg" style="color:#FFC102;"></i></a></button>
+                <div class="dropdown-menu">
+                    <?php
+                    $Notificaciones = "";
+                    $consulta1 = "SELECT* FROM comentario  where usuarioactual='" . $usu["idUsuario"] . "'";
+                    $result1 = $conexion->query($consulta1);
+                    while ($fila = $result1->fetch_assoc()) {
+                        $Notificaciones .= '<div class="dropdown-header"> El usuario  <b>'. $fila["usuarioc"] . '</b> comento <br>'. $fila["descripcion"] . ' </div> <hr>';
+                    }                        
 
+                    echo $Notificaciones;
+                    ?>
 
-                <div class="dropdown">
-                    <button type="button" class="btn btn-primary dropdown-toggle" style="padding: 0;border: none;background: none;" data-toggle="dropdown"><a><i class="fas fa-bell fa-lg" style="color:#FFC102;"></i></a></button>
-                    <div class="dropdown-menu">
-                        <?php
-                        $Notificaciones = "";
-                        $consulta1 = "SELECT* FROM comentario  where usuarioactual='" . $usu["idUsuario"] . "'";
-                        $result1 = $conexion->query($consulta1);
-                        while ($fila = $result1->fetch_assoc()) {
-                            $Notificaciones .= '<div class="dropdown-header"> El usuario  <b>'. $fila["usuarioc"] . '</b> comento <br>'. $fila["descripcion"] . ' </div> <hr>';
-                        }                        
-
-                        echo $Notificaciones;
-                        ?>
-
-                    </div>
                 </div>
-                <div class="dropdown">
-                    <a class="dropdown-toggle dropdown-item" data-toggle="dropdown" href="#">
-                        <span class=""><i class="fa fa-user mr-2"> </i><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="index.php">Perfil</a>
-                        <a class="dropdown-item" href="#">Estadisticas</a>
-                        <a class="dropdown-item" href="configuracion.php">Configuracion</a>
-                        <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
-                    </div>
+            </div>
+            <div class="dropdown">
+                <a class="dropdown-toggle dropdown-item" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+                    <span class=""><i class ="fa fa-user mr-2"> </i><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="index.php">Perfil</a>
+                    <a class="dropdown-item" href="#">Estadisticas</a>
+                    <a class="dropdown-item" href="configuracion.php">Configuracion</a>
+                    <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
                 </div>
-            </form>
+            </div>
         </div>
     </nav>
     <a class="btn btn-lg btn-success mt-3 ml-4" href="NuevoProyecto.php">Crear Proyecto</a>
 
-    <section class="container mt-3" id="info">
-        <div class="row justify-content-center align-items-center minh-100" id="proyectos">
-        </div>
-    </section>
-
+    <main class="container" >
+        <section id="proyectos" ></section>
+    </main>
     <!-- jQuery -->
     <script src="../librerias/jQuery/js/jQuery.js"></script>
 

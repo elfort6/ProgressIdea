@@ -3,6 +3,16 @@
 session_start();
 include 'conexion.php';
 
+$data = file_get_contents("recursos/PaisesYprefijos.json");
+$datos = json_decode($data, true);
+$nombrePais = $_POST["pais"];
+foreach ($datos as $pais => $prefijo){
+    if($prefijo==$nombrePais){
+        $nombrePais=$pais;
+    }
+}
+
+
     $usuario=mysqli_real_escape_string($conexion, $_POST['usuario']);
     $contrasenia=password_hash($_POST['pswd'], PASSWORD_DEFAULT);
     $idRandom = rand(0,100000);
@@ -37,7 +47,7 @@ if($fila['total']!=0){//si el usuario o el numID ya está registrado
     $insertTelefono=mysqli_query($conexion, 'insert into telefono(idTelefono, numeroTelefono) values('.$idRandom.',"'.$_POST['telefono'].'")')
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
-    $insertPersona=mysqli_query($conexion, 'INSERT INTO persona(idRegistro, primerNombrel, segundoNombre, primerApellido, segundoApellido, Correo_idCorreo, Telefono_idTelefono, numId, imagen, direccion, codigoPostal, fechaNacimiento, pais) VALUES ("'.$idRandom.'", "'.$_POST['nombre'].'", "'.$_POST['snombre'].'", "'.$_POST['apellido'].'", "'.$_POST['sapellido'].'", "'.$idRandom.'", "'.$idRandom.'", "'.$_POST['identidad'].'", "img", "'.$_POST['direccion'].'", "'.$_POST['codPostal'].'", "2020-10-13","'.$_POST['pais'].'")')
+    $insertPersona=mysqli_query($conexion, 'INSERT INTO persona(idRegistro, primerNombrel, segundoNombre, primerApellido, segundoApellido, Correo_idCorreo, Telefono_idTelefono, numId, imagen, direccion, codigoPostal, fechaNacimiento, pais) VALUES ("'.$idRandom.'", "'.$_POST['nombre'].'", "'.$_POST['snombre'].'", "'.$_POST['apellido'].'", "'.$_POST['sapellido'].'", "'.$idRandom.'", "'.$idRandom.'", "'.$_POST['identidad'].'", "img", "'.$_POST['direccion'].'", "'.$_POST['codPostal'].'", "'.$_POST["fechaNacimiento"].'","'.$nombrePais.'")')
     or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
 
     $insertUsuario=mysqli_query($conexion, 'INSERT INTO `usuario` (`idUsuario`, `usuario`, `contrasenia`, `TipoDeUsuario_idTipoDeUsuario`, `Persona_idRegistro`) VALUES ("'.$idRandom.'", "'.$usuario.'", "'.$contrasenia.'", "'.$_POST['userType'].'", "'.$idRandom.'")')

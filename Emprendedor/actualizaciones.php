@@ -33,7 +33,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-expand navbar-light bg-light" role="navigation">
             <div class="navbar-header">
                 <a class="navbar-brand" href="../Index.php">Progress Idea</a>
 

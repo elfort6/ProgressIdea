@@ -116,13 +116,16 @@ if (isset($_SESSION["sesion"])) {
                             <span id="msg"></span>
                         </div>
 
-                        <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
-                            <div class="form-group col-lg-12">
-                                <label>Correo</label>
-                                <input class="form-control input" type="email" id="correo" name="correo" placeholder="email@example.com" required>
-                                <div class="valid-feedback">¡Ok válido!</div>
-                                <div class="invalid-feedback">No Valido.</div>
-                            </div>
+                        <div class="form-group col-lg-8 col-md-8">
+                            <label>Correo</label>
+                            <input class="form-control input" type="email" id="correo" name="correo" placeholder="email@example.com" required>
+                            <div class="valid-feedback">¡Ok válido!</div>
+                            <div class="invalid-feedback">No Valido.</div>
+                        </div>
+
+                        <div class="form-group col-lg-4 col-md-4">
+                            <label>Nacimiento</label>
+                            <input class="form-control" type="date" id="fechaNacimiento" name="fechaNacimiento"> 
                         </div>
 
 
