@@ -1,15 +1,15 @@
 <?php
 session_start();
-$sesion  = isset($_SESSION["sesion"]); 
-if($sesion){
-	$usuario = $_SESSION["sesion"]["usuario"];
-}else{
-	$usuario = '';
+$sesion  = isset($_SESSION["sesion"]);
+if ($sesion) {
+    $usuario = $_SESSION["sesion"]["usuario"];
+} else {
+    $usuario = '';
 }
 include 'Ajax/php/conexion.php';
 $idProyecto = $_GET['id'];
 $proyectos = "";
-$consulta = "SELECT m.rutaImagen, p.descripcion, p.nombreproyecto, c.nombreCategoria, p.Usuario_idUsuario, u.usuario FROM `multimediaproyecto` m INNER JOIN proyecto p ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria INNER JOIN usuario u ON u.idUsuario=p.Usuario_idUsuario WHERE p.idProyecto=".$idProyecto;
+$consulta = "SELECT m.rutaImagen, p.descripcion, p.nombreproyecto, c.nombreCategoria, p.Usuario_idUsuario, u.usuario FROM `multimediaproyecto` m INNER JOIN proyecto p ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria INNER JOIN usuario u ON u.idUsuario=p.Usuario_idUsuario WHERE p.idProyecto=" . $idProyecto;
 $result = $conexion->query($consulta);
 $comentarios = "";
 $fila = $result->fetch_assoc();
@@ -61,7 +61,7 @@ while ($filas = $resulta->fetch_assoc()) {
 
         <div class="collapse navbar-collapse mr-auto" id="navbarTogglerDemo02">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <?php if ($sesion){ ?>
+                <?php if ($sesion) { ?>
                     <div class="dropdown">
                         <a class="dropdown-toggle dropdown-item" data-toggle="dropdown" href="#">
                             <span><i class="fa fa-user mr-2"> </i><?php echo $usuario ?></span><b class="caret"></b>
@@ -72,14 +72,14 @@ while ($filas = $resulta->fetch_assoc()) {
                         </div>
                     </div>
                 <?php } else { ?>
-                <li class="nav-item">
-                    <a class="btn btn-sm btn-outline-info" href="registro_login/registrar.php">Registrarme</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-sm btn-outline-info" href="registro_login/login.php">Iniciar Sesión</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="btn btn-sm btn-outline-info" href="registro_login/registrar.php">Registrarme</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-sm btn-outline-info" href="registro_login/login.php">Iniciar Sesión</a>
+                    </li>
                 <?php } ?>
-                
+
             </ul>
         </div>
     </nav>
@@ -94,7 +94,7 @@ while ($filas = $resulta->fetch_assoc()) {
                         <img src="Ajax/<?php echo $rutaImagen ?>" class="w-100">
                         <br>
                         <h6 class="card-text text-justify mt-2">
-                            <?php echo $descripcion ?> 
+                            <?php echo $descripcion ?>
                         </h6>
                     </div>
                     <div class="col-md-5 px-3">
@@ -109,29 +109,40 @@ while ($filas = $resulta->fetch_assoc()) {
                             <hr>
                             <h3>Califica este proyecto!</h3>
                             <div class="card-footer bg-transparent border-success">
-                                    <span id="star1"><i class="fas fa-star" ></i></span>
-                                    <span id="star2"><i class="fas fa-star" ></i></span>
-                                    <span id="star3"><i class="fas fa-star" ></i></span>
-                                    <span id="star4"><i class="fas fa-star" ></i></span>
-                                    <span id="star5"><i class="fas fa-star" ></i></span>
+                                <span id="star1"><i class="fas fa-star"></i></span>
+                                <span id="star2"><i class="fas fa-star"></i></span>
+                                <span id="star3"><i class="fas fa-star"></i></span>
+                                <span id="star4"><i class="fas fa-star"></i></span>
+                                <span id="star5"><i class="fas fa-star"></i></span>
                             </div>
                         </div>
                         <?php if ($sesion) { ?>
-                        <button type="button"  onclick="esconder(<?php echo $idProyecto ?>)" class="btn btn btn-outline-success btn-sm mt-2">
-                        Escribir Comentario
-                        </button>
+                            <button type="button" onclick="esconder(<?php echo $idProyecto ?>)" class="btn btn btn-outline-success btn-sm mt-2">
+                                Escribir Comentario
+                            </button>
+                        <?php } else { ?>
+                            <button type="button" onclick="Registrate()" class="btn btn btn-outline-success btn-sm mt-2">
+                                Escribir Comentario
+                            </button>
                         <?php } ?>
                     </div>
-                    <div class="col-md-12" value="<?php echo $idProyecto ?>"  id="<?php echo $idProyecto ?>" style="display: none;">
+                    <div class="col-md-12" value="<?php echo $idProyecto ?>" id="<?php echo $idProyecto ?>" style="display: none;">
                         <div class="form-group mt-5">
                             <textarea class="form-control  " id=Text<?php echo $idProyecto ?> rows="2"></textarea>
-                            
+
                         </div>
-                        <button type="button"  class="btn btn-outline-info bt-sm float-right"  onclick="enviar(<?php echo $idProyecto ?>)" >Enviar Comentario</button>
+                        <button type="button" class="btn btn-outline-info bt-sm float-right" onclick="enviar(<?php echo $idProyecto ?>)">Enviar Comentario</button>
                     </div>
                     <div class="col-12" id="comentarios">
-	                    <?php echo $comentarios 
-	                    ?>
+                    <div>
+                            <div class="alert alert alert-danger mt-2" role="alert" id="mensaje" style="display: none;">
+                             <a href="registro_login/registrar.php" class="alert-link">Por favor, regístrese</a>
+                             o
+                             <a href="registro_login/login.php" class="alert-link">inicie sesion </a>
+                            </div>
+                        </div>
+                        <?php echo $comentarios
+                        ?>
                     </div>
                 </div>
 
@@ -141,6 +152,12 @@ while ($filas = $resulta->fetch_assoc()) {
     <?php include "includes/footer.html"; ?>
     <script src="js/funciones.js"></script>
     <script>
+        function Registrate() {
+            var mensaje=document.getElementById('mensaje');
+            mensaje.style.display='block'
+
+        }
+
         function esconder(elemt) {
             var comentario = document.getElementById(elemt);
             if (comentario.style.display == 'block') {
@@ -168,16 +185,16 @@ while ($filas = $resulta->fetch_assoc()) {
                 data: datos
             }).done(function(data) {
                 console.log(data);
-            	cargarComentarios(descripcion);
+                cargarComentarios(descripcion);
             });
             document.getElementById(`Text${elemt}`).value = '';
 
         }
 
-        function cargarComentarios(descripcion){
-        	comentarios = document.getElementById("comentarios");
+        function cargarComentarios(descripcion) {
+            comentarios = document.getElementById("comentarios");
 
-        	comentarios.innerHTML += `<div class="card col-md-12 mt-3">
+            comentarios.innerHTML += `<div class="card col-md-12 mt-3">
 	        <div class="card-body">
 	          <h6><?php echo $usuario ?></h6>
 	          <p class="card-text">${descripcion}</p>
