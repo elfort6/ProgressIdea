@@ -14,7 +14,7 @@ include 'conexion.php';
     $descripcion = $_POST['descripcion'];
     $categoria = $_POST['categoria'];
     $idRandom = rand(0,100000);
-    $supender=0;
+    $supender=1;
     $consulta="INSERT INTO proyecto VALUES ({$idRandom},'{$nombre}',{$categoria},{$supender},'{$descripcion}', '{$idUsuario}')";
 
     if($conexion->query($consulta)){
