@@ -187,6 +187,7 @@ CREATE TABLE `proyecto` (
   `nombreproyecto` varchar(45) NOT NULL,
   `Categoria_idCategoria` int(11) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
+  `Suspendido` int (2) NULL,
   `Usuario_idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
