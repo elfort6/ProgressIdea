@@ -5,6 +5,15 @@ $usu = $_SESSION["sesion"]["usuario"];
 $consulta = "SELECT* FROM usuario where usuario='" . $_SESSION["sesion"]["usuario"] . "'";
 $result = $conexion->query($consulta);
 $usu = $result->fetch_assoc();
+$Notificaciones = "";
+$consulta1 = "SELECT* FROM comentario  where visto=0 and usuarioactual='" . $usu["idUsuario"] . "'";
+$consulta="SELECT Count(*) as total FROM comentario  where visto=0 and usuarioactual='" . $usu["idUsuario"] . "'";
+$result = $conexion->query($consulta);
+$result1 = $conexion->query($consulta1);
+$filas = $result->fetch_assoc();
+while ($fila = $result1->fetch_assoc()) {
+    $Notificaciones .= '<div class="dropdown-header"> El usuario   <b>'. $fila["usuarioc"] . '</b> comento <br></div><a id='. $fila["id"] .' onclick= enviar(this.id,'. $fila["idproyecto_proyecto"] .') class="alert-link text-center ml-5">Ver Comentario</a> <hr>';
+} 
 ?>
 
 <!DOCTYPE html>
@@ -35,17 +44,13 @@ $usu = $result->fetch_assoc();
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             </ul>
+            <p style="color:black">(<?php                  
+                    echo $filas['total'];?>)
             
             <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle" style="padding: 0;border: none;background: none;" data-toggle="dropdown"><a><i class="fas fa-bell fa-lg" style="color:#FFC102;"></i></a></button>
                 <div class="dropdown-menu">
-                    <?php
-                    $Notificaciones = "";
-                    $consulta1 = "SELECT* FROM comentario  where usuarioactual='" . $usu["idUsuario"] . "'";
-                    $result1 = $conexion->query($consulta1);
-                    while ($fila = $result1->fetch_assoc()) {
-                        $Notificaciones .= '<div class="dropdown-header"> El usuario  <b>'. $fila["usuarioc"] . '</b> comento <br>'. $fila["descripcion"] . ' </div> <hr>';
-                    }                        
+                    <?php                       
 
                     echo $Notificaciones;
                     ?>
@@ -87,6 +92,22 @@ $usu = $result->fetch_assoc();
                 //console.log(data);
             });
         })();
+
+        function enviar(idcomentario,idproyecto){
+            console.log(idcomentario);
+            console.log(idproyecto);
+            datos = {
+                id: idcomentario
+            };
+            $.ajax({
+                method: "POST",
+                url: "../Ajax/php/vercomentario.php",
+                data: datos
+            }).done(function(data) {
+                console.log(data);
+                window.location.assign(`../visualizarProyectoInfo.php?id=${idproyecto}`);
+            });
+        }
     </script>
 
 </body>
