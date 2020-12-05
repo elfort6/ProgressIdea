@@ -1,3 +1,6 @@
+<?php 
+include '../Ajax/php/sessionAdmi.php';
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,24 +17,27 @@
     <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="../css/emp_index.css">
-
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-expand navbar-light bg-light" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="Index.php">Progress Idea</a>
+            <a class="navbar-brand" href="../Index.php">Progress Idea</a>
         </div>
-
-        <div class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-user"></i><span class="pl-5"></span><b class="caret"></b>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="index.php">Perfil</a>
-                <a class="dropdown-item" href="#">Estadisticas</a>
-                <a class="dropdown-item" href="configuracion.php">Configuracion</a>
-                <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            </ul>
+            <div class="dropdown">
+                <a class="dropdown-toggle dropdown-item" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user mr-2"></i><span><?php echo $_SESSION["sesion"]["usuario"] ?></span><b class="caret"></b>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="index.php">Perfil</a>
+                    <a class="dropdown-item" href="#">Estadisticas</a>
+                    <a class="dropdown-item" href="configuracion.php">Configuracion</a>
+                    <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
+                </div>
             </div>
         </div>
 

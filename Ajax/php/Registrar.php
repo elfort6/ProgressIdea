@@ -76,7 +76,7 @@ if($fila['total']!=0){//si el usuario o el numID ya está registrado
             # code...
             $usr= array("nivel"=>3, "usuario"=>$usuario);
             $_SESSION['sesion']=$usr;
-            $ruta = '../Administrador/';
+            $ruta = '../Admon/';
             $status = true;
             $error = 0;
             $mensaje = "";

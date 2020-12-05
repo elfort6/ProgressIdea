@@ -7,7 +7,7 @@ if (isset($_SESSION["sesion"])) {
     }else if($nivel == 2){
         header("location: ../Patrocinador/index.php");
     }else if($nivel == 3){
-        header("location: ../admon/index.php");
+        header("location: ../Admon/index.php");
     }
 }
  ?>
