@@ -47,8 +47,6 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="index.php">Perfil</a>
-                        <a class="dropdown-item" href="#">Estadisticas</a>
-                        <a class="dropdown-item" href="configuracion.php">Configuracion</a>
                         <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
                     </div>
                 </div>
