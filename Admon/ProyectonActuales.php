@@ -17,7 +17,7 @@ include '../Ajax/php/sessionAdmi.php';
     <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="../css/emp_index.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="../librerias/FontAwesome/js/all.js"></script>
 </head>
 
 <body>
@@ -34,8 +34,6 @@ include '../Ajax/php/sessionAdmi.php';
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="index.php">Perfil</a>
-                        <a class="dropdown-item" href="#">Estadisticas</a>
-                        <a class="dropdown-item" href="configuracion.php">Configuracion</a>
                         <a class="dropdown-item" href="../Ajax/php/cerrarsesion.php">Cerrar Sesion</a>
                     </div>
                 </div>

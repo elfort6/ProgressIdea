@@ -56,7 +56,7 @@ include '../Ajax/php/ConsultasParaEditarUsuario.php';
               
 
       <div class="text-center">
-        <?php if($usu['imagen']!=null and file_exists('../Ajax/'.$usu['imagen'])){ ?>
+        <?php if($usu['imagen']!=null){ ?>
         <img src="../Ajax/<?php echo $usu['imagen']?>" class="img-thumbnail" alt="avatar" id="avatar">
     <?php }else{ ?>
         <img src="../Ajax/fotoPerfiles/avatar.png" class="img-thumbnail" alt="avatar" id="avatar">

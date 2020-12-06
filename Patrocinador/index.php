@@ -16,6 +16,7 @@ include '../Ajax/php/SesionPatrocinador.php';
         <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.min.css">
 
         <link rel="stylesheet" href="../css/emp_index.css">
+        <script src="../librerias/FontAwesome/js/all.js"></script>
 
     </head>
     <body>
