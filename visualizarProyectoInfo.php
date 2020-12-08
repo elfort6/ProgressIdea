@@ -105,7 +105,6 @@ while ($filas = $resulta->fetch_assoc()) {
                             <hr>
                             <h1 style="color:green;">Lps. 0.00</h1>
                             <p>Se espera recolectar: Lps. 5,000.00</p>
-                            <h5>Patrocinador: Anonimo</h5>
                             <hr>
                             <h3>Califica este proyecto!</h3>
                             <div class="card-footer bg-transparent border-success">
@@ -117,13 +116,38 @@ while ($filas = $resulta->fetch_assoc()) {
                             </div>
                         </div>
                         <?php if ($sesion) { ?>
-                            <button type="button" onclick="esconder(<?php echo $idProyecto ?>)" class="btn btn btn-outline-success btn-sm mt-2">
-                                Escribir Comentario
-                            </button>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="button" onclick="esconder(<?php echo $idProyecto ?>)" class="btn btn btn-outline-success btn-sm mt-2" >
+                                    Escribir Comentario
+                                </button>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-8">
+                                        <input id="apoyo" type="text" class="form-control" placeholder="Apoyar $" style="position:absolute;height:2rem;margin-top:7px;"></div>
+                                        <div class="col-4"><button type="button" class="btn btn btn-outline-success btn-sm mt-2"><i class="far fa-money-bill-alt"></i></button></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
                         <?php } else { ?>
-                            <button type="button" onclick="Registrate()" class="btn btn btn-outline-success btn-sm mt-2">
+                           
+                            <div class="row">
+                                <div class="col-6">
+                                <button type="button" onclick="Registrate()" class="btn btn btn-outline-success btn-sm mt-2">
                                 Escribir Comentario
                             </button>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-8"><input type="text" id="apoyo" class="form-control" placeholder="Apoyar $" style="position:absolute;height:2rem;margin-top:7px;"></div>
+                                        <div class="col-4"><button type="button" class="btn btn btn-outline-success btn-sm mt-2"><i class="far fa-money-bill-alt"></i></button></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
                         <?php } ?>
                     </div>
                     <div class="col-md-12" value="<?php echo $idProyecto ?>" id="<?php echo $idProyecto ?>" style="display: none;">
