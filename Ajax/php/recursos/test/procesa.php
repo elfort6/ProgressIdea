@@ -1,5 +1,5 @@
 <?php 
-    require 'braintree-php-5.4.0\lib\autoload.php';
+    require '..\..\..\librerias\braintree-php-5.4.0';
 
     $gateway = new Braintree\Gateway([
         'environment' => 'sandbox',
