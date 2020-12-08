@@ -7,10 +7,14 @@
         'publicKey' => 'kpxf8rh8fkx5hmpd',
         'privateKey' => '134829ee638e624072a91582ec5b309a'
       ]);
-      $result = $gateway->transaction()->sale([
-        'amount' => '1000.00',
-        'paymentMethodNonce' => 'nonceFromTheClient',
-        'options' => [ 'submitForSettlement' => true ]
+      $result = $gateway->creditCard()->create([
+        'customerId' => 'elf123',
+        'number' => '4111111111111111',
+        'expirationDate' => '06/22',
+        'cvv' => '100'
     ]);
+    
+      print_r("success!: " . $result);
+    
 ?>
 

@@ -7,6 +7,8 @@
         'publicKey' => 'kpxf8rh8fkx5hmpd',
         'privateKey' => '134829ee638e624072a91582ec5b309a'
       ]);
+      
+
       $nonceFromTheClient = $_POST["payment_method_nonce"]; 
       $result = $gateway->transaction()->sale([
         'amount' => '1000.00',
