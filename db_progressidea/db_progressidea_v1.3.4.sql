@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 06-12-2020 a las 02:06:02
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-12-2020 a las 05:25:05
+-- Versión del servidor: 10.4.13-MariaDB
+-- Versión de PHP: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `Progressidea`
+-- Base de datos: `progressidea`
 --
 
 -- --------------------------------------------------------
@@ -45,6 +45,34 @@ CREATE TABLE `amonestaciones` (
   `descripcion` varchar(160) NOT NULL,
   `Usuario_idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aportepatrocinador`
+--
+
+CREATE TABLE `aportepatrocinador` (
+  `idAportePatrocinador` int(11) NOT NULL,
+  `Proyecto_idProyecto` int(11) NOT NULL,
+  `Usuario_idUsuario` int(11) NOT NULL,
+  `monto` float NOT NULL,
+  `idTransaccion` varchar(200) NOT NULL,
+  `fechaTransaccion` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `aportepatrocinador`
+--
+
+INSERT INTO `aportepatrocinador` (`idAportePatrocinador`, `Proyecto_idProyecto`, `Usuario_idUsuario`, `monto`, `idTransaccion`, `fechaTransaccion`) VALUES
+(1, 44803, 99628, 149, '552ssa8e', '2020-12-09'),
+(2, 44803, 99628, 51, 'qfxk6yst', '2020-12-09'),
+(3, 44803, 99628, 100, '5avfdgxv', '2020-12-09'),
+(4, 44803, 99628, 200, 'et19j8hj', '2020-12-09'),
+(5, 44803, 99628, 319.5, 'ashckb0z', '2020-12-09'),
+(6, 99905, 99628, 5000, '3n0qxne0', '2020-12-09'),
+(7, 44803, 99628, 200, 'j6g5pr6e', '2020-12-09');
 
 -- --------------------------------------------------------
 
@@ -115,6 +143,7 @@ CREATE TABLE `correo` (
 INSERT INTO `correo` (`idCorreo`, `correo`) VALUES
 (17084, 'yeffcode@gmail.com'),
 (26884, 'yefryyo@gmail.com'),
+(33216, 'yeffcode@gmail.com'),
 (38576, 'yu@yu.com'),
 (43490, 'esban@gmail.com'),
 (44796, 'kelvinalexander@gmail.com'),
@@ -142,8 +171,7 @@ CREATE TABLE `multimediaproyecto` (
 --
 
 INSERT INTO `multimediaproyecto` (`idImagenesProyecto`, `rutaImagen`, `Proyecto_idProyecto`, `rutaVideo`) VALUES
-(15, 'MultimediaProyectos/yuniorcd/comics-anti-venom-wallpaper-preview.jpg', 2385, NULL),
-(16, 'MultimediaProyectos/yuniorcd/product_30565_product_shot_wide.jpg', 85418, NULL);
+(17, 'MultimediaProyectos/yeff/1662_original.jpg', 44803, NULL);
 
 -- --------------------------------------------------------
 
@@ -174,6 +202,7 @@ CREATE TABLE `persona` (
 INSERT INTO `persona` (`idRegistro`, `primerNombrel`, `segundoNombre`, `primerApellido`, `segundoApellido`, `Correo_idCorreo`, `Telefono_idTelefono`, `numId`, `imagen`, `direccion`, `codigoPostal`, `fechaNacimiento`, `pais`) VALUES
 (17084, 'Cecilia', 'Luz', 'Rodriguez', 'Lopeteggui', 17084, 17084, '98989898987788', NULL, 'Tegucigalpa', '11110', '2020-10-13', '359'),
 (26884, 'Yefry', 'Luis', 'Ortiz', 'Orellana', 26884, 26884, '0801-1996-15145', NULL, 'Col. San Miguel, calle tocoa casa 5502, Teguc', '504', '2020-10-13', '504'),
+(33216, 'Elvin', 'Fabricio', 'Luque', 'Adalma', 33216, 33216, '74498585959', NULL, 'Col. San Miguel, calle tocoa casa 5502, Teguc', '504', '1995-02-08', 'Honduras'),
 (38576, 'Yunior', 'Marel', 'Cerrato', 'Dominguez', 38576, 38576, '12345', 'f1.jpg', 'yuniorcerrato26@gmail.com', '1234', '2020-10-13', '504'),
 (81490, 'Kelvin', 'Alexander', 'Cerrato', 'Dominguez', 81490, 81490, '1029384756', NULL, 'Campamento Olancho', '1029', '1992-06-24', 'Honduras'),
 (90373, 'Yefry', 'Rolando', 'Ortiz', 'Zero', 90373, 90373, '0801199615145', NULL, 'Col. San Miguel, calle tocoa casa 5502, Teguc', '504', '2020-10-13', '504'),
@@ -191,16 +220,21 @@ CREATE TABLE `proyecto` (
   `Categoria_idCategoria` int(11) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `Usuario_idUsuario` int(11) NOT NULL,
-  `Suspendido` int(2) DEFAULT NULL
+  `Suspendido` int(2) DEFAULT NULL,
+  `montoDeseado` float NOT NULL,
+  `fechaVencimiento` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `proyecto`
 --
 
-INSERT INTO `proyecto` (`idProyecto`, `nombreproyecto`, `Categoria_idCategoria`, `descripcion`, `Usuario_idUsuario`, `Suspendido`) VALUES
-(2385, 'Juegos TGP', 4, 'Lo mejor en videojuegos de todo el mundo', 38576, 1),
-(85418, 'TechnoYo', 1, 'La mejor tecnologia actual en todo', 38576, 1);
+INSERT INTO `proyecto` (`idProyecto`, `nombreproyecto`, `Categoria_idCategoria`, `descripcion`, `Usuario_idUsuario`, `Suspendido`, `montoDeseado`, `fechaVencimiento`) VALUES
+(44803, 'Historietas ', 5, 'lo mejor', 90373, 0, 1500, NULL),
+(47960, 'neles', 1, 'nnsnsnnsns', 90373, 1, 238, '0000-00-00'),
+(90009, 'muestar', 1, 'nnfeoneon', 90373, 1, 2000, '0000-00-00'),
+(96029, 'buenanza', 1, 'simeeeeen', 90373, 1, 2000, '0000-00-00'),
+(99905, 'LaBuena', 1, 'smimimimimi', 90373, 1, 30000, '2020-12-10');
 
 -- --------------------------------------------------------
 
@@ -261,6 +295,7 @@ CREATE TABLE `telefono` (
 INSERT INTO `telefono` (`idTelefono`, `numeroTelefono`) VALUES
 (17084, '+359 - 435336563'),
 (26884, '31958353'),
+(33216, '31958353'),
 (38576, '+504 - 621546751'),
 (43490, '+504 - 95055281'),
 (44796, '+49 - 90127834'),
@@ -312,6 +347,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`idUsuario`, `usuario`, `contrasenia`, `TipoDeUsuario_idTipoDeUsuario`, `Persona_idRegistro`) VALUES
 (17084, 'ceci', '$2y$10$uqnGxS6Jy.I9QBkiEZ8HQ.MQjDbTF7LfQaf7nj3zUDihBn7OY0..y', 2, 17084),
 (26884, 'yeff', '$2y$10$8d3ZdymaekYsbFBosyHvp.OibbePK/WpKxMX/N8nxr7DXW/I2mOTG', 1, 26884),
+(33216, 'elfort', '$2y$10$bQoist.NXil4Ve32AZ7hReOkPjrSt78kfCHkUXPN3RhEutWvYN0w.', 3, 33216),
 (38576, 'yuniorcd', '$2y$10$gXPzKiaP5Ay2hLPVafvQneIbXARPIWXOmxD2BcThznHrrMd11zuiO', 1, 38576),
 (81490, 'kalexd', '$2y$10$z801q6Zam0qM2u6zlOwTO.bxLUipcU5EFy7aGE/0ZtcVHOmSTk7Hm', 3, 81490),
 (90373, 'yeff', '$2y$10$cQFYcnZXRWaxI1mL.N9cfucX0F9l.aoxLWfJdUgZIeqFrz4wu8Knu', 1, 90373),
@@ -334,6 +370,14 @@ ALTER TABLE `actualizacionesproyecto`
 ALTER TABLE `amonestaciones`
   ADD PRIMARY KEY (`idAmonestaciones`),
   ADD KEY `fk_Amonestaciones_Usuario1` (`Usuario_idUsuario`);
+
+--
+-- Indices de la tabla `aportepatrocinador`
+--
+ALTER TABLE `aportepatrocinador`
+  ADD PRIMARY KEY (`idAportePatrocinador`),
+  ADD KEY `fk_aporteproyecto_idProyecto` (`Proyecto_idProyecto`),
+  ADD KEY `fk_aporteusuario` (`Usuario_idUsuario`);
 
 --
 -- Indices de la tabla `categoria`
@@ -423,10 +467,16 @@ ALTER TABLE `actualizacionesproyecto`
   MODIFY `idActualizacion` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `aportepatrocinador`
+--
+ALTER TABLE `aportepatrocinador`
+  MODIFY `idAportePatrocinador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de la tabla `multimediaproyecto`
 --
 ALTER TABLE `multimediaproyecto`
-  MODIFY `idImagenesProyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idImagenesProyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas
@@ -443,6 +493,13 @@ ALTER TABLE `actualizacionesproyecto`
 --
 ALTER TABLE `amonestaciones`
   ADD CONSTRAINT `fk_Amonestaciones_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `usuario` (`idUsuario`);
+
+--
+-- Filtros para la tabla `aportepatrocinador`
+--
+ALTER TABLE `aportepatrocinador`
+  ADD CONSTRAINT `fk_aporteproyecto_idProyecto` FOREIGN KEY (`Proyecto_idProyecto`) REFERENCES `proyecto` (`idProyecto`),
+  ADD CONSTRAINT `fk_aporteusuario` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `usuario` (`idUsuario`);
 
 --
 -- Filtros para la tabla `multimediaproyecto`
