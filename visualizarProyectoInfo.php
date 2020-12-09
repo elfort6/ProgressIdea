@@ -121,15 +121,15 @@ while ($filas = $resulta->fetch_assoc()) {
                             
                             <div class="row">
                                 <p class="calificacion mt-auto" style="direction: rtl;unicode-bidi: bidi-override;">
-                                    <input id="radio5" type="radio" name="estrellas" value="5" onclick="calificar(event);">
+                                    <input id="radio5" type="radio" name="estrellas" value="5" onclick="calificar(5);">
                                     <label for="radio5"><i class="fas fa-star"></i></label>
-                                    <input id="radio4" type="radio" name="estrellas" value="4" onclick="calificar(event);">
+                                    <input id="radio4" type="radio" name="estrellas" value="4" onclick="calificar(4);">
                                     <label for="radio4"><i class="fas fa-star"></i></label>
-                                    <input id="radio3" type="radio" name="estrellas" value="3" onclick="calificar(event);">
+                                    <input id="radio3" type="radio" name="estrellas" value="3" onclick="calificar(3);">
                                     <label for="radio3"><i class="fas fa-star"></i></label>
-                                    <input id="radio2" type="radio" name="estrellas" value="2" onclick="calificar(event);">
+                                    <input id="radio2" type="radio" name="estrellas" value="2" onclick="calificar(2);">
                                     <label for="radio2"><i class="fas fa-star"></i></label>
-                                    <input id="radio1" type="radio" name="estrellas" value="1" onclick="calificar(event);">
+                                    <input id="radio1" type="radio" name="estrellas" value="1" onclick="calificar(1);">
                                     <label for="radio1"><i class="fas fa-star"></i></label>
                                 </p>
                                 <h4 class="ml-5" id="puntaje"></h4>
@@ -258,9 +258,8 @@ while ($filas = $resulta->fetch_assoc()) {
 	      </div>`;
         }
         function calificar(e){
-            var estrellas = e.originalTarget;
-            puntuacion = estrellas.value;
-            $.post('Ajax/php/Calificar.php', {"estrellas": puntuacion, "idProyecto":<?php echo $idProyecto ?>}, function(data) {
+            
+            $.post('Ajax/php/Calificar.php', {"estrellas": e, "idProyecto":<?php echo $idProyecto ?>}, function(data) {
                 console.log(data);
                 json = JSON.parse(data);
                 if(json.status){
