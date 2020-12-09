@@ -21,17 +21,17 @@ include 'conexion.php';
 
         if ($categoria!=0) {
             $condicionCategoria = "WHERE c.idCategoria=".$categoria;
-            $condiciones = $condicionCategoria." AND ".$cadena;
+            $condiciones = $condicionCategoria." AND ".$cadena." AND p.Suspendido=1";
         }else{
-            $condiciones = "WHERE ".$cadena." LIMIT 20";
+            $condiciones = "WHERE ".$cadena." AND p.Suspendido=1 LIMIT 20";
 
         }
     }else{
         $categoria = $_POST["categoria"];
         if ($categoria!=0) {
-            $condiciones = "WHERE c.idCategoria=".$categoria;
+            $condiciones = "WHERE c.idCategoria=".$categoria." AND p.Suspendido=1";
         }else{
-            $condiciones = " LIMIT 20";
+            $condiciones = " WHERE p.Suspendido=1 LIMIT 20";
         }
     }
 
