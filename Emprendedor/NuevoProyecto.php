@@ -84,7 +84,18 @@
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">No Valido.</div>
                         </div>
-                        
+                        <div class="form-group">
+                            <label>Monto deseado a alcanzar</label>
+                            <input class="form-control" placeholder="Mi meta economica" id="montoDeseado" name="montoDeseado" required>
+                            <div class="valid-feedback">¡Ok válido!</div>
+                            <div class="invalid-feedback">No Valido.</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de vencimiento del proyecto</label>
+                            <input type="date" class="form-control" placeholder="Fecha Limite" id="fecha" name="fecha" required>
+                            <div class="valid-feedback">¡Ok válido!</div>
+                            <div class="invalid-feedback">No Valido.</div>
+                        </div>
                         <div class="form-group col-lg-12 col-12">
                             <label>Agregar Imagen</label>
                             <input class="form-control-file" type="file" id="imagen" name="imagen" multiple>

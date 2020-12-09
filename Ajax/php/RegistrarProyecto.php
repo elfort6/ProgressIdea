@@ -13,9 +13,14 @@ include 'conexion.php';
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
     $categoria = $_POST['categoria'];
+    $montoDeseado = $_POST['montoDeseado'];
+    $fechaLimite = $_POST['fecha'];
+   
+
+
     $idRandom = rand(0,100000);
     $supender=1;
-    $consulta="INSERT INTO proyecto VALUES ({$idRandom},'{$nombre}',{$categoria},'{$descripcion}', '{$idUsuario}',{$supender})";
+    $consulta="INSERT INTO proyecto VALUES ({$idRandom},'{$nombre}',{$categoria},'{$descripcion}', '{$idUsuario}',{$supender},'{$montoDeseado}','{$fechaLimite}')";
 
     if($conexion->query($consulta)){
         $_SESSION["sesion"]["idProyecto"]=$idRandom;

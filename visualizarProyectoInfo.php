@@ -1,15 +1,18 @@
 <?php
+
 session_start();
 $sesion  = isset($_SESSION["sesion"]);
+$tipoUser =isset($_SESSION["sesion"]["nivel"]);
 if ($sesion) {
     $usuario = $_SESSION["sesion"]["usuario"];
+    $tipoUser = $_SESSION["sesion"]["nivel"];
 } else {
     $usuario = '';
 }
 include 'Ajax/php/conexion.php';
 $idProyecto = $_GET['id'];
 $proyectos = "";
-$consulta = "SELECT m.rutaImagen, p.descripcion, p.nombreproyecto, c.nombreCategoria, p.Usuario_idUsuario, u.usuario FROM `multimediaproyecto` m INNER JOIN proyecto p ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria INNER JOIN usuario u ON u.idUsuario=p.Usuario_idUsuario WHERE p.idProyecto=" . $idProyecto;
+$consulta = "SELECT m.rutaImagen, p.descripcion, p.nombreproyecto, c.nombreCategoria, p.Usuario_idUsuario, p.montoDeseado, u.usuario FROM `multimediaproyecto` m INNER JOIN proyecto p ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria INNER JOIN usuario u ON u.idUsuario=p.Usuario_idUsuario WHERE p.idProyecto=" . $idProyecto;
 $result = $conexion->query($consulta);
 $comentarios = "";
 $fila = $result->fetch_assoc();
@@ -18,10 +21,17 @@ $descripcion = $fila["descripcion"];
 $nombreproyecto = $fila["nombreproyecto"];
 $nombreCategoria = $fila["nombreCategoria"];
 $Usuario_idUsuario = $fila["Usuario_idUsuario"];
+$montoDeseado = $fila["montoDeseado"];
 $creador = $fila["usuario"];
 
 $consulta1 = "SELECT * FROM `comentario`  WHERE idproyecto_proyecto ='" . $idProyecto . "'";
 $resulta = $conexion->query($consulta1);
+
+$consMontono = "SELECT SUM(monto) AS MontoTotal FROM aportepatrocinador WHERE Proyecto_idProyecto ='" . $idProyecto . "'";
+$resulte = mysqli_query($conexion,$consMontono) or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
+$filasM = $resulte->fetch_assoc();
+$montoAcumulado= $filasM['MontoTotal'];
+
 while ($filas = $resulta->fetch_assoc()) {
     $comentarios .= '<div class="card col-md-12 mt-3">
         <div class="card-body">
@@ -103,8 +113,8 @@ while ($filas = $resulta->fetch_assoc()) {
                             <p class="text-right m-1"><i><a id="creador" href="PerfilEmprendedor.php?user=<?php echo $creador ?>"><i class="fas fa-user mr-2"></i><?php echo $creador ?></a></i></p>
                             <p>Categoria: <?php echo $nombreCategoria ?></p>
                             <hr>
-                            <h1 style="color:green;">Lps. 0.00</h1>
-                            <p>Se espera recolectar: Lps. 5,000.00</p>
+                            <h1 style="color:green;">$ <?php echo $montoAcumulado;?></h1>
+                            <p>Se espera recolectar: $ <?php echo $montoDeseado;?></p>
                             <hr>
                             <h3>Califica este proyecto!</h3>
                             <div class="card-footer bg-transparent border-success">
@@ -115,7 +125,7 @@ while ($filas = $resulta->fetch_assoc()) {
                                 <span id="star5"><i class="fas fa-star"></i></span>
                             </div>
                         </div>
-                        <?php if ($sesion) { ?>
+                        <?php if ($sesion && $tipoUser!=1) { ?>
                             <div class="row">
                                 <div class="col-6">
                                     <button type="button" onclick="esconder(<?php echo $idProyecto ?>)" class="btn btn btn-outline-success btn-sm mt-2" >
@@ -125,13 +135,21 @@ while ($filas = $resulta->fetch_assoc()) {
                                 <div class="col-6">
                                     <div class="row">
                                         <div class="col-8">
-                                        <input id="apoyo" type="text" class="form-control" placeholder="Apoyar $" style="position:absolute;height:2rem;margin-top:7px;"></div>
-                                        <div class="col-4"><button type="button" class="btn btn btn-outline-success btn-sm mt-2"><i class="far fa-money-bill-alt"></i></button></div>
+                                            
+                                            <input id="apoyo" type="text" class="form-control" placeholder="Apoyar $" style="position:absolute;height:2rem;margin-top:7px;">
+                                        </div>
+                                        <div class="col-4">
+                                            <button id="colaborar" type="button" class="btn btn btn-outline-success btn-sm mt-2"><i class="far fa-money-bill-alt"></i></button>
+                                            
+                                        </div>
                                     </div>
                                     
                                 </div>
                             </div>
-                            
+                            <?php } elseif ($tipoUser==1){ ?>
+                                <button type="button" onclick="esconder(<?php echo $idProyecto ?>)" class="btn btn btn-outline-success btn-sm mt-2" >
+                                    Escribir Comentario
+                        
                         <?php } else { ?>
                            
                             <div class="row">
@@ -143,7 +161,7 @@ while ($filas = $resulta->fetch_assoc()) {
                                 <div class="col-6">
                                     <div class="row">
                                         <div class="col-8"><input type="text" id="apoyo" class="form-control" placeholder="Apoyar $" style="position:absolute;height:2rem;margin-top:7px;"></div>
-                                        <div class="col-4"><button type="button" class="btn btn btn-outline-success btn-sm mt-2"><i class="far fa-money-bill-alt"></i></button></div>
+                                        <div class="col-4"><button onclick="Registrate()" type="button" class="btn btn btn-outline-success btn-sm mt-2"><i class="far fa-money-bill-alt"><a href="Ajax/php/recursos/test"></i></button></div>
                                     </div>
                                     
                                 </div>
@@ -152,7 +170,7 @@ while ($filas = $resulta->fetch_assoc()) {
                     </div>
                     <div class="col-md-12" value="<?php echo $idProyecto ?>" id="<?php echo $idProyecto ?>" style="display: none;">
                         <div class="form-group mt-5">
-                            <textarea class="form-control  " id=Text<?php echo $idProyecto ?> rows="2"></textarea>
+                            <textarea class="form-control" id=Text<?php echo $idProyecto ?> rows="2"></textarea>
 
                         </div>
                         <button type="button" class="btn btn-outline-info bt-sm float-right" onclick="enviar(<?php echo $idProyecto ?>)">Enviar Comentario</button>
@@ -217,7 +235,6 @@ while ($filas = $resulta->fetch_assoc()) {
 
         function cargarComentarios(descripcion) {
             comentarios = document.getElementById("comentarios");
-
             comentarios.innerHTML += `<div class="card col-md-12 mt-3">
 	        <div class="card-body">
 	          <h6><?php echo $usuario ?></h6>
@@ -227,6 +244,22 @@ while ($filas = $resulta->fetch_assoc()) {
 	        </div>
 	      </div>`;
         }
+    </script>
+
+    <form action="Ajax/php/recursos/test/" id="formu" method="post">   
+        <input type="hidden" id="montoApoyo" name="montoApoyo"/>
+        <input type="hidden" id="idProyecto" name="idProyecto">
+    </form>
+
+    <script>
+        var button = document.querySelector('#colaborar');
+        button.addEventListener('click', function () {
+              const form = document.getElementById('formu');
+              document.getElementById('idProyecto').value = <?php echo $idProyecto?>;
+              document.getElementById('montoApoyo').value = document.getElementById('apoyo').value;
+              form.submit();
+            });
+        
     </script>
 
 </body>
