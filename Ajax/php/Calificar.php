@@ -5,12 +5,9 @@ include 'conexion.php';
 if(isset($_SESSION['sesion'])){
 
     $consulta1="SELECT idUsuario FROM usuario WHERE usuario='{$_SESSION['sesion']['usuario']}'";
-
     $result = $conexion->query($consulta1);
     $fila = $result->fetch_assoc();
     $idUsuario = $fila['idUsuario'];
-    
-
     $idProyecto = $_POST['idProyecto'];
     $like = $_POST['estrellas'];
    
