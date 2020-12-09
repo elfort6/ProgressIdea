@@ -59,6 +59,7 @@ while ($filas = $resulta->fetch_assoc()) {
 
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/calificacion.css">
 </head>
 
 <body>
@@ -117,12 +118,21 @@ while ($filas = $resulta->fetch_assoc()) {
                             <p>Se espera recolectar: $ <?php echo $montoDeseado;?></p>
                             <hr>
                             <h3>Califica este proyecto!</h3>
-                            <div class="card-footer bg-transparent border-success">
-                                <span id="star1"><i class="fas fa-star"></i></span>
-                                <span id="star2"><i class="fas fa-star"></i></span>
-                                <span id="star3"><i class="fas fa-star"></i></span>
-                                <span id="star4"><i class="fas fa-star"></i></span>
-                                <span id="star5"><i class="fas fa-star"></i></span>
+                            
+                            <div class="row">
+                                <p class="calificacion mt-auto" style="direction: rtl;unicode-bidi: bidi-override;">
+                                    <input id="radio5" type="radio" name="estrellas" value="5" onclick="calificar(event);">
+                                    <label for="radio5"><i class="fas fa-star"></i></label>
+                                    <input id="radio4" type="radio" name="estrellas" value="4" onclick="calificar(event);">
+                                    <label for="radio4"><i class="fas fa-star"></i></label>
+                                    <input id="radio3" type="radio" name="estrellas" value="3" onclick="calificar(event);">
+                                    <label for="radio3"><i class="fas fa-star"></i></label>
+                                    <input id="radio2" type="radio" name="estrellas" value="2" onclick="calificar(event);">
+                                    <label for="radio2"><i class="fas fa-star"></i></label>
+                                    <input id="radio1" type="radio" name="estrellas" value="1" onclick="calificar(event);">
+                                    <label for="radio1"><i class="fas fa-star"></i></label>
+                                </p>
+                                <h4 class="ml-5" id="puntaje"></h4>
                             </div>
                         </div>
                         <?php if ($sesion && $tipoUser!=1) { ?>
@@ -194,6 +204,9 @@ while ($filas = $resulta->fetch_assoc()) {
     <?php include "includes/footer.html"; ?>
     <script src="js/funciones.js"></script>
     <script>
+        (function(){
+            puntaje();
+        })();
         function Registrate() {
             var mensaje=document.getElementById('mensaje');
             mensaje.style.display='block'
@@ -243,6 +256,44 @@ while ($filas = $resulta->fetch_assoc()) {
 	          <a href="#" class="float-right mr-2 ">Me gusta</a>
 	        </div>
 	      </div>`;
+        }
+        function calificar(e){
+            var estrellas = e.originalTarget;
+            puntuacion = estrellas.value;
+            $.post('Ajax/php/Calificar.php', {"estrellas": puntuacion, "idProyecto":<?php echo $idProyecto ?>}, function(data) {
+                console.log(data);
+                json = JSON.parse(data);
+                if(json.status){
+                }else{
+                    if(json.error==3){
+                        Registrate();
+                        estrellas.checked = false;
+                    }else{
+                        estrellas.checked = false;
+                        var mensaje=document.getElementById('mensaje');
+                        mensaje.innerHTML = "Usted ya ha calificado este proyecto";
+                        mensaje.style.display='block'
+                    }
+                }
+                puntaje();
+            });
+        }
+
+        function puntaje(){
+            $.post('Ajax/php/obtnerPuntaje.php', {"idProyecto":<?php echo $idProyecto ?>}, function(data) {
+                console.log(data);
+                json = JSON.parse(data);
+                if (json.puntaje>0) {
+                    document.getElementById("radio"+json.estrellas).checked=true;
+                    str = ""+json.puntaje;
+                    document.getElementById("puntaje").innerHTML= str.substring(0.2)+'<i class="fas fa-star"></i>';
+                }else{
+                    str = json.puntaje+'<i class="fas fa-star"></i>';
+                    document.getElementById("puntaje").innerHTML = str;
+                }
+                document.getElementById("puntaje").innerHTML+=json.votos+'<i class="fa fa-user"></i>';
+                console.log(data);
+            });
         }
     </script>
 
