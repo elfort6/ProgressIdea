@@ -294,9 +294,9 @@ include '../Ajax/php/ConsultasParaEditarUsuario.php';
                 })
                     .then(respuesta => respuesta.text())
                     .then(decodificado => {
-                        //console.log(decodificado);
+                        console.log(decodificado);
                         json = JSON.parse(decodificado);
-                        console.log(json);
+                        //console.log(json);
                         if(json.status){
                             $("#avatar").attr("src", "../Ajax/"+json.src);
                         }else{

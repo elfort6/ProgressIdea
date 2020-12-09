@@ -9,9 +9,9 @@ $result = $conexion->query($consulta);
 
 while($fila = $result->fetch_assoc()){
     $proyectos .= ' <tr>
-    <td>'.$fila["nombreproyecto"].'</td>
+    <td><a href="../visualizarProyectoInfo.php?id='.$fila["idProyecto"].'">'.$fila["nombreproyecto"].'</a></td>
     <td>'.$fila["descripcion"].'</td>
-    <td>'.$fila["usuario"].'</td>
+    <td><a href="../PerfilEmprendedor.php?user='.$fila["usuario"].'">'.$fila["usuario"].'</a></td>
     <td><button id="'.$fila["idProyecto"].'" type="button" onclick="Activar(this.id)" class="btn btn-info">Activar</button></td>
   </tr>';
 }

@@ -74,8 +74,8 @@ include '../Ajax/php/SesionPatrocinador.php';
                                 
                             </div>
                             <div class="tab-pane fade text-center col-md-12" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <a class="btn btn-lg btn-info mt-3 ml-4 " href="#">Ver Proyectos Actuales</a>
-                                <a class="btn btn-lg btn-info mt-3 ml-4 " href="#">Historial De Proyectos</a>
+                                <a class="btn btn-lg btn-info mt-3 ml-4 " href="proyectosRecientes.php">Ver Proyectos Actuales</a>
+                                <a class="btn btn-lg btn-info mt-3 ml-4 " href="Patrocinios.php">Historial De Proyectos</a>
                             </div>
                         </div>
                     </div>
