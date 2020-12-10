@@ -259,7 +259,9 @@ while ($filas = $resulta->fetch_assoc()) {
 	      </div>`;
         }
         function calificar(event){
-            $.post('Ajax/php/Calificar.php', {"estrellas": event, "idProyecto":<?php echo $idProyecto ?>}, function(data) {
+            var estrellas = event.target;
+            var puntos = estrellas.value;
+            $.post('Ajax/php/Calificar.php', {"estrellas": puntos, "idProyecto":<?php echo $idProyecto ?>}, function(data) {
                 console.log(data);
                 json = JSON.parse(data);
                 if(json.status){
