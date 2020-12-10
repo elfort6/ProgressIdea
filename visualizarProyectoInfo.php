@@ -258,7 +258,7 @@ while ($filas = $resulta->fetch_assoc()) {
 	      </div>`;
         }
         function calificar(e){
-            var estrellas = e.originalTarget;
+            var estrellas = e.target;
             
             puntuacion = estrellas.value;
 
