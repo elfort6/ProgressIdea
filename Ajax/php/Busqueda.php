@@ -13,7 +13,7 @@ include 'conexion.php';
     }
 
     if (strlen($cadena)>0) {
-        $consulta = 'SELECT p.idProyecto, p.nombreproyecto, p.descripcion, m.rutaImagen, u.usuario FROM proyecto p INNER JOIN usuario u ON u.idUsuario=p.Usuario_idUsuario INNER JOIN multimediaproyecto m ON m.Proyecto_idProyecto=p.idProyecto WHERE '.$cadena." AND p.Suspendido=1";
+        $consulta = 'SELECT p.idProyecto, p.nombreproyecto, p.descripcion, m.rutaImagen, u.usuario FROM proyecto p INNER JOIN usuario u ON u.idUsuario=p.Usuario_idUsuario INNER JOIN multimediaproyecto m ON m.Proyecto_idProyecto=p.idProyecto WHERE '.$cadena;
 
 
         $result = $conexion->query($consulta);
@@ -40,7 +40,7 @@ include 'conexion.php';
         </div>';
         }
     }else{
-        $consulta = 'SELECT p.idProyecto, p.nombreproyecto, p.descripcion, m.rutaImagen, u.usuario FROM proyecto p INNER JOIN usuario u ON u.idUsuario=p.Usuario_idUsuario INNER JOIN multimediaproyecto m ON m.Proyecto_idProyecto=p.idProyecto WHERE LOWER(p.nombreproyecto) LIKE LOWER("%'.$entrada.'%") OR LOWER(p.descripcion) LIKE LOWER("%'.$entrada.'%") OR LOWER(u.usuario) LIKE LOWER("%'.$entrada.'%") AND p.Suspendido=1';
+        $consulta = 'SELECT p.idProyecto, p.nombreproyecto, p.descripcion, m.rutaImagen, u.usuario FROM proyecto p INNER JOIN usuario u ON u.idUsuario=p.Usuario_idUsuario INNER JOIN multimediaproyecto m ON m.Proyecto_idProyecto=p.idProyecto WHERE LOWER(p.nombreproyecto) LIKE LOWER("%'.$entrada.'%") OR LOWER(p.descripcion) LIKE LOWER("%'.$entrada.'%") OR LOWER(u.usuario) LIKE LOWER("%'.$entrada.'%")';
 
 
         $result = $conexion->query($consulta);

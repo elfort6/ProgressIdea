@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-12-2020 a las 00:30:11
+-- Tiempo de generación: 09-12-2020 a las 05:25:05
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.8
 
@@ -72,8 +72,7 @@ INSERT INTO `aportepatrocinador` (`idAportePatrocinador`, `Proyecto_idProyecto`,
 (4, 44803, 99628, 200, 'et19j8hj', '2020-12-09'),
 (5, 44803, 99628, 319.5, 'ashckb0z', '2020-12-09'),
 (6, 99905, 99628, 5000, '3n0qxne0', '2020-12-09'),
-(7, 44803, 99628, 200, 'j6g5pr6e', '2020-12-09'),
-(8, 94406, 99628, 50, '5dyge3tj', '2020-12-09');
+(7, 44803, 99628, 200, 'j6g5pr6e', '2020-12-09');
 
 -- --------------------------------------------------------
 
@@ -124,8 +123,7 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id`, `descripcion`, `fecha`, `usuarioc`, `usuarioactual`, `idproyecto_proyecto`, `visto`) VALUES
-(67929, 'Buen proyecto', '4/12/2020', 'kalexd', '38576', 85418, NULL),
-(39541, 'Este es muy bueno', '9/12/2020', 'yeff', '90373', 94406, 0);
+(67929, 'Buen proyecto', '4/12/2020', 'kalexd', '38576', 85418, NULL);
 
 -- --------------------------------------------------------
 
@@ -173,8 +171,7 @@ CREATE TABLE `multimediaproyecto` (
 --
 
 INSERT INTO `multimediaproyecto` (`idImagenesProyecto`, `rutaImagen`, `Proyecto_idProyecto`, `rutaVideo`) VALUES
-(17, 'MultimediaProyectos/yeff/1662_original.jpg', 44803, NULL),
-(19, 'MultimediaProyectos/yeff/aprender-programacion-web-frontend.png', 94406, NULL);
+(17, 'MultimediaProyectos/yeff/1662_original.jpg', 44803, NULL);
 
 -- --------------------------------------------------------
 
@@ -204,11 +201,11 @@ CREATE TABLE `persona` (
 
 INSERT INTO `persona` (`idRegistro`, `primerNombrel`, `segundoNombre`, `primerApellido`, `segundoApellido`, `Correo_idCorreo`, `Telefono_idTelefono`, `numId`, `imagen`, `direccion`, `codigoPostal`, `fechaNacimiento`, `pais`) VALUES
 (17084, 'Cecilia', 'Luz', 'Rodriguez', 'Lopeteggui', 17084, 17084, '98989898987788', NULL, 'Tegucigalpa', '11110', '2020-10-13', '359'),
-(26884, 'Yefry', 'Luis', 'Ortiz', 'Orellana', 26884, 26884, '0801-1996-15145', 'fotoPerfiles/yeff/yeff.jpeg', 'Col. San Miguel, calle tocoa casa 5502, Teguc', '504', '2020-10-13', '504'),
+(26884, 'Yefry', 'Luis', 'Ortiz', 'Orellana', 26884, 26884, '0801-1996-15145', NULL, 'Col. San Miguel, calle tocoa casa 5502, Teguc', '504', '2020-10-13', '504'),
 (33216, 'Elvin', 'Fabricio', 'Luque', 'Adalma', 33216, 33216, '74498585959', NULL, 'Col. San Miguel, calle tocoa casa 5502, Teguc', '504', '1995-02-08', 'Honduras'),
 (38576, 'Yunior', 'Marel', 'Cerrato', 'Dominguez', 38576, 38576, '12345', 'f1.jpg', 'yuniorcerrato26@gmail.com', '1234', '2020-10-13', '504'),
 (81490, 'Kelvin', 'Alexander', 'Cerrato', 'Dominguez', 81490, 81490, '1029384756', NULL, 'Campamento Olancho', '1029', '1992-06-24', 'Honduras'),
-(90373, 'Yefry', 'Rolando', 'Ortiz', 'Zero', 90373, 90373, '0801199615145', 'fotoPerfiles/yeff21/yeff21.jpeg', 'Col. San Miguel, calle tocoa casa 5502, Teguc', '504', '2020-10-13', '504'),
+(90373, 'Yefry', 'Rolando', 'Ortiz', 'Zero', 90373, 90373, '0801199615145', NULL, 'Col. San Miguel, calle tocoa casa 5502, Teguc', '504', '2020-10-13', '504'),
 (99628, 'Andres', 'Manuel', 'Lopez', 'Obrador', 99628, 99628, '1234576', NULL, 'Mexico DF', '456', '2020-10-13', '52');
 
 -- --------------------------------------------------------
@@ -236,7 +233,6 @@ INSERT INTO `proyecto` (`idProyecto`, `nombreproyecto`, `Categoria_idCategoria`,
 (44803, 'Historietas ', 5, 'lo mejor', 90373, 0, 1500, NULL),
 (47960, 'neles', 1, 'nnsnsnnsns', 90373, 1, 238, '0000-00-00'),
 (90009, 'muestar', 1, 'nnfeoneon', 90373, 1, 2000, '0000-00-00'),
-(94406, 'Lo beuno', 1, 'sisisisi', 90373, 1, 5000, '2020-12-25'),
 (96029, 'buenanza', 1, 'simeeeeen', 90373, 1, 2000, '0000-00-00'),
 (99905, 'LaBuena', 1, 'smimimimimi', 90373, 1, 30000, '2020-12-10');
 
@@ -253,14 +249,6 @@ CREATE TABLE `reaccion` (
   `fecha` date DEFAULT NULL,
   `like` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `reaccion`
---
-
-INSERT INTO `reaccion` (`Usuario_idUsuario`, `Proyecto_idProyecto`, `comentario`, `fecha`, `like`) VALUES
-(33216, 94406, '', '2020-12-09', 5),
-(99628, 94406, '', '2020-12-09', 4);
 
 -- --------------------------------------------------------
 
@@ -357,9 +345,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `usuario`, `contrasenia`, `TipoDeUsuario_idTipoDeUsuario`, `Persona_idRegistro`) VALUES
+(17084, 'ceci', '$2y$10$uqnGxS6Jy.I9QBkiEZ8HQ.MQjDbTF7LfQaf7nj3zUDihBn7OY0..y', 2, 17084),
+(26884, 'yeff', '$2y$10$8d3ZdymaekYsbFBosyHvp.OibbePK/WpKxMX/N8nxr7DXW/I2mOTG', 1, 26884),
 (33216, 'elfort', '$2y$10$bQoist.NXil4Ve32AZ7hReOkPjrSt78kfCHkUXPN3RhEutWvYN0w.', 3, 33216),
 (38576, 'yuniorcd', '$2y$10$gXPzKiaP5Ay2hLPVafvQneIbXARPIWXOmxD2BcThznHrrMd11zuiO', 1, 38576),
-(90373, 'yeff21', '$2y$10$cQFYcnZXRWaxI1mL.N9cfucX0F9l.aoxLWfJdUgZIeqFrz4wu8Knu', 1, 90373),
+(81490, 'kalexd', '$2y$10$z801q6Zam0qM2u6zlOwTO.bxLUipcU5EFy7aGE/0ZtcVHOmSTk7Hm', 3, 81490),
+(90373, 'yeff', '$2y$10$cQFYcnZXRWaxI1mL.N9cfucX0F9l.aoxLWfJdUgZIeqFrz4wu8Knu', 1, 90373),
 (99628, 'AMLO', '$2y$10$rTvsGq79NdJwKP.13OlWju9OmVk0rO.w6rtWUCfTxMvnXay/GPmCi', 2, 99628);
 
 --
@@ -479,13 +470,13 @@ ALTER TABLE `actualizacionesproyecto`
 -- AUTO_INCREMENT de la tabla `aportepatrocinador`
 --
 ALTER TABLE `aportepatrocinador`
-  MODIFY `idAportePatrocinador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idAportePatrocinador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `multimediaproyecto`
 --
 ALTER TABLE `multimediaproyecto`
-  MODIFY `idImagenesProyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idImagenesProyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas

@@ -132,8 +132,9 @@ while ($filas = $resulta->fetch_assoc()) {
                                     <input id="radio1" type="radio" name="estrellas" value="1" onclick="calificar(event);">
                                     <label for="radio1"><i class="fas fa-star"></i></label>
                                 </p>
-                                <h4 class="ml-5" id="puntaje"></h4>
+                                
                             </div>
+                            <h4 class="ml-5" id="puntaje"></h4>
                         </div>
                         <?php if ($sesion && $tipoUser!=1) { ?>
                             <div class="row">
@@ -257,12 +258,11 @@ while ($filas = $resulta->fetch_assoc()) {
 	        </div>
 	      </div>`;
         }
-        function calificar(e){
-            var estrellas = e.target;
-            
-            puntuacion = estrellas.value;
-
-            $.post('Ajax/php/Calificar.php', {"estrellas": puntuacion, "idProyecto":<?php echo $idProyecto ?>}, function(data) {
+        function calificar(event){
+            var estrellas = event.target;
+			console.log(estrellas);
+            var puntos = estrellas.value;
+            $.post('Ajax/php/Calificar.php', {"estrellas": puntos, "idProyecto":<?php echo $idProyecto ?>}, function(data) {
                 console.log(data);
                 json = JSON.parse(data);
                 if(json.status){

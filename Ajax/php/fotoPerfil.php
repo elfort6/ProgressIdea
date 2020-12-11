@@ -19,7 +19,7 @@ if(preg_match("/image/i",$tipo)){
 									 /*Nombre del usuario, Ruta / tipo de archivo*/
 	$resultado = move_uploaded_file($archivo["tmp_name"], '../'.$ruta2);
 	if ($resultado) {
-		$consulta = "UPDATE persona SET imagen='".$ruta2."' WHERE idRegistro=(SELECT Persona_idRegistro FROM usuario WHERE usuario='".$_SESSION["sesion"]["usuario"]."' LIMIT 1)";
+		$consulta = "UPDATE persona SET imagen='{$ruta2}' WHERE idRegistro=(SELECT Persona_idRegistro FROM usuario WHERE usuario='".$_SESSION["sesion"]["usuario"]."')";
 		if($conexion->query($consulta)){
 			$respuesta = array('status' => true, 'src'  => $ruta2);
 	    }else{
