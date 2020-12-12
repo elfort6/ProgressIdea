@@ -48,7 +48,7 @@ include '../Ajax/php/SesionPatrocinador.php';
                 </div>
             </div>
             <div class="col-md-5">
-                    <select class="form-control" name="categoria" id="categoria" required>
+                    <select onchange="buscar();" class="form-control" name="categoria" id="categoria" required>
                         <option value="0">--Toda Categoria--</option>
                     </select>
             </div>
