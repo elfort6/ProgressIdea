@@ -3,7 +3,7 @@ session_start();
 include 'conexion.php';
 $proyectos = "";
 
-$consulta = "SELECT p.idProyecto, p.nombreproyecto, p.descripcion, c.nombreCategoria, m.rutaImagen, p.Suspendido FROM `usuario` u INNER JOIN proyecto p ON p.Usuario_idUsuario=u.idUsuario INNER JOIN multimediaproyecto m ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria WHERE usuario='{$_SESSION["sesion"]["usuario"]}'";
+$consulta = "SELECT p.idProyecto, p.nombreproyecto, p.descripcion, c.nombreCategoria, m.rutaImagen, p.Suspendido, DATEDIFF(p.fechaVencimiento, NOW()) AS Tiempo FROM `usuario` u INNER JOIN proyecto p ON p.Usuario_idUsuario=u.idUsuario INNER JOIN multimediaproyecto m ON m.Proyecto_idProyecto=p.idProyecto INNER JOIN categoria c ON c.idCategoria=p.Categoria_idCategoria WHERE usuario='{$_SESSION["sesion"]["usuario"]}'";
 
 
 $result = $conexion->query($consulta);
@@ -13,6 +13,11 @@ while($fila = $result->fetch_assoc()){
         $alerta = '<div class="alert alert-danger" id="div-msg">Este proyecto ha sido suspendido porque viola el reglamento de la plataforma</div>';
     }else{
         $alerta = "";
+    }
+    if ($fila["Tiempo"] < 1) {
+        $alerta2 = '<div class="alert alert-danger" id="div-msg">El plazo de este proyecto ha vencido y espera por ser eliminado</div>';
+    }else{
+        $alerta2 = "";
     }
     $proyectos .= '<div class="card p-3 pt-4 mt-2 mb-2 tarjeta border border-info">
         <div class="row ">
@@ -27,6 +32,7 @@ while($fila = $result->fetch_assoc()){
                 <div class="card-block px-3 pt-3">
                     <h3 class="card-title"><b>'.$fila["nombreproyecto"].'</b></h3>
                     '.$alerta.'
+                    '.$alerta2.'
                     <p class="text-right m-3"><i>Categoria - '.$fila["nombreCategoria"].'</i></p>
                     <div class="card-footer bg-transparent border-success text-right">
                     <button type=button class="btn btn-md btn-secondary m-1" title="Editar proyecto"><a class="text-white" href="editarProyecto.php?id='.$fila["idProyecto"].'">Editar</a></button>

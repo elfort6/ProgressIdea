@@ -17,6 +17,7 @@ include '../Ajax/php/SesionPatrocinador.php';
 
         <link rel="stylesheet" href="../css/emp_index.css">
         <script src="../librerias/FontAwesome/js/all.js"></script>
+        <script src="../librerias/ScrollReveal/js/ScrollReveal.js"></script>
 
     </head>
     <body>
@@ -74,8 +75,30 @@ include '../Ajax/php/SesionPatrocinador.php';
                                 
                             </div>
                             <div class="tab-pane fade text-center col-md-12" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <a class="btn btn-lg btn-info mt-3 ml-4 " href="proyectosRecientes.php">Ver Proyectos Actuales</a>
-                                <a class="btn btn-lg btn-info mt-3 ml-4 " href="Patrocinios.php">Historial De Proyectos</a>
+                                <div class="row col-12 mt-3 ml-auto">
+                                    <div class="col-md-6 col-lg-6">
+                                    <div class="card m-3 tarjeta">
+                                        <div class="card-header bg-success">    
+                                            <h4 class="text-light"><b>Proyectos Actuales</b></h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <p>Puede ver los proyectos en curso, ademas tiene la opcion de realizar una busqueda de los mismos por categorias</p>
+                                            <a class="btn btn-md btn-primary" href="proyectosRecientes.php"> Ver Detalles<i class="fas fa-arrow-right ml-2"></i></a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                    <div class="card m-3 tarjeta">
+                                        <div class="card-header bg-primary">
+                                            <h4 class="text-light"><b>Historial De Proyectos</b></h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <p>Vea el historial de los proyectos a los cual usted ha aportado, asi como la cantidad con lo cual usted a apoyado</p>
+                                            <a class="btn btn-md btn-primary mt-3 ml-4 " href="Patrocinios.php">Ver Detalles<i class="fas fa-arrow-right ml-2"></i></a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -104,6 +127,7 @@ include '../Ajax/php/SesionPatrocinador.php';
             });
         })();
     </script>
+    <script src="../js/index.js"></script>
 
     </body>
 </html>

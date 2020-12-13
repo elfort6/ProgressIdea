@@ -28,7 +28,7 @@
         <script src="../librerias/bootstrap/js/bootstrap.min.js"></script>
         <script src="../librerias/FontAwesome/js/all.js"></script>
         <script type="text/javascript" src="../js/validar.js"></script>
-
+        <script src="../librerias/ScrollReveal/js/ScrollReveal.js"></script>
 
     </head>
     <body>
@@ -116,4 +116,6 @@
             location.href= "Index.php";
         }   
     </script>
+    <script src="../js/index.js"></script>
+
 </html>

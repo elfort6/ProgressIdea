@@ -56,7 +56,7 @@ while ($filas = $resulta->fetch_assoc()) {
     <script src="librerias/bootstrap/js/bootstrap.min.js"></script>
     <script src="librerias/popper/js/popper.js"></script>
     <script src="librerias/FontAwesome/js/all.js"></script>
-
+    <script src="librerias/ScrollReveal/js/ScrollReveal.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/calificacion.css">
@@ -132,9 +132,8 @@ while ($filas = $resulta->fetch_assoc()) {
                                     <input id="radio1" type="radio" name="estrellas" value="1" onclick="calificar(event);">
                                     <label for="radio1"><i class="fas fa-star"></i></label>
                                 </p>
-                                
+                                <h4 class="ml-5" id="puntaje"></h4>
                             </div>
-                            <h4 class="ml-5" id="puntaje"></h4>
                         </div>
                         <?php if ($sesion && $tipoUser!=1) { ?>
                             <div class="row">
@@ -258,10 +257,10 @@ while ($filas = $resulta->fetch_assoc()) {
 	        </div>
 	      </div>`;
         }
-        function calificar(event){
-            var estrellas = event.target;
-            var puntos = estrellas.value;
-            $.post('Ajax/php/Calificar.php', {"estrellas": puntos, "idProyecto":<?php echo $idProyecto ?>}, function(data) {
+        function calificar(e){
+            var estrellas = e.target;
+            puntuacion = estrellas.value;
+            $.post('Ajax/php/Calificar.php', {"estrellas": puntuacion, "idProyecto":<?php echo $idProyecto ?>}, function(data) {
                 console.log(data);
                 json = JSON.parse(data);
                 if(json.status){
@@ -313,7 +312,8 @@ while ($filas = $resulta->fetch_assoc()) {
             });
         
     </script>
-
+    <script src="js/index.js"></script>
+    <script src="js/index2.js"></script>
 </body>
 
 </html>

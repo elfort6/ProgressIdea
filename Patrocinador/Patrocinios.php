@@ -18,6 +18,7 @@ include '../Ajax/php/SesionPatrocinador.php';
         <link rel="stylesheet" type="text/css" href="../css/main.css">
         <link rel="stylesheet" href="../css/emp_index.css">
         <script src="../librerias/FontAwesome/js/all.js"></script>
+        <script src="../librerias/ScrollReveal/js/ScrollReveal.js"></script>
 
     </head>
     <body>
@@ -64,6 +65,7 @@ include '../Ajax/php/SesionPatrocinador.php';
             window.location.assign(`../visualizarProyectoInfo.php?id=${id}`);
         }
     </script>
+    <script src="../js/index.js"></script>
 
     </body>
 </html>

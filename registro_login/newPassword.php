@@ -19,6 +19,8 @@ if(isset($consulta['idUsuario'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilos.css">
+    <script src="../librerias/ScrollReveal/js/ScrollReveal.js"></script>
+
 </head>
 
 <body>
@@ -27,7 +29,7 @@ if(isset($consulta['idUsuario'])){
         <header class="blog-header">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-lg-4 offset-lg-4 col-sm-4 col-8 logo">
-                    <a class="blog-header-logo text-dark" href="../Index.html"><b>Progress Idea</b></a>
+                    <a class="blog-header-logo text-dark" href="../Index.php"><b>Progress Idea</b></a>
                 </div>
             </div>
         </header>
@@ -91,6 +93,9 @@ if(isset($consulta['idUsuario'])){
 
     <!-- JavaScript -->
     <script src="../js/codigo2.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/index2.js"></script>
+
 </body>
 
 </html>

@@ -15,6 +15,7 @@
     <script src="librerias/bootstrap/js/bootstrap.min.js"></script>
     <script src="librerias/popper/js/popper.js"></script>
     <script src="librerias/FontAwesome/js/all.js"></script>
+    <script src="librerias/ScrollReveal/js/ScrollReveal.js"></script>
     <script src="js/funciones.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
@@ -75,5 +76,6 @@
  			});
  		})();
  	</script>
+    <script src="js/index.js"></script>
  </body>
  </html>

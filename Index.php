@@ -13,6 +13,7 @@ $sesion  = isset($_SESSION["sesion"]);
     <script src="librerias/bootstrap/js/bootstrap.min.js"></script>
     <script src="librerias/popper/js/popper.js"></script>
     <script src="librerias/FontAwesome/js/all.js"></script>
+    <script src="librerias/ScrollReveal/js/ScrollReveal.js"></script>
     <script src="js/funciones.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
@@ -62,9 +63,12 @@ $sesion  = isset($_SESSION["sesion"]);
             </div>
         </div>
 
+
     <!-- MAIN ?php require 'Ajax/php/obtenerProyectosLanding.php'? -->
-    <main class="container" >
-        <section id="proyectosL" ></section>
+    <main class="container proyectos" >
+        <section id="proyectosL" >
+            
+        </section>
     </main>
     <!-- /.MAIN -->
     <!-- /.container -->
@@ -101,5 +105,6 @@ $sesion  = isset($_SESSION["sesion"]);
         }
     }
 </script>
+<script src="js/index.js"></script>
 
 </html>

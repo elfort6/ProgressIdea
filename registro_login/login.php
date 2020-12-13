@@ -23,6 +23,8 @@ if (isset($_SESSION["sesion"])) {
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="../librerias/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilos.css">
+    <script src="../librerias/ScrollReveal/js/ScrollReveal.js"></script>
+
     
 </head>
 
@@ -120,6 +122,8 @@ if (isset($_SESSION["sesion"])) {
             }
         }
     </script>
+    <script src="../js/index.js"></script>
+    <script src="../js/index2.js"></script>
 </body>
 
 </html>

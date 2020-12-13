@@ -33,6 +33,7 @@ while ($fila = $result1->fetch_assoc()) {
 
     <link rel="stylesheet" href="../css/emp_index.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="../librerias/ScrollReveal/js/ScrollReveal.js"></script>
 
 </head>
 
@@ -159,6 +160,7 @@ while ($fila = $result1->fetch_assoc()) {
             });
         }
     </script>
+    <script src="../js/index.js"></script>
 
 </body>
 

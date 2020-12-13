@@ -50,7 +50,6 @@ include '../Ajax/php/sessionAdmi.php';
                         <th scope="col">Nombre Proyecto</th>
                         <th scope="col">Descripcion</th>
                         <th scope="col">Emprendedor</th>
-                        <th scope="col">Suspender Proyecto</th>
                         <th scope="col">Eliminar Proyecto</th>
                     </tr>
                 </thead>
@@ -70,7 +69,7 @@ include '../Ajax/php/sessionAdmi.php';
     <script src="../librerias/FontAwesome/js/fontawesome.min.js"></script>
     <script type="text/javascript">
         (function() {
-            $.post('../Ajax/php/tablaproyectos.php', {}, function(data) {
+            $.post('../Ajax/php/tablaProyectosVencidos.php', {}, function(data) {
                 document.getElementById("proyectos").innerHTML = "";
                 document.getElementById("proyectos").innerHTML = data;
                 //console.log(data);
@@ -84,28 +83,6 @@ include '../Ajax/php/sessionAdmi.php';
             $.ajax({
                 method: "POST",
                 url: "../Ajax/php/eliminarproyecto.php",
-                data: datos
-            }).done(function(data) {
-                console.log(data);
-                (function() {
-                    $.post('../Ajax/php/tablaproyectos.php', {}, function(data) {
-                        document.getElementById("proyectos").innerHTML = "";
-                        document.getElementById("proyectos").innerHTML = data;
-                        //console.log(data);
-                    });
-                })();
-            });
-
-
-        }
-
-        function suspender(id) {
-            datos = {
-                id: id
-            };
-            $.ajax({
-                method: "POST",
-                url: "../Ajax/php/suspenderproyecto.php",
                 data: datos
             }).done(function(data) {
                 console.log(data);
