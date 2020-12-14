@@ -6,9 +6,9 @@ $gateway = new Braintree\Gateway([
     'publicKey' => 'kpxf8rh8fkx5hmpd',
     'privateKey' => '134829ee638e624072a91582ec5b309a'
   ]);
-      $nonceFromTheClient = $_POST["nonce"]; 
-      $monto = $_POST['monto'];
-      $id = $_POST['idp'];
+      $nonceFromTheClient = $_GET["nonce"]; 
+      $monto = $_GET['monto'];
+      $id = $_GET['idp'];
       $result = $gateway->transaction()->sale([
         'amount' => $monto,
         'paymentMethodNonce' => $nonceFromTheClient,
