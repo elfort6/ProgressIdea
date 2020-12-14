@@ -45,17 +45,16 @@ if(isset($consulta['idUsuario'])){
         <div class="panel-body col-lg-12 pt-4 pb-5">
 
             <div class="col-lg-12">
-                <form role="form" action="Ajax/php/IniciarSesion.php" method="POST" class="needs-validation" novalidate>
                     <div>
                         <div class="form-group col-lg-12">
                             <label>Nueva Contraseña</label>
-                            <input class="form-control" type="password" id="pswd1" name="pswd1" required=" ">
+                            <input class="form-control" type="password" id="contra1" name="contra1" required=" " onkeydown="validarNuevaContra();">
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">Complete el campo.</div>
                         </div>
                         <div class="form-group col-lg-12">
                             <label>Confirmar contraseña</label>
-                            <input class="form-control" type="password" id="pswd2" name="pswd2" required=" ">
+                            <input class="form-control" type="password" id="contra2" name="contra2" required=" " onkeydown="validarNuevaContra();">
                             <div class="valid-feedback">¡Ok válido!</div>
                             <div class="invalid-feedback">Complete el campo.</div>
                         </div>
@@ -66,16 +65,16 @@ if(isset($consulta['idUsuario'])){
                             </div>
 
 	                        <div class="form-group col-lg-6 col-md-6 mt-lg-5">
-	                            <button type="submit" class="btn-lg btn-block col-lg-12 btn-success" id="btnAcpetar">Aceptar</button>
+	                            <button  class="btn-lg btn-block col-lg-12 btn-success" id="btnAcpetar" onclick="enviar()">Aceptar</button>
 	                        </div>
                         </div>
 
 
                     </div>
                     <!-- /.row -->
+                    <div id="mensaje">
 
-                </form>
-
+                    </div>
             </div>
             <!-- /.col-lg-12 -->
             <!-- /.col-lg-12 -->
@@ -92,10 +91,72 @@ if(isset($consulta['idUsuario'])){
     <script src="../librerias/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- JavaScript -->
-    <script src="../js/codigo2.js"></script>
-    <script src="../js/index.js"></script>
-    <script src="../js/index2.js"></script>
+    <script type="text/javascript">
 
+        
+
+        function validarNuevaContra(){
+            clearTimeout();
+            setTimeout("verifica()", 200);
+        }
+
+        function verifica(){
+            var contra1 = $("#contra1").val(),
+            contra2 = $("#contra2").val();
+            if(contra1 == contra2){
+                document.getElementById("mensaje").innerHTML = `<p class="help-block text-success">* Las nuevas contraseñas coinciden.</p>`;
+                return true;
+            }else{
+                document.getElementById("mensaje").innerHTML = `<p class="help-block text-danger">* Las nuevas contraseñas no coinciden.</p>`;
+                return false;
+            }
+        }
+
+        function enviar() {
+                var contra1 = $("#contra1").val();
+                var contra2 = $("#contra2").val();
+                var usuario = <?php echo $consulta['idUsuario']?>;
+                var valor= verificacionContraseña(contra1, contra2) 
+              if(valor==true){
+                    if(contra1==contra2){
+                    $.ajax({
+                    method: "POST",
+                     url: "../Ajax/php/cambiarcontraseniaR.php",
+                    data: {"usu":usuario,"contraN":contra1}
+                    }).done(function( msg ) {
+                        json = JSON.parse(msg);
+                        console.log(json)
+                        if(json.status){
+                            document.getElementById("mensaje").innerHTML = `<div class="alert alert-info">${json.mensaje}</div>`;
+                            setTimeout("redireccionar()", 2000);
+                        }else{
+                            document.getElementById("mensaje").innerHTML = `<div class="alert alert-danger">${json.mensaje}</div>`;
+
+                        }
+                      });
+                      
+                    }
+              }else{
+                    document.getElementById("mensaje").innerHTML ='';
+                    document.getElementById("mensaje").innerHTML = `<div class="alert alert-danger">Debe llenar todos los campos</div>`;
+              }
+        }
+
+        function verificacionContraseña(contra1, contra2){
+            if(contra1==""||contra2==""||contra1==null||contra2==null
+              ||contra1==" "||contra2==" "){
+              return false;
+            }else{
+              return true;
+            }
+        }
+
+        function redireccionar(){
+            location.href= "login.php";
+        }
+
+       
+  </script>
 </body>
 
 </html>
