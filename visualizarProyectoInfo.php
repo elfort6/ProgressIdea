@@ -188,9 +188,9 @@ while ($filas = $resulta->fetch_assoc()) {
                     <div class="col-12" id="comentarios">
                     <div>
                             <div class="alert alert alert-danger mt-2" role="alert" id="mensaje" style="display: none;">
-                             <a href="registro_login/registrar.php" class="alert-link">Por favor, regístrese</a>
+                             <a href="registro_login/registrar.php?idp=<?php echo $idProyecto?>" class="alert-link">Por favor, regístrese</a>
                              o
-                             <a href="registro_login/login.php" class="alert-link">inicie sesion </a>
+                             <a href="registro_login/login.php?idp=<?php echo $idProyecto?>" class="alert-link">inicie sesion </a>
                             </div>
                         </div>
                         <?php echo $comentarios

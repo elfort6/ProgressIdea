@@ -112,7 +112,11 @@ if (isset($_SESSION["sesion"])) {
                     console.log(msg);
                     json = JSON.parse(msg);
                     if(json.status){
+                        <?php if(isset($_GET["idp"])){?>
+                            window.location = "../visualizarProyectoInfo.php?id=<?php echo $_GET["idp"]?>";
+                        <?php }else{?>
                         window.location = json.url;
+                        <?php }?>
                     }else{
                         document.getElementById("msg").innerHTML = `<div class="alert alert-danger">${json.mensaje}</div>`;
 
