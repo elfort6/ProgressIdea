@@ -18,7 +18,7 @@ $gateway = new Braintree\Gateway([
         $idTrans=$result->transaction->id;
         /// $insertAporte = "INSERT INTO aportepatrocinador VALUES (NULL,'{$id}', '{$usuaroAct}', '{$monto}', '{$idTrans}', '{$fechaActual}')";
         ///$resulte = mysqli_query($conexion,$insertAporte) or die('<p>Error al registrar</p><br>'.mysqli_error($conexion));
-        header("location: https://progressidea.tk/api-rest-pagos-otro-server\cliente.php?idt=".$idTrans."&idp=".$id ."");
+        header("location: https://progressidea.tk/api-rest-pagos-otro-server\cliente.php?idt=".$idTrans."&idp=".$id ."&monto=".$monto);
       } else if ($result->transaction) {
           print_r("Error processing transaction:");
           print_r("\n  code: " . $result->transaction->processorResponseCode);
