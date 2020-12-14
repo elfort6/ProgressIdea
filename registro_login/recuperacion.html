@@ -71,20 +71,27 @@
         function enviar(){
             var valor = validar();
             if (valor){
-                var usuario = $("#usuario").val(), clave = $("#clave").val();
+                
+                var correo = $("#correo").val();
+                console.log({"correo":correo});
                 $.ajax({
                   method: "POST",
                   url: "../Ajax/php/recuperar.php",
                   data: {"correo":correo}
-                }).done(function(data){
-                    
+                }).done(function(msg){
+                    console.log(msg);
+                    json = JSON.parse(msg);
+                    if(json.status){
+                        window.location = json.url;
+                    }else{
+                        document.getElementById("msg").innerHTML = `<div class="alert alert-danger">${json.mensaje}</div>`;
+
+                    }
                     
                   });
             }
         }
     </script>
-    <script src="../js/index.js"></script>
-    <script src="../js/index2.js"></script>
 
 </body>
 
