@@ -77,16 +77,10 @@
                 $.ajax({
                   method: "POST",
                   url: "../Ajax/php/recuperar.php",
-                  data: {"correo":correo}
+                  data: {"correoRecu":correo}
                 }).done(function(msg){
                     console.log(msg);
-                    json = JSON.parse(msg);
-                    if(json.status){
-                        window.location = json.url;
-                    }else{
-                        document.getElementById("msg").innerHTML = `<div class="alert alert-danger">${json.mensaje}</div>`;
-
-                    }
+                    
                     
                   });
             }
