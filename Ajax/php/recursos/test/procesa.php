@@ -7,6 +7,7 @@
     $usu = $result->fetch_assoc();
     $usuaroAct = $usu["idUsuario"];
     $fechaActual = date("Y-m-d");  
+    
     $gateway = new Braintree\Gateway([
         'environment' => 'sandbox',
         'merchantId' => 's2f9gr23vxmrg2y8',
