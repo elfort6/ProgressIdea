@@ -82,7 +82,7 @@ $sesion  = isset($_SESSION["sesion"]);
     <script>
       var button = document.querySelector('#submit-button');
       function redireccionar(nonce,monto,idp){
-            location.href= "https://elfort6.000webhostapp.com/api-pagos/servidor.php?nonce="+nonce+"&monto="+,monto+"&idp="+idp+"";
+            location.href= "https://elfort6.000webhostapp.com/api-pagos/servidor.php?nonce="+nonce+"&monto="+monto+"&idp="+idp+"";
         }
         
       braintree.dropin.create({
