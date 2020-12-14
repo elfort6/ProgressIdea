@@ -40,7 +40,7 @@ while ($fila = $result1->fetch_assoc()) {
 <body>
     <nav class="navbar navbar-expand navbar-light bg-light" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="../Index.php">Progress Idea</a>
+            <a class="navbar-brand" href="../index.php">Progress Idea</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">

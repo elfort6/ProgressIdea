@@ -1,5 +1,5 @@
 <?php 
-    require '..\..\..\..\librerias\braintree-php-5.4.0\lib\autoload.php';
+    require '../../../../librerias/braintree-php-5.4.0/lib/autoload.php';
     require '../../conexion.php';
     session_start();
     $consulta = "SELECT* FROM usuario where usuario='" . $_SESSION["sesion"]["usuario"] . "'";

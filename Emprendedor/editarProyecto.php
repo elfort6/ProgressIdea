@@ -37,7 +37,7 @@
 
         <nav class="navbar navbar-expand navbar-light bg-light" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../Index.php">Progress Idea</a>
+                <a class="navbar-brand" href="../index.php">Progress Idea</a>
 
             </div>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -138,7 +138,7 @@
             }
 
             function redireccionar(){
-            location.href= "Index.php";
+            location.href= "index.php";
             }
 
             function enviarImg(){
