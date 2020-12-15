@@ -12,7 +12,7 @@ if($consultaId){
 	$to = $_POST["correoRecu"];
 	$asunto= "Recuperacion de contraseña PI";
 	$name=   $consulta['primerNombrel'].' '.$consulta['primerApellido'] ;
-	$email=  "suport@progressidea.tk";
+	$email=  "support@progressidea.ml";
 	//$sms =   'Parece que solicitaste la recuperación de tu cuenta, para que se haga efectivo el cambio de contraseña pulsa el siguiente link: <br> <a href="https://www.progressidea.tk/registro_login/newPassword.php?idpwd='.$id.'">clickee perrin</a>';
     /////////////////////////////////////////Cuerpo del Correo///////////////////////////
 		$sms ='';
