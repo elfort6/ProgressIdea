@@ -79,7 +79,23 @@ include '../Ajax/php/sessionAdmi.php';
 
         function eliminar(id) {
             datos = {
-                id: id
+                "id": id
+            };
+            $.ajax({
+                method: "POST",
+                url: "../Ajax/php/recursos/test/refound.php",
+                data: datos
+            }).done(function(data) {
+                console.log(data);
+                eliminar2(id);
+            });
+
+
+        }
+
+        function eliminar2(id) {
+            datos = {
+                "id": id
             };
             $.ajax({
                 method: "POST",
