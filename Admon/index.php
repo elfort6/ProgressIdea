@@ -90,6 +90,17 @@ include '../Ajax/php/sessionAdmi.php';
                                     </div>
                                     <div class="col-md-6 col-lg-6">
                                     <div class="card m-3 tarjeta">
+                                        <div class="card-header bg-primary">
+                                            <h4 class="text-light"><b>Proyectos Exitosos</b></h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <p>Proyectos que alcanzaron la meta de los fondos requeridos de presupuesto</p>
+                                            <a class="btn btn-md btn-primary mt-3 ml-4 " href="proyectosExitosos.php">Ver Detalles<i class="fas fa-arrow-right ml-2"></i></a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                    <div class="card m-3 tarjeta">
                                         <div class="card-header" style="background-color: #ffab10;">
                                             <h4 class="text-light"><b>Proyectos Suspendidos</b></h4>
                                         </div>
@@ -112,8 +123,8 @@ include '../Ajax/php/sessionAdmi.php';
                                     </div>
                                     <div class="col-md-6 col-lg-6">
                                     <div class="card m-3 tarjeta">
-                                        <div class="card-header bg-primary">
-                                            <h4 class="text-light"><b>Agregar Administrador</b></h4>
+                                        <div class="card-header">
+                                            <h4 class="text-dark"><b>Agregar Administrador</b></h4>
                                         </div>
                                         <div class="card-body">
                                             <p>Agregar usuario con el rol de administrador a la plataforma</p>
