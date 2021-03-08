@@ -93,6 +93,10 @@ include '../Ajax/php/sessionAdmi.php';
 
         }
 
+        function nada(){
+            
+        }
+
         function eliminar2(id) {
             datos = {
                 "id": id
